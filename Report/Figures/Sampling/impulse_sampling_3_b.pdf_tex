@@ -1,0 +1,166 @@
+%% Creator: Inkscape inkscape 0.92.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'impulse_sampling_3_b.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{324.60189104bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.0992876)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{impulse_sampling_3_b.pdf}}%
+    \put(-0.11118543,1.14841848){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{2}\textbf{9}\textbf{6}\end{tabular}}}}%
+    \put(0.05501092,1.14841848){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\textbf{a}\textbf{m}\textbf{p}\textbf{l}\textbf{i}\textbf{n}\textbf{g}\textbf{o}\textbf{f}\textbf{c}\textbf{o}\textbf{n}\textbf{t}\textbf{i}\textbf{n}\textbf{u}\textbf{o}\textbf{u}\textbf{s}\textbf{-}\textbf{t}\textbf{i}\textbf{m}\textbf{e}\textbf{s}\textbf{i}\textbf{g}\textbf{n}\textbf{a}\textbf{l}\textbf{s}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{impulse_sampling_3_b.pdf}}%
+    \put(0.53579477,0.57966641){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Guard\\band\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{impulse_sampling_3_b.pdf}}%
+    \put(0.2577012,0.57966641){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Guard\\band\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{impulse_sampling_3_b.pdf}}%
+    \put(0.42567526,0.08291947){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}000\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{impulse_sampling_3_b.pdf}}%
+    \put(0.39166129,0.70241369){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.3889456,0.6677004){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{T}\end{tabular}}}}%
+    \put(0.39630874,0.99123825){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{impulse_sampling_3_b.pdf}}%
+    \put(0.3853397,0.30156268){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
+    \put(0.38262401,0.26684939){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{T}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{impulse_sampling_3_b.pdf}}%
+    \put(0.41569689,0.81142507){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(a)\\(b)\\(c)\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{impulse_sampling_3_b.pdf}}%
+    \put(0.05653078,-0.04647287){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{F}\textbf{i}\textbf{g}\textbf{u}\textbf{r}\textbf{e}\textbf{6}\textbf{.}\textbf{3}\end{tabular}}}}%
+    \put(0.19330746,-0.04647287){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Frequency-domaininterpretationofuniformsampling.(a)Spectrumof\\continuous-timebandlimitedsignal\end{tabular}}}}%
+    \put(0.47689092,-0.08329847){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(0.48983693,-0.08767411){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}c\end{tabular}}}}%
+    \put(0.5012047,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{(}\end{tabular}}}}%
+    \put(0.51208036,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{t}\end{tabular}}}}%
+    \put(0.52071091,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{)}\end{tabular}}}}%
+    \put(0.53158657,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l},(b)spectrumofdiscrete-timesignal\end{tabular}}}}%
+    \put(0.96970347,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(0.98273676,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[\end{tabular}}}}%
+    \put(0.99244613,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{n}\end{tabular}}}}%
+    \put(1.00702476,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}]=\end{tabular}}}}%
+    \put(1.05568821,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(1.0685951,-0.08767411){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}c\end{tabular}}}}%
+    \put(1.07996287,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{(}\end{tabular}}}}%
+    \put(1.09083853,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{n}\textit{T}\end{tabular}}}}%
+    \put(1.12387371,-0.08329336){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{)}\end{tabular}}}}%
+    \put(0.05651411,-0.12011896){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}with\end{tabular}}}}%
+    \put(0.138351,-0.1244946){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}s\end{tabular}}}}%
+    \put(0.15659489,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{>}\end{tabular}}}}%
+    \put(0.18744326,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.22471834,-0.1244946){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.24224134,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l},and(c)spectrumof\end{tabular}}}}%
+    \put(0.49162334,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(0.50465663,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[\end{tabular}}}}%
+    \put(0.514366,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{n}\end{tabular}}}}%
+    \put(0.52894462,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}]\end{tabular}}}}%
+    \put(0.53865399,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l},showingaliasingdistortion,when\end{tabular}}}}%
+    \put(0.97610026,-0.1244946){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}s\end{tabular}}}}%
+    \put(0.99434415,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{<}\end{tabular}}}}%
+    \put(1.02519252,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(1.0624676,-0.1244946){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(1.0799906,-0.12011385){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}.\end{tabular}}}}%
+    \put(0.05653078,-0.20711888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Samplingat\end{tabular}}}}%
+    \put(0.23816558,-0.21172144){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}s\end{tabular}}}}%
+    \put(0.25968116,-0.20711888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{>}\end{tabular}}}}%
+    \put(0.29454698,-0.20711888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.33373803,-0.21172144){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.36110386,-0.20711888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}createsa\end{tabular}}}}%
+    \put(0.47785527,-0.20711888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{g}\textit{u}\textit{a}\textit{r}\textit{d}\textit{b}\textit{a}\textit{n}\textit{d}\end{tabular}}}}%
+    \put(0.63017841,-0.20711888){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}asshownin\\Figure6.3(\\b)whichsimplifes\\thereconstructionprocessinpracticalapplications.Ifthesampledsignalissinusoidal,its\\spectrumconsistsoflinesandhenceequalityin\\(6.16)\\doesnothold;inthiscase,we\\shouldrequirethat\end{tabular}}}}%
+    \put(0.31823905,-0.32681319){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}s\end{tabular}}}}%
+    \put(0.33737017,-0.32221063){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{>}\end{tabular}}}}%
+    \put(0.36984204,-0.32221063){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.40904258,-0.32681319){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.43510528,-0.32221063){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(see\\TutorialProblem4\\).\end{tabular}}}}%
+    \put(0.05655324,-0.40022906){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{T}\textbf{e}\textbf{r}\textbf{m}\textbf{i}\textbf{n}\textbf{o}\textbf{l}\textbf{o}\textbf{g}\textbf{y}\textbf{i}\textbf{n}\textbf{s}\textbf{a}\textbf{m}\textbf{p}\textbf{l}\textbf{i}\textbf{n}\textbf{g}\textbf{o}\textbf{p}\textbf{e}\textbf{r}\textbf{a}\textbf{t}\textbf{i}\textbf{o}\textbf{n}\end{tabular}}}}%
+    \put(0.53411687,-0.40022906){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Thehighestfrequency\end{tabular}}}}%
+    \put(0.81783138,-0.40022906){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{F}\end{tabular}}}}%
+    \put(0.83655394,-0.40483492){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.85493646,-0.40023236){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l},inHz,presentinaban-\\dlimitedsignal\end{tabular}}}}%
+    \put(0.25325542,-0.43859704){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(0.26686227,-0.44320808){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}c\end{tabular}}}}%
+    \put(0.27875684,-0.43860552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{(}\end{tabular}}}}%
+    \put(0.29020486,-0.43860552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{t}\end{tabular}}}}%
+    \put(0.29928962,-0.43860552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{)}\end{tabular}}}}%
+    \put(0.32123422,-0.43860552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}iscalledthe\end{tabular}}}}%
+    \put(0.48408463,-0.43860552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{N}\textit{y}\textit{q}\textit{u}\textit{i}\textit{s}\textit{t}\textit{f}\textit{r}\textit{e}\textit{q}\textit{u}\textit{e}\textit{n}\textit{c}\textit{y}\end{tabular}}}}%
+    \put(0.70819579,-0.43860552){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}.Theminimumsamplingfrequency\\requiredtoavoidoverlappingbandsis2\end{tabular}}}}%
+    \put(0.56023085,-0.47693952){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{F}\end{tabular}}}}%
+    \put(0.57900462,-0.48155351){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.59741486,-0.47695095){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l},whichiscalledthe\end{tabular}}}}%
+    \put(0.86025901,-0.47695095){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{N}\textit{y}\textit{q}\textit{u}\textit{i}\textit{s}\textit{t}\textit{r}\textit{a}\textit{t}\textit{e}\end{tabular}}}}%
+    \put(1.01261284,-0.47695095){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}.Theactual\\highestfrequencythatthesampledsignal\end{tabular}}}}%
+    \put(0.57126548,-0.51531563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(0.584954,-0.51531563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}[\end{tabular}}}}%
+    \put(0.59517436,-0.51531563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{n}\end{tabular}}}}%
+    \put(0.61052024,-0.51531563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}]\end{tabular}}}}%
+    \put(0.62819869,-0.51531563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}containsis\end{tabular}}}}%
+    \put(0.7658205,-0.51531563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{F}\end{tabular}}}}%
+    \put(0.78071324,-0.51992667){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}s\end{tabular}}}}%
+    \put(0.7913324,-0.51532411){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{/}\end{tabular}}}}%
+    \put(0.80575751,-0.51532411){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2,inHz,andistermedasthe\end{tabular}}}}%
+    \put(0.05654122,-0.55368879){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{f}\textit{o}\textit{l}\textit{d}\textit{i}\textit{n}\textit{g}\textit{f}\textit{r}\textit{e}\textit{q}\textit{u}\textit{e}\textit{n}\textit{c}\textit{y}\end{tabular}}}}%
+    \put(0.2698182,-0.55368879){\color[rgb]{0.25098039,0.50196078,0.50196078}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}.Thesesomewhatconfusingfrequencytermsareillustratedin\\Figure6.4.\end{tabular}}}}%
+    \put(0.05657194,-0.63170722){\color[rgb]{0,0.58823529,0.84313725}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{S}\textbf{a}\textbf{m}\textbf{p}\textbf{l}\textbf{i}\textbf{n}\textbf{g}\textbf{t}\textbf{h}\textbf{e}\textbf{o}\textbf{r}\textbf{e}\textbf{m}\end{tabular}}}}%
+    \put(0.31211142,-0.63170722){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}From\\Figure6.3(\\b)itisimmediatelyapparentthatif\end{tabular}}}}%
+    \put(0.95844898,-0.63170722){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{x}\end{tabular}}}}%
+    \put(0.9720245,-0.63632155){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}c\end{tabular}}}}%
+    \put(0.98391907,-0.63171899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{(}\end{tabular}}}}%
+    \put(0.9953671,-0.63171899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{t}\end{tabular}}}}%
+    \put(1.00445185,-0.63171899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{)}\end{tabular}}}}%
+    \put(1.02298967,-0.63171899){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}isbandlim-\\itedin\end{tabular}}}}%
+    \put(0.16566138,-0.67469471){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.19172407,-0.67009215){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}and\end{tabular}}}}%
+    \put(0.26758315,-0.67469471){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}s\end{tabular}}}}%
+    \put(0.286742,-0.67009215){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}≥\end{tabular}}}}%
+    \put(0.31841588,-0.67009215){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
+    \put(0.35761035,-0.67469471){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}H\end{tabular}}}}%
+    \put(0.37599287,-0.67009215){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l},wehave\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

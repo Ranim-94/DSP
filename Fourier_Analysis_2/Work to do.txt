@@ -1,0 +1,12 @@
+
+
+Some work to left:
+
+documentation about pulsetrain
+https://fr.mathworks.com/help/signal/ug/signal-generation-and-visualization.html
+
+Document the work with periodic
+   - square wave
+   - maybe with pulsetrain function to illustrate Fourier series evaluation
+
+ 

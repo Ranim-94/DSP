@@ -1,0 +1,19 @@
+
+
+Some notes about GNU Radio
+
+
+1- On the right side, we can see that we have many block
+like audio, filters,...
+    - these are the top level block
+    - each block is organised also into nested blocks
+
+- When we open GNU radio, we have directly 2 blocks inserted for us:
+1 The 'Options block'
+  - we double click on it and select QT for the interface
+  - this is important because when we select the block on the right side, it will also give us the choice which type of GUI we want
+
+2- The 'variable block' select the sample rate for us
+    - if we grab some block for example, like 'Signal Source', and double click, we can see that the sample rate in signal source matche the sample rate in variable block
+    - and every other block will have the same sampling rate as in the 'variable block'
+  

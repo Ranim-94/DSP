@@ -1,0 +1,110 @@
+
+
+
+%% Parks-McClellan FIR filter design
+%
+% Copyright 2014 Barry Van Veen
+%
+% Lowpass filter, passband 0-0.4pi, stop 0.6pi-1pi.  Passband ripple
+% 1+/-0.05, stopband gain less than 0.01.
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Filter order predicted by Kaiser's simplified formula
+
+del_p = 0.05;
+del_s = 0.01;
+om_p = 0.4*pi;
+om_s = 0.6*pi;
+
+M = ceil((-10*log10(del_p*del_s) - 13)/(2.324*(om_s-om_p)))
+
+%% Design Filter
+
+% Bandedges
+F = [0 om_p om_s pi]/pi;
+% Desired amplitudes
+A = [1 1 0 0];
+
+% Relative weight on approximation error in each band
+W = [ 1  del_p/del_s];  
+
+b = firpm(M, F, A, W);
+[B,w] = freqz(b,1,2048);
+
+figure(1)
+h = stem([0:M],b);
+title(['Impulse Response M = ',num2str(M)])
+xlabel('Time (n)')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+
+figure(2)
+h = plot(w/pi,20*log10(abs(B)));
+axis([0 1 -80 5])
+title(['Frequency Response Magnitude M = ',num2str(M)])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency \omega/\pi')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+pass = [1:floor(2048*F(2))];
+stop = [ceil(F(3)*2048):2048];
+errpass = abs(1-abs(B(pass)));
+errstop = abs(B(stop));
+err = [errpass', zeros(1,2048-length(pass)-length(stop)), errstop'];
+figure(3)
+h = plot(w/pi,err);
+title(['Absolute Response Error M = ',num2str(M)])
+ylabel('Error')
+xlabel('Normalized Frequency \omega/\pi')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+% Increase the filter order slightly to satisfy specifications
+
+Madj = M+2;
+b2 = firpm(Madj, F, A, W);
+[B2,w] = freqz(b2,1,2048);
+
+figure(4)
+h = stem([0:Madj],b2);
+xlim([0 Madj])
+title(['Impulse Response M = ',num2str(Madj)])
+xlabel('Time (n)')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(5)
+h = plot(w/pi,20*log10(abs(B2)));
+axis([0 1 -80 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency \omega/\pi')
+title(['Frequency Response Magnitude M = ',num2str(Madj)])
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+errpass = abs(1-abs(B2(pass)));
+errstop = abs(B2(stop));
+err = [errpass', zeros(1,2048-length(pass)-length(stop)), errstop'];
+
+figure(6)
+h = plot(w/pi,err);
+title(['Absolute Response Error M = ',num2str(Madj)])
+ylabel('Error')
+xlabel('Normalized Frequency \omega/\pi')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
