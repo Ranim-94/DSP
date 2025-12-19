@@ -1,0 +1,70 @@
+%% Sampling a sinusoid - non uniqueness of DT sinusoids
+%
+% Copyright 2014 Barry Van Veen
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%
+% Approximate continuous-time signal using a very dense sampling
+% on 0 <= t <= 20
+%
+t = [0:0.01:20];
+
+% Two CT sinusoids with different frequencies
+xt1=cos(pi/5*t);
+xt2 = cos(11*pi/5*t);
+
+
+% Discrete-time sinusoids
+%
+n = 0:20; % use n = 0 to n = 20 for time index range
+
+% Two DT sinusoids with same frequencies as CT sinusoids
+x1 = cos(pi/5*n);
+x2 = cos(11*pi/5*n);
+
+%
+% display results
+%
+
+% CT sinusoids
+subplot(311)
+hp = plot(t,xt1,t,xt2);
+set(hp,'LineWidth',linwidth);
+axis([0,20,-1.2,1.2]);
+set(gca,'XTick',n);
+grid on
+set(gca,'GridLineStyle','-')
+xlabel('time (sec)')
+ylabel('amplitude')
+title('Continuous-time Sinusoids')
+legend('x(t) = cos(\pi/5*t)','x(t) = cos(11*\pi/5*t)')
+%
+% Now display DT sinusoids
+%
+subplot(312)
+hp = stem(n,x1)
+set(hp,'LineWidth',linwidth);
+axis([0,20,-1.2,1.2])
+set(gca,'XTick',n);
+xlabel('n')
+ylabel('amplitude')
+title('DT Sinusoid cos(\pi/5*n)')
+
+subplot(313)
+hp = stem(n,x2)
+set(hp,'LineWidth',linwidth);
+axis([0,20,-1.2,1.2])
+set(gca,'XTick',n);
+xlabel('n')
+ylabel('amplitude')
+title('DT Sinusoid cos(11*\pi/5*n)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1280,720])
+

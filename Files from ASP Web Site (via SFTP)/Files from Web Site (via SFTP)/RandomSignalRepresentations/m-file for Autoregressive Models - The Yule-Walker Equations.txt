@@ -1,0 +1,112 @@
+%% Autoregressive Models: The Yule-Walker Equations
+%
+% Copyright 2014 Barry Van Veen
+
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+
+%% Generate 4th order AR process
+%
+
+% Pole location
+p12 = 0.97*exp(j*pi/4);
+% AR coefficients for complex conjugate poles
+a12 = [ 1 -p12-p12'  p12*p12'];
+
+% Pole location
+p34 = 0.95*exp(j*7*pi/16);
+% AR coefficients for complex conjugate poles
+a34 = [1 -p34-p34'  p34*p34' ];
+
+% Now combine the two sets of poles by convolving AR coefficients for each
+a = conv(a12,a34)
+
+% Run unit variance white noise through AR filter to obtain AR process
+w = 0.5*randn(1,200);
+x = filter(1,a,w);
+
+% Display a portion of AR process
+figure
+h = stem(100:199,x(100:199));
+xlabel('n')
+ylabel('x[n]')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Fit 2nd order AR model to data
+
+[a_2,sig_2] = aryule(x,2)
+
+% Display model power spectrum
+[H_2,om] = freqz(sqrt(sig_2),a_2,4096);
+
+figure
+h = plot(om,abs(H_2).^2);
+xlabel('\omega (rads)')
+ylabel('S_{xx}(\omega)')
+xlim([0,pi])
+title('Order N = 2')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Fit 4th order AR model to data
+
+[a_4,sig_4] = aryule(x,4)
+
+% Display model power spectrum
+[H_4,om] = freqz(sqrt(sig_4),a_4,4096);
+
+figure
+h = plot(om,abs(H_4).^2);
+xlabel('\omega (rads)')
+ylabel('S_{xx}(\omega)')
+xlim([0,pi])
+title('Order N = 4')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Fit 6th order AR model to data
+
+[a_6,sig_6] = aryule(x,6)
+
+% Display model power spectrum
+[H_6,om] = freqz(sqrt(sig_6),a_6,4096);
+
+figure
+h = plot(om,abs(H_6).^2);
+xlabel('\omega (rads)')
+ylabel('S_{xx}(\omega)')
+xlim([0,pi])
+title('Order N = 6')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Fit 8th order AR model to data
+
+[a_8,sig_8] = aryule(x,8)
+
+% Display model power spectrum
+[H_8,om] = freqz(sqrt(sig_8),a_8,4096);
+
+figure
+h = plot(om,abs(H_8).^2);
+xlabel('\omega (rads)')
+ylabel('S_{xx}(\omega)')
+xlim([0,pi])
+title('Order N = 8')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+
+

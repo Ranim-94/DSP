@@ -1,0 +1,107 @@
+
+
+\documentclass[12pt,a4paper]{book}
+
+\input{Files/Packages}
+
+\input{Files/Macros}
+
+
+
+\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
+
+\DeclareMathOperator*{\argmin}{argmin}
+
+\title{Signal Processing}
+\author{Ranim Tom}
+
+
+
+\begin{document}
+
+% downloaded template
+%\input{content/title_page_1} 
+
+\maketitle
+
+
+
+\chapter*{Abstract}
+
+This document represents a \tbi{course reader} for digital signal processing work. 
+
+Mainly it contains:
+
+\begin{itemize}
+
+\item theoratical explanation
+
+\item proofs for theorems
+
+\item worked examples
+
+\end{itemize}
+
+
+Simulation (via programming, or \verb|GNU| radio) validating the theory are presented in a separate document.\\
+
+\underline{Prerequiste:} a course in signal and system is assumed to be taken, since I will focus on DSP aspect and practical consideration.
+
+
+\tableofcontents
+
+
+\pagestyle{fancy}
+\fancyhf{} % Clear header and footer
+\rhead{\rightmark}
+\lhead{Chapter \thechapter}
+\rfoot{Page \thepage}
+
+\chapter{Introduction to Digital Signal Processing}
+
+\underline{Notes:}\\
+
+\begin{itemize}
+
+\item In DSP, all the processing is done in the discrete domain
+
+\item Advantage of DSP over the analog domain:
+
+Suppose we have a system which suffers from noise, and we want to eliminate this noise. We could use some analog filter (form capacitors and inductors) and filter this noise at the unwanted frequency.\\
+
+Now, some day it becomes hot, and our filter start to play due to the hot temperature, so we need to change the filter and the hardware.\\
+
+However in the digital domain, it's all about the software and the implementation, we could only change the filter coefficient and keep the same hardware.
+
+\end{itemize}
+
+
+%**************************************************
+%**************************************************
+%**************************************************
+
+\input{content/sampling}
+\input{content/bandpass_sampling}
+
+\input{content/convolution}
+\input{content/correlation}
+
+\input{content/fourier_transform}
+
+\input{content/system_implementation}
+\input{content/fir}
+\input{content/iir}
+
+\input{content/multirate_intro}
+
+
+
+% **************** References ****************
+
+\bibliographystyle{IEEEtran}
+
+\bibliography{Literature/Books_Signal_Processing,Literature/Papers_Signal_Processing}
+
+\end{document}
+
+

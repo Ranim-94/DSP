@@ -1,0 +1,107 @@
+%% Wavelet Decomposition Example
+%
+% Copyright 2014 Barry Van Veen
+
+%% Initialization
+
+clear 
+close all
+
+set(0,'defaultaxesfontsize',18);
+set(0,'defaulttextfontsize',18);
+linwidth = 2;
+
+N = 512;
+t = (1:N) ./N;
+
+% create blocks signal
+pos = [ .1 .13 .15 .23 .25 .38 .40 .44 .65  .76 .78 .81];
+hgt = [4 (-5) 3 (-4) 5 1 (-5.2) 2.1 4.3  (-5.1) 3.1 (-3.2)];
+blocks = zeros(size(t));
+for j=1:length(pos)
+    blocks = blocks + (1 + sign(t-pos(j))).*(hgt(j)/2) ;
+end
+
+
+%% One-level Decomposition
+%
+% Note the approximation (scaling function) waveform plus the detail
+% (wavelet) waveform is equal to the original signal.  The approximation
+% coefficients multiply the scaling function and look a lot like the
+% original signal since the scaling function is a rectangle.  The details
+% are only nonzero in areas of discontinuity of the original blocks. The
+% approximation waveform looks a lot like the original except the
+% transitions are not quite as sharp in several locations. At these
+% locations the detail waveform fills in the sharp discontinuity.
+
+w='haar'; %wavelet choice
+
+% Perform a 1 level decomposition
+[Blcoefs,Blindx] = wavedec(blocks,1,w);
+
+one8 = ones(1,8);
+t8 = (1:8*N) ./(8*N);
+
+% Display signal, approximation and detail signals
+figure
+subplot(3,1,1)
+h=plot(t8,kron(blocks,one8));
+title('Blocks Signal')
+set(h,'LineWidth',linwidth)
+
+subplot(3,1,2)
+approx = wrcoef('a',Blcoefs,Blindx,w,1);
+h=plot(t8,kron(approx,one8));
+title('Approximation Waveform, Level 1')
+set(h,'LineWidth',linwidth)
+
+subplot(3,1,3)
+detail = wrcoef('d',Blcoefs,Blindx,w,1);
+h=plot(t8,kron(detail,one8));
+title('Detail Waveform, Level 1')
+
+set(h,'LineWidth',linwidth)
+
+%% Multilevel Wavelet Decomposition
+%
+% The details tend to be nonzero in the vicinity of discontinuities in the
+% original blocks signal.  The approximation waveforms at increasing levels
+% are lower resolution versions of the original signal, and the detail
+% waveforms incorporate the fine structure lost in the approximation
+% waveforms.  The resolution of the details decrease as the level of
+% decomposition increases.
+
+
+% Perform 3 level wavelet decomposition
+[c,l] = wavedec(blocks,3,w);
+
+% Reconstruct the approximation signals and detail signals at 
+% levels 1 to 3, using the wavelet decomposition structure [c,l].
+for i = 1:3
+    A(i,:) = wrcoef('a',c,l,w,i);
+    D(i,:) = wrcoef('d',c,l,w,i);
+end
+
+% Display results
+figure
+subplot(4,2,1); 
+h =plot(t8,kron(blocks,one8),'r'); 
+set(h,'LineWidth',linwidth)
+ylim([-3,6])
+
+title('Blocks and approx. levels 1 to 3'); 
+ 
+
+for i = 1:3, 
+    subplot(4,2,2*i+1); 
+    h=plot(t8,kron(A(i,:),one8),'b'); 
+    set(h,'LineWidth',linwidth)
+    ylim([-3,6])
+
+    subplot(4,2,2*i+2); 
+    h=plot(t8,kron(D(i,:),one8),'g'); 
+   set(h,'LineWidth',linwidth)
+   ylim([-3,3])
+
+end
+

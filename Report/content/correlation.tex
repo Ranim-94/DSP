@@ -1,0 +1,37 @@
+
+
+
+\chapter{Correlation}
+
+\section{Definition}
+
+First we start by the definition.
+
+\begin{equation}
+\begin{array}{lll}
+R_{xy}(\tau) \, &=& \, \displaystyle\int_{-\infty}^{\infty} x(t) \, y^\star(t \, - \, \tau) \\ \\
+R_{xy}[k]\, &=& \, \displaystyle\sum_{n = -\infty}^{\infty} x[n] \, y^\star[n \, - \, k] 
+\end{array}
+\end{equation}
+
+Some points:
+
+\begin{itemize}
+
+\item We note that with respect to a convolution, the $\mathrm{2}^\mathrm{nd}$ signal $y(t)$ is only delayed in time by $\tau$, and there is no time flipping operation (in convolution, we have the 2).
+
+\item For a periodic signal with a period $N$, the $R_{xy}[k]$ will be also periodic.
+
+\item Length of signal:
+
+    \begin{itemize}
+        
+        \item Crosscorrolation: length $x[n] \, = \, N$ , length $y[n] \, = \, M$, we have the $R_{xy}[k]$ length equal to $N + M - 1$ 
+
+        
+        \item For autocorollation: for a length $N \rightarrow 2\, N \, - \, 1$
+
+        
+    \end{itemize}
+
+\end{itemize}

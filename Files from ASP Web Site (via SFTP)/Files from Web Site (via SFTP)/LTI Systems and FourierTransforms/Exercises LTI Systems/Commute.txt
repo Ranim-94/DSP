@@ -1,0 +1,67 @@
+%% Demonstrate that Convolution Commutes
+% Copyright Barry Van Veen 2016
+%
+% Life of Riley Kevin MacLeod (incompetech.com)
+% Licensed under Creative Commons: By Attribution 3.0 License
+% http://creativecommons.org/licenses/by/3.0/
+%
+% Note: a pause command is used after each music clip (to prevent them from
+% all being played simultaneously).  Hit any key with the cursor in the
+% command window to continue running the script.
+
+close all
+clear
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+load LTI.mat
+
+% Impulse responses are in variables h and g
+
+song_h = conv(h,song); % apply song to h
+song_g = conv(g,song); % apply song to g
+
+song_hg = conv(g,song_h); % apply song_h to g
+song_gh = conv(h,song_g); % apply song_g to h
+
+hg = conv(h,g); % Impulse response of cascade
+
+% Display first 50 values of impulse responses
+
+figure
+subplot(311)
+stem(0:49, h(1:50))
+ylabel('h[n]')
+subplot(312)
+stem(0:49, g(1:50))
+ylabel('g[n]')
+subplot(313)
+stem(0:49, hg(1:50))
+ylabel('h[n]*g[n]')
+xlabel('n')
+
+% Display difference between song*h*g and song*g*h
+figure
+plot(song_hg-song_gh)
+ylim([-.5,.5])
+xlabel('n')
+ylabel('song_{hg}-song_{gh}')
+
+% Listen to processed sounds
+
+soundsc(song,Fs)  % Original
+pause
+
+soundsc(song_h,Fs) % song processed with h
+pause
+
+soundsc(song_g,Fs) % song processed with g
+pause
+
+soundsc(song_hg,Fs) % song processed with h, then g
+pause
+
+soundsc(song_gh,Fs) % song processed with g, then h
+

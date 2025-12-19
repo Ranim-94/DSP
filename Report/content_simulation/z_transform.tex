@@ -1,0 +1,115 @@
+
+
+
+\chapter{$Z$-Transform}
+
+\section{Polynomial Manipulation}
+
+Polynomial are encountered in $z$-transform allot.\\
+
+Suppose we have the following polynomial $P(z) \, = \,1 z^0 + 1.5 z^{-1} + 2 z^{-2}$. We can do 3 type of manipulation:
+
+\begin{enumerate}
+    
+\item Compute the root using the function \verb|root|
+
+\item Compute the polynomial coefficient from the root using \verb|poly(root)|
+
+\item Evaluating a polynomial at some value of $z$ using function \verb|polyval|
+
+\end{enumerate}
+
+
+\section{Partial Fraction Expansion}
+
+Example:
+
+\begin{equation}
+\begin{array}{rcl}
+    X(z) \, &=& \, \displaystyle\frac{6 \, - \, 10 \, z^{-1} \, 2 \, z^{-2}}{1 - 3 z^{-1} + 2 z^{-2}}  \\ \\
+     &=& \, 1 \, + \,  \displaystyle\frac{2}{1 \, - \,z^{-1} } \, + \, \displaystyle\frac{3}{1 \, - \,2 \, z^{-1}}
+\end{array}    
+\end{equation}
+
+In general, $X(z)$ can be written as:
+
+\begin{equation}
+\begin{array}{rcl}
+X(z) \, &=& \, \displaystyle\frac{B(z)}{A(z)}   \, = \, \displaystyle\frac{b_0 \, + \, b_1 \, z^{-1} \, + \, \cdots \, + \, b_M \, z^{- \, M}}{a_0 \, + \, a_1 \, z^{-1} \, + \, \cdots \, + \, a_N \, z^{- \, N}} \\ \\
+	    &=& \, \displaystyle\sum\limits_{i \, = \, 1}^{M \, - \, N} C_i \, z^{-i} \, + \,  \displaystyle\sum\limits_{i \, = \, 1}^N\frac{A_i}{1 \, - \, p_i \, z^{-1}}
+ \end{array}
+\end{equation}
+
+If $M< \, N$ (proper rational function) $\rightarrow \, C_i \, = \, 0$.\\
+
+\newpage
+In the example:
+
+\begin{itemize}
+    \item poles $= \, [1 \, ; \,  2]$
+    
+    \item $A \, = \, [2 \, ; \, 3]$
+    
+    \item $C \, = \, 1$ since $M \, = \, N \, = \, 2$
+    
+\end{itemize}
+
+This implemented \verb|[terms,poles,num_constants] = residuez(coeff_num,coeff_deno)|.
+
+
+\section{Zero-Pole Pattern}
+
+Consider the system defined as
+
+\begin{equation}
+  H(z) \, = \, \displaystyle\frac{1 \, -  \, z^{-2}}{1 \, + \,  0.9 z^{-1} \, + \,  0.6 z^{-2} \, + \, 0.05 z^{-3}} 
+\end{equation}
+
+This is a $\mathrm{3}^\mathrm{rd}$ order system where $M \, = \, 2$ and $N \, = \, 3$.\\
+
+To plot the zero-pole pattern in $z$-plane, we use the function \verb|zplane(coeff_num,coeff_deno)|.\\
+
+\subsection{Impulse Response}
+
+We can also plot the impulse response numerically using the function \verb|impz(coeff_num,coeff_deno,number_samples)|. If the system is stable, $h[k]$ will tend for 0 asymptotically. 
+
+\section{Inferring Frequency Response}
+
+When evaluating frequency response from $H(z)$, we choose several value of $z$ on the unit circle. This means that the ROC must include the unit circle so we can do this evaluation.\\
+
+Usually $H(z)$ expression comes in the form of rational fraction.
+
+\begin{enumerate}
+
+\item $\mathrm{1}^\mathrm{st}$ order system: $h[k] \, = \, \left( \displaystyle\frac{1}{3} \right)^k \, u[k] \, \mapsto \, H(z) \, = \, \displaystyle\frac{1}{1 \, - \, \frac{1}{3} \, z^{-1} } \, $, such that its ROC : $\lvert z \rvert \, > \, \displaystyle\frac{1}{3}$.
+
+We have a zero $\, = \, 0$ and pole at $\frac{1}{3}$.\\
+
+Recall that a rational transfer function can be written as
+
+$H(\omega_d) \, = \, \displaystyle\frac{\prod \text{Length of the Vector away from 0}}{\prod \text{Length of the Vector away from poles}}$.\\
+
+When evaluting $H(\omega_d)$ on the unit circle, the vector from 0 remains constant as we move around (because the zero it is on the origin), and the vector of the pole change.\\
+
+The pole vector will increase when we move $\omega_d$ from $0 \, \rightarrow \, \pi$, which means that the ratio will decrease. We can say that because the length of the zero vector is constant, and hence we expect a LPF behavior.
+    
+    
+
+\item $\mathrm{2}^\mathrm{nd}$ order system: $h[k] \, = \, \left( \displaystyle\frac{5}{6} \right)^k \, \sin{ \left( \displaystyle\frac{\pi}{3} \, k \right)} \, u[k] \, \mapsto \, H(z) \, = \, \displaystyle\frac{\displaystyle\frac{5}{6} \, \sin{ \left( \displaystyle\frac{\pi}{3} \, \right)} \, z^{-1}  }{1 \, - \, \displaystyle\frac{10}{6}  \, \cos{ \left( \displaystyle\frac{\pi}{3} \, \right)} \,   z^{-1} \, + \,  \left(\, \displaystyle\frac{5}{6} \, z^{-2} \, \right)^2} \, $.\\
+
+In this system we have a complex conjugate poles, having the following polar coordinates: radius $= \, \displaystyle\frac{5}{6} $ and angle $ \displaystyle\frac{\pi}{3}$.
+
+
+As we move toward high frequency components, so away from $ \displaystyle\frac{\pi}{3}$, the distance from the poles to unit circle increase $\leftrightarrow$ influence of the poles increase $\leftrightarrow \, \lvert H(\omega_d) \rvert$ decrease.\\
+
+Now taking the opposite direction, by moving toward low frequency components $\leftrightarrow$ from $ \displaystyle\frac{\pi}{3} \, \rightarrow \, 0$, the poles vector (from the poles to the unit circle) decrease, so $\leftrightarrow \, \lvert H(\omega_d) \rvert$ is larger.\\
+
+
+\underline{Influence of the radius to the Poles}
+
+If we decrease the radius, the location of the poles will push down further to the origin (further away from the unit circle), and hence we will loose the band pass effect at $\displaystyle\frac{\pi}{3}$.
+
+    
+    
+    
+\end{enumerate}

@@ -1,0 +1,177 @@
+%% Examples of Poor IIR Filter Designs.
+%
+% Copyright 2014  Barry Van Veen
+%
+% Illustrate that too stringent specifications can produce useless filter
+% designs.
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Case 1: relatively wide transition band
+%
+% Specifications:
+% Passband 0.2pi, gain > 0.99
+% Stopband 0.4pi, gain < 0.001
+
+passband = 0.2*pi/pi; % convert to normalized frequency
+stopband = 0.4*pi/pi;
+passrip = -20*log10(0.99); % ripple in dB
+stopatten = -20*log10(0.001); %stopband attenuation in dB
+
+% Find order and natural frequency to meet these specs
+
+[Nb, Wnb] = buttord(passband, stopband, passrip, stopatten); % Butterworth filter
+
+% Now use the order and frequencies just identified to design these filters
+% by finding their difference equation coefficients
+
+% Display filter coefficients in the command window
+
+'Coefficients, transition band 0.2pi'
+
+[Bb1,Ab1] = butter(Nb, Wnb)
+
+% Display frequency responses
+
+figure(1)
+[Hb,W]= freqz(Bb1,Ab1,2048);
+h = plot(W/pi,20*log10(abs(Hb)));
+set(h,'LineWidth',linwidth);
+title(['Butterworth Filter, Order = ',num2str(Nb)])
+axis([0 1 -80, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(2)
+h = zplane(Bb1,Ab1);
+set(h,'LineWidth',linwidth);
+title('Butterworth Filter, Transition band 0.2\pi')
+
+%% Case 2: too narrow transition band
+%
+% Specifications:
+% Passband 0.2pi, gain > 0.99
+% Stopband 0.24pi, gain < 0.001
+
+passband = 0.2*pi/pi; % convert to normalized frequency
+stopband = 0.24*pi/pi;
+passrip = -20*log10(0.99); % ripple in dB
+stopatten = -20*log10(0.001); %stopband attenuation in dB
+
+% Find order and natural frequency to meet these specs
+
+[Nb, Wnb] = buttord(passband, stopband, passrip, stopatten); % Butterworth filter
+
+% Now use the order and frequencies just identified to design these filters
+% by finding their difference equation coefficients
+
+% Display filter coefficients in the command window
+
+'Coefficients, transition band 0.04pi'
+
+[Bb2,Ab2] = butter(Nb, Wnb)
+
+% Note the very large order, very small magnitude for the B
+% coefficients (1e-7) and very large magnitude for the A coefficients
+% (1e+8).  Very large/small coefficients are a sign that the design has
+% failed.
+
+% Display frequency responses
+
+figure(3)
+[Hb,W]= freqz(Bb2,Ab2,2048);
+h = plot(W/pi,20*log10(abs(Hb)));
+set(h,'LineWidth',linwidth);
+title(['Butterworth Filter, Order = ',num2str(Nb)])
+axis([0 1 -80, 10])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(4)
+zplane(Bb2,Ab2)
+title('Butterworth Filter, Transition band 0.04\pi')
+
+% Contrast the Butterworth design with a Chebyshev type 2.
+
+[Nc2, Wnc2] = cheb2ord(passband, stopband, passrip, stopatten); % Cheby 2 filter
+
+% Display filter coefficients in the command window
+
+'Chebyshev 2 Coefficients, transition band 0.04pi rads'
+
+[Bc2,Ac2] = cheby2(Nc2,stopatten,Wnc2)
+% 
+% Display frequency responses
+%
+figure(5)
+[Hb,W]= freqz(Bc2,Ac2,2048);
+h = plot(W/pi,20*log10(abs(Hb)));
+set(h,'LineWidth',linwidth);
+title(['Chebyshev 2 Filter, Order = ',num2str(Nc2)])
+axis([0 1 -80, 10])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(6)
+zplane(Bc2,Ac2)
+title('Chebyshev 2 Filter, Transition band 0.04\pi')
+
+%% Case 3: Very narrow lowpass filter
+%
+% Assume a sampling frequency of 2000 Hz and a passband of interest of 0-1 Hz,
+% which corresponds to 0.001\pi, and a stopband starting at 2 Hz or 0.002\pi
+% rads. 40 dB attenuation, use Butterworth
+
+passband = 0.001*pi/pi; % convert to normalized frequency
+stopband = 0.002*pi/pi;
+passrip = -20*log10(0.9); % ripple in dB
+stopatten = -20*log10(0.01); %stopband attenuation in dB
+
+% Find order and natural frequency to meet these specs
+
+[Nb2, Wnb2] = buttord(passband, stopband, passrip, stopatten); % Cheby 2 filter
+
+% Now use the order and frequencies just identified to design these filters
+% by finding their difference equation coefficients
+
+% Display filter coefficients in the command window
+
+'Coefficients, lowpass with passband 0.001*pi rads'
+
+[Bb2,Ab2] = butter(Nb2,Wnb2)
+
+% 
+% Display frequency responses
+
+figure(7)
+[Hb,W]= freqz(Bb2,Ab2,8192);
+h = plot(W/pi,20*log10(abs(Hb)));
+set(h,'LineWidth',linwidth);
+title(['Butterworth Filter, Order = ',num2str(Nb2)])
+axis([0 1 -80, 10])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(8)
+zplane(Bb2,Ab2)
+title('Butterworth Filter, Lowpass 0.001\pi')
+
+% Note the poles outside the unit circle.  Passband gain is erratic and
+% does not meet the specifications.

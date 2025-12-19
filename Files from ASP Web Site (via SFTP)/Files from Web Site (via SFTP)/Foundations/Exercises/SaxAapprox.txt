@@ -1,0 +1,109 @@
+%% Saxophone Note Approximation
+%
+% Copyright Barry Van Veen 2016
+
+%% Set up Workspace
+
+close all
+clear
+
+load SaxA_note
+
+%% Construct Sinusoidal Approximation to Note
+
+% Now construct saxophone tone as sum of sinusoidal components
+ 
+% Use first n_comp components 
+
+n_comp = 8;
+
+A_comp = zeros(n_comp,100); % Initialize with zeros
+
+% begin with first component, then accumulate the rest in successive rows
+% of A_comp
+
+A_comp(1,:) = Amp(2)*cos(2*pi*[0:99]/100 + phs(2));
+
+for i=2:n_comp
+    A_comp(i,:) = A_comp(i-1,:) + Amp(i+1)*cos(2*pi*i*[0:99]/100 + phs(i+1));
+end
+
+% A_comp is an n_comp by 100 matrix where the ith row represents
+% one period of the approximation using the first i harmonically related
+% cosines
+
+%% Code to Display the Component Waveforms
+%
+% You can ignore what goes on in this section. It looks complex, but really
+% is only formating and displaying the individual representations.
+
+% string 10 periods together for display
+
+A_per = Sax_A(21125:21224); %extract one period of the sound
+A_tot = A_per'; %original sound
+
+A_part = A_comp; %component representation
+for i=1:9
+    A_tot = [ A_tot, A_per']; %concatenate periods of original sound
+    A_part = [A_part, A_comp]; %concatenate periods of component representation
+end
+
+% display 1000 samples
+t_sub = 1000*[0:999]/44100; 
+ax = [t_sub(1), t_sub(end), -0.4, 0.4];
+
+
+disp_comp = [1:8]; % components to display
+
+for i = 2:length(disp_comp)
+    
+    figure(i-1)
+    subplot(311)
+    hp = plot(t_sub,A_part(disp_comp(i)-1,:));
+   
+    xlabel('Time (ms)')
+    ylabel('Norm. Amp.')
+    title(['Sum of ',num2str(disp_comp(i)-1),' Components'])
+    axis(ax)
+
+    
+    subplot(312)
+    hp = plot(t_sub,A_part(disp_comp(i),:)-A_part(disp_comp(i)-1,:));
+   
+    xlabel('Time (ms)')
+    ylabel('Norm. Amp.')
+    title([num2str(disp_comp(i)),'-th Component'])
+    axis(ax)
+
+    
+    subplot(313)
+    hp = plot(t_sub,A_part(disp_comp(i),:));
+    
+    xlabel('Time (ms)')
+    ylabel('Norm. Amp.')
+    title(['Sum of ',num2str(disp_comp(i)),' Components'])
+    axis(ax)
+
+end
+
+figure(length(disp_comp))
+subplot(211)
+hp = plot(t_sub,A_tot);
+
+xlabel('Time (ms)')
+ylabel('Norm. Amp.')
+title('Original Saxophone A')
+axis(ax)
+
+subplot(212)
+hp = plot(t_sub,A_part(n_comp,:));
+
+xlabel('Time (ms)')
+ylabel('Norm. Amp.')
+title(['Approx. Using ',num2str(n_comp),' Sinusoids'])
+axis(ax)
+
+
+
+
+

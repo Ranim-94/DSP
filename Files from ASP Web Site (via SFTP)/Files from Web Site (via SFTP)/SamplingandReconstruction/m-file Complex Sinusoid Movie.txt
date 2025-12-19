@@ -1,0 +1,37 @@
+%% Complex Sinusoid Movie
+%
+% Copyright Barry Van Veen 2014
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+i = sqrt(-1);
+for k = 1:10
+    x = exp(i*(k-1)*2*pi/10);
+    figure(1)
+    hp = compass(x);
+    set(hp,'LineWidth',linwidth);
+    title('T = 0.1, \Omega = 2*\pi')
+    h = get(0,'CurrentFigure');
+    set(h,'Position',[0,0,1020,1020])
+    M2pi(k) = getframe;
+end
+
+movie(M2pi)
+  
+for k = 1:10
+    x = exp(i*(k-1)*18*pi/10);
+    figure(2)
+    hp = compass(x);
+    set(hp,'LineWidth',linwidth);
+    title('T = 0.1, \Omega = 18*\pi')
+    h = get(0,'CurrentFigure');
+    set(h,'Position',[0,0,1080,1080])
+    M18pi(k) = getframe;
+end
+ 
+movie(M18pi)

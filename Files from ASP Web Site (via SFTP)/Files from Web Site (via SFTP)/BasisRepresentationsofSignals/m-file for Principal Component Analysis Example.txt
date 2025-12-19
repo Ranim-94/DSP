@@ -1,0 +1,105 @@
+%% Principal Component Analysis Example
+%
+% Copyright 2014 Barry Van Veen
+
+
+%% Set up workspace
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 1.5;
+
+%% Sinusoid with Fixed Frequency, Random Amp and Phase
+%
+% Generate sinusoid of fixed frequency with random amplitude and phase and
+% add white noise. Note that the sinusoid is buried in the noise.  Should
+% have 2 dominant components as evidenced by 2 large eigenvalues and the
+% remainder smaller eigenvalues.  The prinicpal components are sinusoids of
+% the right frequency and are orthogonal to each other - that is 90 degrees
+% out of phase.
+
+
+for i = 1:500
+    % sinusoid of random amp and phase
+    s(:,i) = randn(1,1)*cos(pi*[0:127]/17 + rand*2*pi); 
+end
+x = s + 2*randn(128,500); % add white noise
+
+% Sample Covariance matrix
+
+R = x*x'/500;  %sum of outer products of the cols of x
+
+% Eigenanalysis of S
+
+[V,D] = eig(R);
+
+% Put them in descending order
+
+[d,ix] = sort(diag(D),'descend');
+temp = V(:,ix);  % now reorder eigenvects in the same way
+V = temp; 
+
+s_hat = V(:,1:2)*V(:,1:2)'*x;
+
+figure
+h= stem([0:127],s(:,30));
+set(h,'LineWidth',linwidth);
+xlim([0 127]);
+title('Example Noise Free Signal')
+xlabel('time (samples)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+figure
+subplot(2,1,1)
+h= stem([0:127],x(:,30));
+set(h,'LineWidth',linwidth);
+xlim([0 127]);
+title('Two Examples of Noisy Sinusoids')
+subplot(2,1,2)
+h= stem([0:127],x(:,31));
+set(h,'LineWidth',linwidth);
+xlim([0 127]);
+xlabel('time (samples)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+figure
+h= stem([0:127],s_hat(:,30));
+set(h,'LineWidth',linwidth);
+xlim([0 127]);
+title('Example Rank-2 Signal Estimate')
+xlabel('time (samples)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+figure
+h=stem([1:128],d);
+set(h,'LineWidth',linwidth);
+xlim([0 127]);
+title('Covariance Matrix Eigenvalues')
+xlabel('Eigenvalue index')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+figure
+subplot(2,1,1)
+h=stem([0:127],V(:,1));
+set(h,'LineWidth',linwidth);
+ax = axis; axis([0 127 ax(3) ax(4)]);
+title('Principal Eigenvectors')
+subplot(2,1,2)
+h = stem([0:127],V(:,2));
+set(h,'LineWidth',linwidth);
+xlim([0 127]);
+xlabel('time (samples)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])

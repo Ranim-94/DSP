@@ -1,0 +1,133 @@
+%% Explore Sinusoids
+% Copyright Barry Van Veen 2016
+
+%% Set up workspace
+
+clear
+close all
+
+
+%% Problem 1
+%
+% Put your discussion of the results in comments HERE.
+
+t = -1:0.001:1;
+
+% Part a
+
+x = 5*cos(2*pi*t);
+
+figure
+plot(t,x)
+xlabel('time (sec)')
+ylabel('amplitude')
+title('Part a, f = 1 Hz, \phi = 0 ')
+
+% Part b
+
+x = 5*cos(2*pi*t - pi/4);
+
+% Part c
+
+x = 
+
+
+% Part d
+
+x = 
+
+
+% Part e
+
+x = 
+
+
+
+%% Problem 2
+%
+% Discussion of Problem 2 results HERE.
+
+n = -10:90;
+
+% Part a
+
+x = 3*cos(pi*n/50 + pi/4);
+
+figure
+stem(n,x)
+xlabel('n (samples)')
+ylabel('Amplitude')
+xlim([-10,90])
+title('Part a, \Omega = \pi/50 rads, \phi = \pi/4 ')
+
+% Part b
+
+x = 
+
+
+% Part c
+
+x = 
+
+% Part d
+
+x = 
+
+% Part e
+
+x = 3*cos(21*pi*n/5);
+
+figure
+stem(n,x)
+xlabel('n (samples)')
+ylabel('Amplitude')
+title('Part e, \Omega = 21\pi/5 rads, \phi = 0 ')
+xlim([-10,90])
+
+%% Problem 3
+%
+% Discussion of Problem 3 results HERE.
+
+t = 0:0.001:1;
+
+j = sqrt(-1);
+
+c = exp(j*3*pi*t);
+s = exp(j*6*pi*t);
+
+% Part a
+
+
+
+% Part b
+
+y = 
+
+figure
+subplot(211)
+plot(t,real(y))
+title('Real part of y ')
+ylabel('Amplitude')
+
+subplot(212)
+plot(t,imag(y))
+title('Imaginary part of y ')
+ylabel('Amplitude')
+xlabel('Time (sec)')
+
+% Part c
+
+z = 
+
+figure
+subplot(211)
+plot(t,abs(z))
+title('Magnitude of c.*s ')
+ylabel('Amplitude')
+ylim([0 1.1])
+
+subplot(212)
+plot(t,angle(z))
+title('Phase of c.*s ')
+ylabel('Radians')
+xlabel('Time (sec)')

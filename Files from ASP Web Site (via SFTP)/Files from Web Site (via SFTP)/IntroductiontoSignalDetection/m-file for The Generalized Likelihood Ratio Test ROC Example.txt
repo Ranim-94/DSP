@@ -1,0 +1,46 @@
+%% The Generalized Likelihood Ratio Test ROC Example
+%
+% Copyright 2014 Barry Van Veen
+%
+% Assume known signal of unknown amplitude in white noise of unknown variance
+%
+% Signal amp A, white noise var sigma^2, SNR = A^2/sigma^2
+
+%% Initialize Workspace
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 1.5;
+
+%% Calculate ROC
+
+N = 20; % dimension of measurement
+
+SNR = [ 0.1 1 3 10 ]; % Find ROC for these four SNRs
+
+thresh = [0:.02:20];
+
+for i=1:length(thresh)
+    % Under H_0, test is central F, so Pfa depends on threshold and N
+    Pfa(i) = 1 - fcdf(thresh(i),1,N-1);
+    
+    for j = 1:length(SNR)
+        % Under H_1, test is noncentral F, so Pd depends on SNR,threshold,
+        % and N
+        Pd(i,j) = 1-ncfcdf(thresh(i),1,N-1,SNR(j));
+    end
+end
+
+figure
+h = plot(Pfa,Pd(:,1),'k',Pfa,Pd(:,2),'b',Pfa,Pd(:,3),'g',Pfa,Pd(:,4),'r');
+set(h,'LineWidth',linwidth);
+xlabel('Prob False Alarm')
+ylabel('Prob Detection')
+title('Receiver Operating Characteristic')
+legend(['SNR = ',num2str(SNR(1))],['SNR = ',num2str(SNR(2))],['SNR = ',num2str(SNR(3))],['SNR = ',num2str(SNR(4))])
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])

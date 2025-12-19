@@ -1,0 +1,127 @@
+%% Frequency Response Descriptions for LTI Systems
+%
+% Copyright Barry Van Veen 2014
+
+%% Set up workspace
+
+clear
+close all
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+% Use freqz to convert the coefficients of the difference equation into
+% samples of the frequency response
+
+%% System 1: 6 point averaging
+
+B = [ 1 1 1 1 1 1]/6;
+A = 1;
+
+[H,om] = freqz(B,A);
+
+figure(1)
+
+subplot(2,1,1)
+hp = plot(om,abs(H));
+set(hp,'LineWidth',linwidth);
+title('6 pt Avg: Magnitude Response')
+xlabel('Frequency (rads)')
+ylabel('Gain')
+xlim([0,pi])
+
+subplot(2,1,2)
+hp = plot(om,unwrap(angle(H)));
+set(hp,'LineWidth',linwidth);
+title('6 pt Avg: Phase Response')
+xlabel('Frequency (rads)')
+ylabel('Phase (rads)')
+xlim([0,pi])
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1000,600])
+
+%% System 2: 6 point difference
+
+B = [1 -1 1 -1 1 -1]/6;
+A = 1;
+
+[H,om] = freqz(B,A);
+
+figure(2)
+
+subplot(2,1,1)
+hp = plot(om,abs(H));
+set(hp,'LineWidth',linwidth);
+title('6 pt Diff: Magnitude Response')
+xlabel('Frequency (rads)')
+ylabel('Gain')
+xlim([0,pi])
+
+subplot(2,1,2)
+hp = plot(om,unwrap(angle(H)));
+set(hp,'LineWidth',linwidth);
+title('6 pt Diff: Phase Response')
+xlabel('Frequency (rads)')
+ylabel('Phase (rads)')
+xlim([0,pi])
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1000,600])
+
+%% System 3: First-order recursive system y[n] = 0.95y[n-1] + 0.05x[n]
+
+B = 0.05;
+A = [1 -0.95];
+
+[H,om] = freqz(B,A);
+
+figure(3)
+
+subplot(2,1,1)
+hp = plot(om,abs(H));
+set(hp,'LineWidth',linwidth);
+title('Recursive Low Pass: Magnitude Response')
+xlabel('Frequency (rads)')
+ylabel('Gain')
+xlim([0,pi])
+
+subplot(2,1,2)
+hp = plot(om,unwrap(angle(H)));
+set(hp,'LineWidth',linwidth);
+title('Recursive Low Pass: Phase Response')
+xlabel('Frequency (rads)')
+ylabel('Phase (rads)')
+xlim([0,pi])
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1000,600])
+
+%% System 4: First-order recursive system y[n] = -0.95y[n-1] + 0.05x[n]
+
+B = 0.05;
+A = [1 0.95];
+
+[H,om] = freqz(B,A);
+
+figure(4)
+
+subplot(2,1,1)
+hp = plot(om,abs(H));
+set(hp,'LineWidth',linwidth);
+title('Recursive High Pass: Magnitude Response')
+xlabel('Frequency (rads)')
+ylabel('Gain')
+xlim([0,pi])
+
+subplot(2,1,2)
+hp = plot(om,unwrap(angle(H)));
+set(hp,'LineWidth',linwidth);
+title('Recursive High Pass: Phase Response')
+xlabel('Frequency (rads)')
+ylabel('Phase (rads)')
+xlim([0,pi])
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1000,600])
+

@@ -1,0 +1,50 @@
+%% Sampling a sinusoid
+%
+% Copyright Barry Van Veen 2014
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%
+% Approximate continuous-time signal using a very dense sampling
+% on 0 ² t ² 0.8
+%
+t = [0:0.0001:0.8];
+
+xt22pi=cos(22*pi*t); % frequency 22pi rads/sec
+xt2pi= cos(2*pi*t);  % frequency 2pi rads/sec
+%
+% Sample both at intervals of T = 0.1
+%
+t_samp = [0:0.1:0.8];
+
+x22pi = cos(22*pi*t_samp);
+x2pi = cos(2*pi*t_samp)
+%
+% display results
+%
+figure
+subplot(211)
+hp = plot(t,xt2pi,'r',t_samp,x2pi,'ro')
+axis([0,.8,-1.2,1.2])
+xlabel('time (sec)')
+ylabel('amplitude')
+title('Sampling a sinusoid - \Omega = 2\pi, T = 0.1')
+legend('x_1(t) = cos(2\pi t)','x_1(nT), T = 0.1')
+set(hp,'LineWidth',linwidth);
+
+subplot(212)
+hp = plot(t,xt22pi,'k',t_samp,x22pi,'ks',t,xt2pi,'r:')
+axis([0,.8,-1.2,1.2])
+xlabel('time (sec)')
+ylabel('amplitude')
+title('Sampling a sinusoid - \Omega = 22\pi, T = 0.1')
+legend('x_2(t) = cos(22\pi t)','x_2(nT), T = 0.1','x_1(t) = cos(2\pi t)')
+set(hp,'LineWidth',linwidth);
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1080,1080])

@@ -1,0 +1,130 @@
+%% Illustration of different windows for the DTFT
+%
+% Copyright 2014 Barry Van Veen
+%
+% Use "help window" to get a list of all MATLAB supported windows.  Here we
+% compare four different windows: rectangular, Hamming, and two chebyshev
+% windows.
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Windows in the time domain
+
+wr = rectwin(100);
+wh = hamming(100);
+wch1 = chebwin(100,30); % Chebyshev 30 dB sidelobe atten
+wch2 = chebwin(100,70); % Chebyshev 70 dB sidelobe atten
+
+figure(1)
+subplot(2,2,1)
+h=stem(wr);
+set(h,'LineWidth',linwidth);
+title('Rectangular')
+
+subplot(2,2,2)
+h=stem(wh);
+set(h,'LineWidth',linwidth);
+title('Hamming')
+
+subplot(2,2,3)
+h=stem(wch1);
+set(h,'LineWidth',linwidth);
+title('Chebyshev -30dB')
+
+subplot(2,2,4)
+h=stem(wch2);
+set(h,'LineWidth',linwidth);
+title('Chebyshev -70dB')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,1920,1080])
+
+%% DFT of Windows
+
+% compute and display DTFT of windows, use large number of frequency
+% samples to approximate DTFT with DFT
+
+Wr = fft(wr,2048);
+Wh = fft(wh,2048);
+Wch1 = fft(wch1,2048);
+Wch2 = fft(wch2,2048);
+
+om = [0:1023]*pi/1024; % pos freq axis in rads
+
+figure(2)
+h=plot(om,20*log10(abs(Wr(1:1024))/max(Wr)), om,20*log10(abs(Wh(1:1024))/max(Wh)));
+set(h,'LineWidth',linwidth);
+axis([0 pi -80 0])
+legend('Rectangular','Hamming')
+xlabel('Frequency (rads)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,1920,1080])
+
+figure(3)
+h=plot(om,20*log10(abs(Wch1(1:1024))/max(Wch1)), om,20*log10(abs(Wch2(1:1024))/max(Wch2)));
+set(h,'LineWidth',linwidth);
+axis([0 pi -80 0])
+legend('Cheb -30 dB','Cheb -70 dB')
+xlabel('Frequency (rads)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,1920,1080])
+
+
+%% Example Applying Windows
+
+% Illustrate different window properties using a signal with two closely
+% spaced equal amplitude components and a well separated weak component
+
+n = [0:99]';  % make column, since wr, wh, etc are columns
+x = cos(0.1*pi*n) + cos(0.125*pi*n + pi/3) + 0.01*cos(0.4*pi*n - 3*pi/5);
+
+Xr = fft(wr.*x,4096);  % .* does element by element multiplication
+Xh = fft(wh.*x,4096);
+Xch1 = fft(wch1.*x,4096);
+Xch2 = fft(wch2.*x,4096);
+
+om = [0:2047]*pi/2048; % pos freq axis in rads
+
+figure(4)
+subplot(2,1,1)
+h=plot(om,20*log10(abs(Xr(1:2048))));
+set(h,'LineWidth',linwidth);
+title('Rectangular')
+xlabel('Frequency (rads)')
+axis([0 pi -50 50])
+
+subplot(2,1,2)
+h=plot(om,20*log10(abs(Xh(1:2048))));
+set(h,'LineWidth',linwidth);
+title('Hamming')
+axis([0 pi -50 50])
+xlabel('Frequency (rads)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,1920,1080])
+
+
+figure(5)
+subplot(2,1,1)
+h=plot(om,20*log10(abs(Xch1(1:2048))));
+set(h,'LineWidth',linwidth);
+title('Chebyshev -30 dB')
+xlabel('Frequency (rads)')
+axis([0 pi -50 50])
+
+subplot(2,1,2)
+h=plot(om,20*log10(abs(Xch2(1:2048))));
+set(h,'LineWidth',linwidth);
+title('Chebyshev -70 dB')
+axis([0 pi -50 50])
+xlabel('Frequency (rads)')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,1920,1080])

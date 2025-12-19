@@ -1,0 +1,71 @@
+%% Wavelet Decomposition Example
+%
+% Copyright 2014 Barry Van Veen
+
+%% Initialization
+
+clear 
+close all
+
+set(0,'defaultaxesfontsize',18);
+set(0,'defaulttextfontsize',18);
+linwidth = 2;
+
+N = 512;
+t = (1:N) ./N;
+
+% create blocks signal
+pos = [ .1 .13 .15 .23 .25 .38 .40 .44 .65  .76 .78 .81];
+hgt = [4 (-5) 3 (-4) 5 1 (-5.2) 2.1 4.3  (-5.1) 3.1 (-3.2)];
+blocks = zeros(size(t));
+for j=1:length(pos)
+    blocks = blocks + (1 + sign(t-pos(j))).*(hgt(j)/2) ;
+end
+
+wname = 'haar';
+
+%% Multilevel Wavelet Decomposition
+%
+% The details tend to be nonzero in the vicinity of discontinuities in the
+% original blocks signal.  The approximation waveforms at increasing levels
+% are lower resolution versions of the original signal, and the detail
+% waveforms incorporate the fine structure lost in the approximation
+% waveforms.  The resolution of the details decrease as the level of
+% decomposition increases.
+
+
+% Perform 3 level wavelet decomposition
+[W,P] = wavedec(blocks,3,wname);
+
+c1 = W(1:P(1));
+d1 = W(P(1)+1:P(1)+P(2));
+d2 = W(P(1)+P(2)+1:P(1)+P(2)+P(3));
+d3 = W(P(1)+P(2)+P(3)+1:P(1)+P(2)+P(3)+P(4));
+
+% Display results
+figure
+    subplot(3,2,2); 
+    h=stem(0:P(4)-1,d3,'b');
+    xlim([0,P(4)-1])
+    set(h,'LineWidth',linwidth)
+    
+    subplot(3,2,4); 
+    h=stem(0:P(3)-1,d2,'b'); 
+     xlim([0,P(3)-1])
+     set(h,'LineWidth',linwidth)
+  
+    subplot(3,2,6); 
+    h=stem(0:P(2)-1,d1,'b'); 
+    xlim([0,P(2)-1])
+    set(h,'LineWidth',linwidth)
+    
+    subplot(3,2,5); 
+    h=stem(0:P(1)-1,c1,'b'); 
+    xlim([0,P(1)-1])
+    set(h,'LineWidth',linwidth)
+    
+    subplot(3,2,1);
+    h = plot(0:N-1,blocks,'r');
+    xlim([0,N-1])
+    set(h,'LineWidth',linwidth)
+   

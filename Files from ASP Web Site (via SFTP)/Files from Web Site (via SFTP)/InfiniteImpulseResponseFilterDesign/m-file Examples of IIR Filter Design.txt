@@ -1,0 +1,161 @@
+%% Examples of IIR Filter Design
+%
+% Copyright 2014 Barry Van Veen
+
+% Butterworth: monotonic response in pass and stop band
+% Cheby 1: Ripple in passband, monotonic in stop band
+% Cheby 2: Monotonic in passband, ripple in stop band
+% Elliptic: Ripple in both pass and stop band
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Case 1: Lowpass filter
+%
+% Specifications:
+% Passband 0 to 0.2pi rads, gain between 1 and 0.9
+% Stopband 0.3pi to pi rads, atten 0.001 = -60 dB
+%
+% Compare Butterworth, Chebyshev I & II, and elliptic designs.
+
+passband = 0.2*pi/pi; % convert to normalized frequency
+stopband = 0.3*pi/pi;
+passrip = -20*log10(0.9); % ripple in positive dB
+stopatten = -20*log10(0.001); %stopband attenuation in positive dB
+
+% Find order and natural frequency to meet these specs
+
+[Nb, Wnb] = buttord(passband, stopband, passrip, stopatten); % Butterworth filter
+[Nc1, Wnc1] = cheb1ord(passband, stopband, passrip, stopatten); % Cheby 1 filter
+[Nc2, Wnc2] = cheb2ord(passband, stopband, passrip, stopatten); % Cheby 2 filter
+[Ne, Wne] = ellipord(passband, stopband, passrip, stopatten); % Elliptic filter
+
+% Now use the order and frequencies just identified to design these filters
+% by finding their difference equation coefficients
+
+[Bb,Ab] = butter(Nb, Wnb);
+[Bc1,Ac1] = cheby1(Nc1,passrip,Wnc1);
+[Bc2,Ac2] = cheby2(Nc2,stopatten,Wnc2);
+[Be,Ae] = ellip(Ne,passrip,stopatten,Wne);
+
+% Display frequency responses
+
+figure(1)
+[Hb,W]= freqz(Bb,Ab,2048);
+h = plot(W/pi,20*log10(abs(Hb)));
+set(h,'LineWidth',linwidth);
+title(['Butterworth Filter, Order = ',num2str(Nb)])
+axis([0 1 -80, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(2)
+[Hc1,W]= freqz(Bc1,Ac1,2048);
+h = plot(W/pi,20*log10(abs(Hc1)));
+set(h,'LineWidth',linwidth);
+title(['Chebyshev Type 1 Filter, Order = ',num2str(Nc1)])
+axis([0 1 -80, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(3)
+[Hc2,W]= freqz(Bc2,Ac2,2048);
+h = plot(W/pi,20*log10(abs(Hc2)));
+set(h,'LineWidth',linwidth);
+title(['Chebyshev Type 2 Filter, Order = ',num2str(Nc2)])
+axis([0 1 -80, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(4)
+[He,W]= freqz(Be,Ae,2048);
+h = plot(W/pi,20*log10(abs(He)));
+set(h,'LineWidth',linwidth);
+title(['Elliptic Filter, Order = ',num2str(Ne)])
+axis([0 1 -80, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+% Compute group delay for these filters
+
+[Gdb,W] = grpdelay(Bb,Ab,1024); % Gdb is group delay, W is freqs for Gdb
+[Gdc1,W] = grpdelay(Bc1,Ac1,1024);
+[Gdc2,W] = grpdelay(Bc2,Ac2,1024);
+[Gde,W] = grpdelay(Be,Ae,1024);
+
+% Display limited range (passband vicinity) of the group delay in normalized freq
+
+Wnm = W/pi; % divide by pi to normalize W to 0 to 1, 
+% select first 150 frequencies to capture passband of filter (0 to 0.1pi) 
+
+figure(6)
+h = plot(Wnm,Gdb,'k',Wnm,Gdc1,'g',Wnm,Gdc2,'r',Wnm,Gde,'b');
+xlim([0 .3])
+set(h,'LineWidth',linwidth);
+legend('Butterworth','Chebyshev 1', 'Chebyshev 2', 'Elliptic')
+title('Group Delay')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+ylabel('Samples of delay')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+
+%% Case 2: Bandpass filter
+%
+% Specifications:
+% Passband 0.4pi to 0.6pi rads, gain 0.95 to 1
+% Stopband 0 to 0.2pi and 0.8pi to pi rads, atten 0.01 = 40 dB
+%
+% Compare Butterworth and elliptic filters
+
+passband = [ 0.4*pi 0.6*pi]/pi; % convert to normalized frequency
+stopband = [ 0.2*pi 0.8*pi]/pi;
+passrip = -20*log10(0.95); % ripple in dB
+stopatten = -20*log10(0.01); %stopband attenuation in dB
+
+[Ne,Wne] = ellipord(passband,stopband,passrip,stopatten);
+[Be,Ae] = ellip(Ne,passrip,stopatten,Wne);
+
+[Nb,Wnb] = buttord(passband,stopband,passrip,stopatten);
+[Bb,Ab] = butter(Nb,Wnb);
+
+figure(7)
+[Hb,W]= freqz(Bb,Ab,2048);
+h = plot(W/pi,20*log10(abs(Hb)));
+set(h,'LineWidth',linwidth);
+title(['Butterworth Filter, Order = ',num2str(2*Nb)])
+axis([0 1 -60, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(8)
+[He,W]= freqz(Be,Ae,2048);
+h = plot(W/pi,20*log10(abs(He)));
+set(h,'LineWidth',linwidth);
+title(['Elliptic Filter, Order = ',num2str(2*Ne)])
+axis([0 1 -60, 5])
+ylabel('Gain (dB)')
+xlabel('Normalized Frequency (\times \pi rad/sample)')
+grid on
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])

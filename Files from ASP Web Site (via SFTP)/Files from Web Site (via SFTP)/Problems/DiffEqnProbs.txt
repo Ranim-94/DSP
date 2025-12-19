@@ -1,0 +1,89 @@
+%% Difference Equation Problems: MATLAB Exploration
+%
+% Copyright 2016 Barry Van Veen
+
+%% Set Up Workspace
+
+close all
+clear
+
+[Song,fs] = audioread('EgmontOverFin.wav');
+
+imp = [1, zeros(1,99)];
+lowcos = cos(400*2*pi*(0:199)/fs);
+highcos = cos(10000*2*pi*(0:199)/fs);
+
+% Difference equation coefficients System 1
+A1 = [1  -2.742912767603523   2.541050804003343  -0.793339740582830];
+B1 = [0.014730524709542  -0.012331376801047  -0.012331376801047   0.014730524709542];
+
+% Difference equation coefficients System 2
+A2 = [1 -2.124929452958793   1.608710001890780  -0.395359893970549];
+B2 = [0.64890416134889  -1.91559551306117   1.91559551306117  -0.64890416134889];
+
+%% Process Song
+
+Song1 = filter(B1,A1,Song);
+Song2 = filter(B2,A2,Song);
+
+soundsc(Song,fs)  % original song
+pause   % hit any key in command window to continue
+
+soundsc(Song1,fs)  % song through system 1
+pause   % hit any key in command window to continue
+
+soundsc(Song2,fs)  % song through system 2
+
+%% Roots of the Characteristic Equation
+
+'System 1 characteristic equation root magnitudes'
+abs(roots(A1))
+'System 2 characteristic equation root magnitudes'
+abs(roots(A2))
+
+%% Impulse Responses of the Two Systems
+
+h1 = filter(B1,A1,imp);
+h2 = filter(B2,A2,imp);
+
+figure
+stem(0:99,h1)
+xlabel('n')
+ylabel('h_1[n]')
+
+figure 
+stem(0:99,h2)
+xlabel('n')
+ylabel('h_2[n]')
+
+%% Output for Low and High Frequency Cosine Inputs
+
+cl1 = filter(B1,A1,lowcos);
+ch1 = filter(B1,A1,highcos);
+
+cl2 = filter(B2,A2,lowcos);
+ch2 = filter(B2,A2,highcos);
+
+figure
+stem(0:199,cl1)
+xlabel('n')
+ylabel('y[n]')
+title('Low Frequency Cosine Input - System 1')
+
+figure 
+stem(0:199,ch1)
+xlabel('n')
+ylabel('y[n]')
+title('High Frequency Cosine Input - System 1')
+
+figure
+stem(0:199,cl2)
+xlabel('n')
+ylabel('y[n]')
+title('Low Frequency Cosine Input - System 2')
+
+figure 
+stem(0:199,ch2)
+xlabel('n')
+ylabel('y[n]')
+title('High Frequency Cosine Input - System 2')

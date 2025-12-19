@@ -1,0 +1,94 @@
+%% Scatter Plots
+%
+% Copyright 2014 Barry Van Veen
+%
+% Generate examples of correlated random variables and display them as a
+% scatter plot.
+
+%% Set up workspace
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+% Generate 1000 examples of uncorrelated, unit variance, zero mean Gaussian
+% distributed random vectors
+
+x = randn(2,1000);
+
+%% Case 1: Uncorrelated with non zero mean
+
+figure
+
+% Mean is (1,2)
+
+h = plot(1+x(1,:),2+x(2,:),'+');
+xlim([-6,8])
+ylim([-6,8])
+xlabel('x_1')
+ylabel('x_2')
+title('m = [1; 2] and R = I')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Case 2: Uncorrelated with unequal variance and non zero mean
+
+figure
+
+% Mean is (1,2), Variance is (2^2, 1)
+
+h = plot(1+2*x(1,:),2+x(2,:),'+');
+xlim([-6,8])
+ylim([-6,8])
+xlabel('x_1')
+ylabel('x_2')
+title('m = [1; 2] and R = [4 0; 0 1]')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Case 3: Positively correlated with equal variance and non zero mean
+
+% Variance is 1,1 cross correlation is 0.8
+
+R = [ 1 .8; .8 1];  % Covariance matrix
+y = R^(0.5)*x;  % Color data using square root of covariance matrix
+
+figure
+
+% Add non zero mean in plotting
+
+h = plot(1+y(1,:),2+y(2,:),'+');
+xlim([-6,8])
+ylim([-6,8])
+xlabel('x_1')
+ylabel('x_2')
+title('m = [1; 2] and R = [1  0.8; 0.8  1]')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])
+
+%% Case 4: Negatively correlated with equal variance and non zero mean
+
+% Variance is 1,1 cross correlation is -0.8
+
+R = [ 1 -.8; -.8 1];  % Covariance matrix
+y = R^(0.5)*x;  % Color data using square root of covariance matrix
+
+figure
+
+% Add non zero mean in plotting
+
+h = plot(1+y(1,:),2+y(2,:),'+');
+xlim([-6,8])
+ylim([-6,8])
+xlabel('x_1')
+ylabel('x_2')
+title('m = [1; 2] and R = [1  -0.8; -0.8  1]')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,700,500])

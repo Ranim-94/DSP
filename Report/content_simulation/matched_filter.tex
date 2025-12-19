@@ -1,0 +1,48 @@
+
+
+\chapter{Matched Filter}
+
+\section{Intro and Recap}
+
+
+Before simulation we will do a recap about matched filter principles (oriented in communication application).\\
+
+Imagine we have some bits to be transmitted (1 is encoded as 1 volt and 0 as -1 volt), where these bits are passed through a pulse shaping filter (we will assume we have a square pulse wave for a period of $T_{\text{bit}}$).\\
+
+\todo{Block diagram:} \underline{\textit{Block diagram:}}  \textit{To insert a block diagram of the intuition later}.\\
+
+These pulses will pass through a channel, and will have some gain $G$ and some additive noise $n(t)$. \\ 
+
+\underline{Question:} How do we know if we receive a +1 or -1 ?\\
+
+\underline{Answer:} Well, we have to collect all the energy through the pulse, that's why we need to design a filter $h(t)$ which do this, and \textit{then} sample its output at multiple time of $T_{\text{bit}} \leftrightarrow t = K \, T_{\text{bit}}$.\\
+
+The following fact (without the proof) are to be remembered:
+
+\begin{itemize}
+
+\item The best $h(t)$ is to be known $s(T_{\text{bit}} \, - \, t)$: that is the same pulse shape, but flipped in time and then time shifted by $T_{\text{bit}}$
+
+\begin{itemize}
+    \item As a matter of fact, the formal definition of a matched filter: it is a filter designed to maximize the SNR $\rightarrow$ the SNR will be maximized at the communication (or any system we use it)
+
+\end{itemize}
+
+\item  For a square pulse $s(t)$ for example, $h(t)$ will be also a square wave for this particular case. The result of a convolution of 2 square wave will be a triangular wave of period $2 \, T_{\text{bit}}$.
+
+\item  for other pulses, we will have also triangles but shifted
+
+\item  At each peak time, we will not have a contribution from other triangles $\rightarrow$ which means that we don't have contribution from other pulses, and only current pulse is contributing
+
+
+\end{itemize}
+
+
+
+
+
+
+
+%*****************************************************
+%*****************************************************
+%*****************************************************

@@ -1,0 +1,84 @@
+%% Impulse Response Descriptions for LTI Systems
+%
+% Copyright Barry Van Veen 2014
+
+%% Set up Workspace
+%
+% Use the filter function to find the impulse response for several
+% different systems described by difference equations
+
+% The filter function computes the output of a system using a difference
+% equation with coefficients in vectors B (applied to x[n], x[n-1], ...)
+% and A (applied to y[n], y[n-1], ...).  It assumes the coefficient of y[n]
+% is unity (A(1) = 1), or else normalizes A and B to make A(1) unity
+
+clear
+close all
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+
+% Input signals for examples
+
+imp = [1, zeros(1,119)]; % impulse input - produces impulse response
+
+%% System 1: 6 point averaging
+
+B = [ 1 1 1 1 1 1]/6;
+A = 1;
+
+yi = filter(B,A,imp);
+
+figure(1)
+
+subplot(2,1,1)
+hp = stem([0:length(yi)-1],yi);
+set(hp,'LineWidth',linwidth);
+title('6 pt Avg: Impulse Response')
+
+%% System 2: 6 point difference
+
+B = [1 -1 1 -1 1 -1]/6;
+A = 1;
+
+yi = filter(B,A,imp);
+
+subplot(2,1,2)
+hp = stem([0:length(yi)-1],yi);
+set(hp,'LineWidth',linwidth);
+title('6 pt Diff: Impulse Response')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1000,600])
+
+%% System 3: First-order recursive system y[n] = 0.95y[n-1] + 0.05x[n]
+
+B = 0.05;
+A = [1 -0.95];
+
+yi = filter(B,A,imp);
+
+figure(2)
+
+subplot(2,1,1)
+hp = stem([0:length(yi)-1],yi);
+set(hp,'LineWidth',linwidth);
+title('Recursive Low Pass: Impulse Response')
+
+
+%% System 4: First-order recursive system y[n] = -0.95y[n-1] + 0.05x[n]
+
+B = 0.05;
+A = [1 0.95];
+
+yi = filter(B,A,imp);
+
+subplot(2,1,2)
+hp = stem([0:length(yi)-1],yi);
+set(hp,'LineWidth',linwidth);
+title('Recursive High Pass: Impulse Response')
+
+h = get(0,'CurrentFigure');
+set(h,'Position',[0,0,1000,600])
+

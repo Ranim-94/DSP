@@ -1,0 +1,28 @@
+%% CTSinusoids.m
+%
+% Copyright 2016 Barry Van Veen
+% Signals: The Basics Exercises
+%
+% Constructs x(t) = A cos(2\pi f t + phi) for user supplied A, f, and
+% phi. 
+% 
+% Uses 0 <= t <= 10 with t sampled very densely and results displayed
+% using plot to mimic a continuous-time signal.
+
+t = 0:0.001:10;
+
+% Enter your parameters here:
+
+A = 2;  % Example value
+
+f = 0.5;  % Example value
+
+phi = pi/2;  % Example value. Note pi = 3.1415926...
+
+x = A*cos(2*pi*f*t + phi);
+
+figure
+plot(t,x)
+xlabel('t (secs)')
+ylabel('x(t)')
+grid on

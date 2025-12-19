@@ -4,28 +4,14 @@
 
 - [Digital Signal Processing](#digital-signal-processing)
   - [Table of Contents](#table-of-contents)
-    - [Main Folders](#main-folders)
   - [Repo Description](#repo-description)
   - [Tools Used](#tools-used)
     - [Installation](#installation)
   - [Resources](#resources)
     - [Youtube (GNU Radio)](#youtube-gnu-radio)
+    - [Youtube and Websites (Signal Processing)](#youtube-and-websites-signal-processing)
     - [Websites](#websites)
-
-### Main Folders
-
-- [ADSP_toolbox](#adsp_toolbox)
-- [Aliasing](#aliasing)
-- [Convolution_Correlation](#convolution_correlation)
-- [FIR](#fir)
-- [Fourier_Analysis](#fourier_analysis)
-- [Fourier_Analysis_2](#fourier_analysis_2)
-- [I_Q_Sampling](#i_q_sampling)
-- [Power Spectral Density](#power-spectral-density)
-- [Sampling_Reconstruction](#sampling_reconstruction)
-- [Simulink Training](#simulink-training)
-- [Time_Frequency_Analysis](#time_frequency_analysis)
-- [Z_Transform](#z_transform)
+    - [Githubs](#githubs)
 
 ## Repo Description
 
@@ -86,6 +72,34 @@ We can use `conda`:
   - Introductory to Advanced topics
   - Todo once mastering the fundamental points(base)
 
+### Youtube and Websites (Signal Processing)
+
+In general, these channels are very educative, and present some nice content along with simulation example
+
+- [Dr Adam Panagos](https://www.youtube.com/@AdamPanagos)
+  - Also has [website](https://www.adampanagos.org/)
+
+- [Dr Assia Kourgli](https://www.youtube.com/@assiakourgli/featured)
+  - It explains in French, with nice demo and exercices in python
+
+- [Barry Van Veen](https://www.youtube.com/@allsignalprocessing/playlists)
+  - feature: contents for statistical signal processing
+
+- [Rich Radke](https://www.youtube.com/@RichRadke)
+  - also [DSP course class](https://sites.ecse.rpi.edu/~rjradke/dspcourse.html) 
+  - [personal web page](https://sites.ecse.rpi.edu/~rjradke/index.htm)
+
+- [Miki Lustig](https://www.youtube.com/@sm313)
+
+- [Dr Mark Fowler](https://www.youtube.com/@mfowler314/featured)
+  - [University Web Page](https://ws.binghamton.edu/fowler/)
+  - [EECE 525 Digital Audio Signal Processing](https://www.youtube.com/watch?v=MuYSe1q_LPw&list=PL4BDg_AslePlaRojxVnCjNoJu70c58UiS)
+  - [EECE 301 Signal and Systems](https://www.youtube.com/watch?v=0a3IWcjJ87A&list=PL4BDg_AslePmY2yj7PypRskTeZnJVCJVy)
+
 ### Websites
 
--[GNU Radio](https://wiki.gnuradio.org/index.php?title=Main_Page)
+- [GNU Radio](https://wiki.gnuradio.org/index.php?title=Main_Page)
+
+### Githubs
+
+[Mathwork for DSP](https://github.com/MathWorks-Teaching-Resources/DSP-Signals-and-Filter-Design)

@@ -1,0 +1,137 @@
+%% Frequency Sampling FIR design
+%
+% Copyright 2014 Barry Van Veen
+%
+% Illustrate two different frequency sampling designs to highlight the
+% importance of selecting a desired phase that is well suited to a causal,
+% length M filter.
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Case 1: 
+%
+% Use phase response well-suited to an order 100 causal FIR filter
+
+% Use 50 frequency samples
+om = [1:50]*pi/51;
+
+% Desired Response
+
+A = (1+cos(4*om))/2;
+
+% Specify nearly linear phase with delay 1/2 the filter order
+phi = -50*om.*(1+0.2*sin(om)); 
+
+% Design Equation
+%
+% Assume M = 100
+
+D = [exp(-j*om'*[0:100]); exp(j*om'*[0:100])];
+
+f = [ A'.*exp(j*phi'); A'.*exp(-j*phi')];
+
+% Solve for filter coefficients
+
+b = D\f;
+
+% Evaluate Performance
+
+[H,w] = freqz(b,1,2048);
+
+figure(1)
+h = plot(om,A,'ro',w,abs(H),'b');
+set(h,'LineWidth',linwidth);
+title('Magnitude Response')
+ylabel('Gain')
+xlabel('Frequency (rad/sample)')
+xlim([0 pi])
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+
+figure(2)
+h = plot(om,phi,'ro',w,unwrap(angle(H)),'b');
+set(h,'LineWidth',linwidth);
+title('Phase Response')
+ylabel('Phase (rads)')
+xlabel('Frequency (rad/sample)')
+xlim([0 pi])
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(3)
+h=stem([0:100],b);
+set(h,'LineWidth',linwidth);
+title('Impulse Response')
+ylabel('Amplitude')
+xlabel('Time (samples)')
+xlim([0 100])
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+
+%% Case 2: Desired Response
+%
+% Choose phase response that is not well suited to a length 100 FIR filter
+%
+
+% Use 50 frequency samples
+om = [1:50]*pi/51;
+
+% Desired response
+
+A = (1+cos(4*om))/2;
+
+% Linear component of phase response involves a time delay of one sample 
+phi = -1*om.*(1+0.3*sin(om));
+
+% Design Equation
+%
+% Assume M = 100
+
+D = [exp(-j*om'*[0:100]); exp(j*om'*[0:100])];
+
+f = [ A'.*exp(j*phi'); A'.*exp(-j*phi')];
+
+b = D\f;
+
+% Evaluate Performance
+
+[H,w] = freqz(b,1,2048);
+
+figure(4)
+h = plot(om,A,'ro',w,abs(H),'b');
+set(h,'LineWidth',linwidth);
+title('Magnitude Response')
+ylabel('Gain')
+xlabel('Frequency (rad/sample)')
+xlim([0 pi])
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+
+figure(5)
+h = plot(om,phi,'ro',w,unwrap(angle(H)),'b');
+set(h,'LineWidth',linwidth);
+title('Phase Response')
+ylabel('Phase (rads)')
+xlabel('Frequency (rad/sample)')
+xlim([0 pi])
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(6)
+h=stem([0:100],b);
+set(h,'LineWidth',linwidth);
+title('Impulse Response')
+ylabel('Amplitude')
+xlabel('Time (samples)')
+xlim([0 100])
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+

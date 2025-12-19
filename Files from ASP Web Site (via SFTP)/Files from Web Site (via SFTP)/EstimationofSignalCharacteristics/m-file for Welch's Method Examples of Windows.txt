@@ -1,0 +1,48 @@
+%% Welch's Method Windows
+%
+% Copyright 2014 Barry Van Veen
+%
+% Examples of the window characteristics in the expression for Welch bias.
+%
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Rectangular Window 
+% 
+% Set length L = 32
+
+W = fftshift(fft(ones(1,32),1024));
+C_ww = W.*conj(W);
+
+om = [-512:511]*2*pi/1024;
+
+figure
+h = plot(om,10*log10(C_ww));
+set(h,'LineWidth',linwidth);
+xlim([-pi pi])
+ylim([-50 30])
+xlabel('\omega (rads)')
+ylabel('dB')
+title('C_{ww} for Rectangular Window')
+
+%% Hamming window
+%
+% Again L = 32
+
+W = fftshift(fft(hamming(32),1024));
+C_ww = W.*conj(W);
+
+
+figure
+h = plot(om,10*log10(C_ww));
+set(h,'LineWidth',linwidth);
+xlim([-pi pi])
+ylim([-50 30])
+xlabel('\omega (rads)')
+ylabel('dB')
+title('C_{ww} for Hamming Window')

@@ -1,0 +1,59 @@
+%% SystemIntro.m
+%
+% Loads audio file, filters and plays it.
+%
+% "Stealth Groover" Kevin MacLeod (incompetech.com) 
+% Licensed under Creative Commons: By Attribution 3.0
+% http://creativecommons.org/licenses/by/3.0/
+
+close all
+clear
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+[S, fs] = audioread('StealthGroover.wav');
+Sl = resample(S,1,4);
+
+% Filter with specified system
+
+% Enter values for b_k here
+b = [ 0.25 0.25 0.25 0.25 ];
+
+% Enter values for c_k here
+c = [ 0.5 -0.5 0 0   ];
+
+% Play original sound
+sound(Sl,fs/4)
+pause   % need to hit a key in command window to continue 
+
+% Play sound through system 1 with b_k coefficients
+
+S1 = filter(b,1,Sl); % apply systems to sound
+sound(S1,fs/4)
+pause   % need to hit a key in command window to continue 
+
+% Play sound through system 2 with c_k coefficients
+
+S2 = filter(c,1,Sl); 
+sound(S2,fs/4)
+
+figure
+plot([0:999]*4/fs,Sl(52000:52999),[0:999]*4/fs,S1(52000:52999)-4*10^(-3),'r')
+legend('Original','System 1')
+xlabel('t (sec)')
+ylabel('Amplitude')
+grid on
+
+figure
+plot([0:999]*4/fs,Sl(52000:52999),[0:999]*4/fs,S2(52000:52999)-5*10^(-3),'r')
+legend('Original','System 2')
+xlabel('t (sec)')
+ylabel('Amplitude')
+grid on
+
+
+
+
+

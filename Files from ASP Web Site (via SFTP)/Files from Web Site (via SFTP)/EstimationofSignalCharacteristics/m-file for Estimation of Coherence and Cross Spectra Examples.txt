@@ -1,0 +1,159 @@
+%% Estimation of Coherence Examples
+%
+% Copyright 2014 Barry Van Veen
+
+%% Initialize Workspace
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 1.5;
+
+%% Generate Data
+
+fs = 100; % Assume 100 Hz sampling frequency for illustration
+
+% Use an FIR filter applied to noise to construct random signals with a
+% known power spectrum.
+
+B = [1/3 1/3 1/3];
+
+[H,w1] = freqz(B,1,2048,fs);
+figure
+h=plot(w1,20*log10(abs(H)));
+ylim([-100,10])
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+ylabel('dB')
+title('System Frequency Response')
+
+figure
+h=plot(w1,(abs(H)));
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+ylabel('Gain')
+title('System Frequency Response')
+
+
+% Use 500 random processes to compute mean
+
+x = randn(500,2149);
+y = randn(500,2149);
+
+for i = 1:500
+    z(i,:) = filter(B,1,x(i,:)) + sqrt(.1)*y(i,:);
+    f(i,:) = z(i,101:2148);
+end
+
+%% Compute coherence using mscohere
+
+% Repeat for all 500 random processes for later displaying mean
+
+for i = 1:500 
+    [C256(i,:),w] = mscohere(x(i,101:2148),f(i,:),256,0,2048,fs);
+    [C128(i,:),w] = mscohere(x(i,101:2148),f(i,:),128,0,2048,fs);
+    [C64(i,:),w] = mscohere(x(i,101:2148),f(i,:),64,0,2048,fs);
+    [C256ovrlp5(i,:),w] = mscohere(x(i,101:2148),f(i,:),256,64,2048,fs);
+    [C256ovrlp17(i,:),w] = mscohere(x(i,101:2148),f(i,:),256,208,2048,fs);    
+end
+
+% True MSC computed using system characteristics
+
+trueC = abs(H).^2./(abs(H).^2 + 0.1);
+figure
+h=plot(w1,trueC);
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+title('True Coherence')
+
+% Display 3 examples of estimated coherence
+figure
+for i = 1:3
+    subplot(3,1,i)
+    h = plot(w1,trueC, 'r',w,C256(i,:),'b');
+    set(h,'LineWidth',linwidth);
+end
+subplot(3,1,1)
+legend('true','mscohere 8')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+for i = 1:3
+    subplot(3,1,i)
+    h = plot(w1,trueC, 'r',w,C128(i,:),'b');
+    set(h,'LineWidth',linwidth);
+end
+subplot(3,1,1)
+legend('true','mscohere 16')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+for i = 1:3
+    subplot(3,1,i)
+    h = plot(w1,trueC, 'r',w,C64(i,:),'b');
+    set(h,'LineWidth',linwidth);
+end
+subplot(3,1,1)
+legend('true','mscohere 32')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+for i = 1:3
+    subplot(3,1,i)
+    h = plot(w1,trueC, 'r',w,C256ovrlp5(i,:),'b');
+    set(h,'LineWidth',linwidth);
+end
+subplot(3,1,1)
+legend('true','mscohere 10')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+for i = 1:3
+    subplot(3,1,i)
+    h = plot(w1,trueC, 'r',w,C256ovrlp17(i,:),'b');
+    set(h,'LineWidth',linwidth);
+end
+subplot(3,1,1)
+legend('true','mscohere 38')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+% Evaluate mean coherence
+
+figure
+h=plot(w1,trueC,'r',w,mean(C256,1),'b');
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+title('Mean mscohere 8')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+h=plot(w1,trueC,'r',w,mean(C128,1),'b');
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+title('Mean mscohere 16')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+h=plot(w1,trueC,'r',w,mean(C64,1),'b');
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+title('Mean mscohere 32')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])
+
+figure
+h=plot(w1,trueC,'r',w,mean(C256ovrlp17,1),'b');
+set(h,'LineWidth',linwidth);
+xlabel('Frequency (Hz)')
+title('Mean mscohere 38')
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,630,450])

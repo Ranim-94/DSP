@@ -1,0 +1,120 @@
+%% Window Based FIR Filter Design
+%
+% Copyright 2014 Barry Van Veen
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% Lowpass compare rectangular and Hamming windows
+
+% filter order
+M = 24;
+
+% Window design method - rectangular window
+b1 = fir1(M, .5, ones(1,M+1));
+
+% Window design method - Hamming window
+b2 = fir1(M, .5, hamming(M+1));
+
+% Obtain windows separately for illustration
+hr = ones(1,M+1);
+hh = hamming(M+1);
+
+[H1,W] = freqz(b1,1,2048);
+[H2,W] = freqz(b2,1,2048);
+
+% Plot filter frequency responses for both windows, dB scale
+figure(1)
+h = plot(W/pi,20*log10(abs(H1)),'b',W/pi,20*log10(abs(H2)),'g');
+legend('Rectangular','Hamming')
+title(['Window Based Lowpass Filter M = ',num2str(M)])
+axis([0 1 -80, 5])
+grid on
+xlabel('Normalized Frequency \omega/\pi')
+ylabel('gain dB')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+% Plot filter frequency responses for both windows, linear scale
+
+figure(2)
+h = plot(W/pi,abs(H1),'b',W/pi,abs(H2),'g');
+legend('Rectangular','Hamming')
+title(['Window Based Lowpass Filter M = ',num2str(M)])
+axis([0 1 0, 1.2])
+grid on
+xlabel('Normalized Frequency \omega/\pi')
+ylabel('gain')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+
+% Display window DTFT magnitude - main lobe and side lobes
+
+[Hr,W] = freqz(hr,1,4096,'whole');
+[Hh,W] = freqz(hh,1,4096,'whole');
+
+Hr = fftshift(Hr/max(abs(Hr)));
+Hh = fftshift(Hh/max(abs(Hh)));
+
+figure(3)
+h = plot((W/pi)-1,20*log10(abs(Hr)),'b',(W/pi)-1,20*log10(abs(Hh)),'g');
+legend('Rectangular','Hamming')
+title(['Window DTFT M = ',num2str(M)])
+axis([-1 1 -60, 5])
+grid on
+xlabel('Normalized Frequency \omega/\pi')
+ylabel('gain dB')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+%% Bandpass Kaiser Window Design
+
+F = [ pi/5, 2*pi/5, 3*pi/5, 7*pi/10]/pi;
+A = [ 0 1 0 ];
+Dev = [ 0.01 0.05 0.01];
+
+[M,Wn,beta,filtype] = kaiserord(F,A,Dev);
+b = fir1(M, Wn, filtype, kaiser(M+1,beta), 'noscale');
+
+[H,W] = freqz(b,1,2048);
+
+figure(4)
+h = plot(W/pi,20*log10(abs(H)));
+title(['Kaiser Window Bandpass Filter M = ',num2str(M),', beta = ',num2str(beta)])
+axis([0 1 -80, 5])
+grid on
+xlabel('Normalized Frequency \omega/\pi')
+ylabel('gain dB')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(5)
+h = plot(W/pi,abs(1-abs(H)));
+title('Kaiser Window Passband Error')
+axis([.4 .6 0 .05])
+grid on
+xlabel('Normalized Frequency \omega/\pi')
+ylabel('Absolute Error')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+figure(6)
+h = stem([0:M],b);
+title('Kaiser Window Impulse Response')
+xlim([0,M])
+xlabel('Time (samples')
+set(h,'LineWidth',linwidth);
+h = get(0,'CurrentFigure');
+set(h,'Position',[160,180,800,500])
+
+

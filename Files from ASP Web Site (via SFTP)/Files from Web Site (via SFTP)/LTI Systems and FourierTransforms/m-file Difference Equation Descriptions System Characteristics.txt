@@ -1,0 +1,259 @@
+%% Difference Equation Solution Characteristics
+%
+% Copyright 2015 Barry Van Veen
+%
+
+clear
+close all
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+step = [zeros(1,9), ones(1,500)];
+n = [-9:499];
+b = 1;
+
+%% Individual Terms d^n
+%
+
+npos = 0:499;
+
+case1 = [0.95.^npos];
+case2 = [ 0.7.^npos];
+
+figure
+subplot(211)
+g=stem(npos,case1);
+xlim([0,80])
+title('d = 0.95')
+ylabel('d^n')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+subplot(212)
+g=stem(npos,case2);
+xlim([0,80])
+title('d = 0.7')
+ylabel('d^n')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+case1n = [(-0.95).^npos];
+case2n = [ (-0.7).^npos];
+
+figure
+subplot(211)
+g=stem(npos,case1n);
+xlim([0,80])
+title('d = -0.95')
+ylabel('d^n')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+subplot(212)
+g=stem(npos,case2n);
+xlim([0,80])
+title('d = -0.7')
+ylabel('d^n')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+case3real = [0.95.^npos.*cos(npos*pi/11)];
+case3imag = [0.95.^npos.*sin(npos*pi/11)];
+
+figure
+subplot(211)
+g=stem(npos,case3real);
+xlim([0,80])
+title('d = 0.95e^{j\pi/11}')
+ylabel('Real\{d^n\}')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+subplot(212)
+g=stem(npos,case3imag);
+xlim([0,80])
+ylabel('Imag\{d^n\}')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+case4real = [0.7.^npos.*cos(npos*pi/3)];
+case4imag = [0.7.^npos.*sin(npos*pi/3)];
+
+figure
+subplot(211)
+g=stem(npos,case4real);
+xlim([0,40])
+title('d = 0.7e^{j\pi/3}')
+ylabel('Real\{d^n\}')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+subplot(212)
+g=stem(npos,case4imag);
+xlim([0,40])
+ylabel('Imag\{d^n\}')
+xlabel('n')
+set(g,'LineWidth',linwidth);
+
+%% Example 1 one real root of char eqn
+%
+% root at z = 0.95
+
+a = [1,-.95];
+
+y = filter(b,a,step);
+
+ys = (1/sum(a))*step;
+yt = y - ys;
+
+figure
+subplot(311)
+g = stem(n,y);
+set(g,'LineWidth',linwidth);
+xlim([-9,50])
+ylabel('y[n]')
+title('Root z = 0.95')
+
+subplot(312)
+g = stem(n,ys);
+set(g,'LineWidth',linwidth);
+xlim([-9,50])
+ylabel('y_s[n]')
+
+subplot(313)
+g = stem(n,yt);
+set(g,'LineWidth',linwidth);
+xlim([-9,50])
+ylabel('y_t[n]')
+xlabel('n')
+
+%% Example 2 one real root of char eqn
+%
+% root at z = 0.7
+
+a = [1,-.7];
+
+y = filter(b,a,step);
+
+ys = (1/sum(a))*step;
+yt = y - ys;
+
+figure
+subplot(311)
+g = stem(n,y);
+set(g,'LineWidth',linwidth);
+xlim([-9,50])
+ylabel('y[n]')
+title('Root z = 0.7')
+
+subplot(312)
+g = stem(n,ys);
+set(g,'LineWidth',linwidth);
+xlim([-9,50])
+ylabel('y_s[n]')
+
+subplot(313)
+g = stem(n,yt);
+set(g,'LineWidth',linwidth);
+xlim([-9,50])
+ylabel('y_t[n]')
+xlabel('n')
+
+%% Example 3 Two complex roots radius 0.95
+%
+% roots at z = 0.95e^{j*pi/11} and z = 0.95e^{-j*pi/11}
+
+a = [ 1 -2*.95*cos(pi/11) .95^2];
+
+y = filter(b,a,step);
+
+ys = (1/sum(a))*step;
+yt = y - ys;
+
+figure
+subplot(311)
+g = stem(n,y);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y[n]')
+title('Roots z = 0.95e^{+/-j*\pi/11}')
+
+subplot(312)
+g = stem(n,ys);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y_s[n]')
+
+subplot(313)
+g = stem(n,yt);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y_t[n]')
+xlabel('n')
+
+%% Example 4 Two complex roots radius 0.95
+%
+% roots at z = 0.95e^{j*pi/3} and z = 0.95e^{-j*pi/3}
+
+a = [ 1 -2*.95*cos(pi/3) .95^2];
+
+y = filter(b,a,step);
+
+ys = (1/sum(a))*step;
+yt = y - ys;
+
+figure
+subplot(311)
+g = stem(n,y);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y[n]')
+title('Roots z = 0.95e^{+/-j*\pi/3}')
+
+subplot(312)
+g = stem(n,ys);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y_s[n]')
+
+subplot(313)
+g = stem(n,yt);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y_t[n]')
+xlabel('n')
+
+%% Example 5 Two complex roots radius 0.7
+%
+% roots at z = 0.7e^{j*pi/3} and z = 0.7e^{-j*pi/3}
+
+a = [ 1 -2*.7*cos(pi/3) .7^2];
+
+y = filter(b,a,step);
+
+ys = (1/sum(a))*step;
+yt = y - ys;
+
+figure
+subplot(311)
+g = stem(n,y);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y[n]')
+title('Roots z = 0.7e^{+/-j*\pi/3}')
+
+subplot(312)
+g = stem(n,ys);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y_s[n]')
+
+subplot(313)
+g = stem(n,yt);
+set(g,'LineWidth',linwidth);
+xlim([-9,80])
+ylabel('y_t[n]')
+xlabel('n')
+

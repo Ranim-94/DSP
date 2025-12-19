@@ -1,0 +1,168 @@
+%% Explore Intro to LTI Systems
+% Copyright Barry Van Veen 2016
+%
+% Carefree Kevin MacLeod (incompetech.com)
+% Licensed under Creative Commons: By Attribution 3.0 License
+% http://creativecommons.org/licenses/by/3.0/
+%% Set Up Workspace
+
+clear
+close all
+set(0,'defaultaxesfontsize',18); 
+set(0,'defaulttextfontsize',18);
+
+
+[CfA,fs] = audioread('CarefreeA.wav');
+
+soundsc(CfA,fs)
+pause   % Hit any key in the workspace to continue executing the code
+
+%% Part 1
+%
+% 
+
+A1 = [1 -2.6862 2.4197 -.7302];
+B1 = 0.001*[.4165 1.2496 1.2496 .4165];
+
+A2 = [1.0000   -1.7600    1.1829   -0.2781];
+B2 = [0.5276   -1.5829    1.5829   -0.5276];
+
+CfA1 = filter(B1,A1,CfA);
+soundsc(CfA1,fs)
+pause
+
+CfA2 = filter(B2,A2,CfA);
+soundsc(CfA2,fs)
+ 
+%% Part 2
+%
+% 
+
+% Part a
+
+imp = [1 zeros(1,119)];
+
+h1 = filter(B1,A1,imp);
+
+figure
+stem([0:119],h1)
+xlim([0,119])
+xlabel('n')
+ylabel('Amplitude')
+title('System 1 Impulse Response')
+
+h2 = filter(??);
+
+figure
+stem([0:119],h2)
+xlim([0,119])
+xlabel('n')
+ylabel('Amplitude')
+title('System 2 Impulse Response')
+
+% Part b
+
+[H1,om] = freqz(B1,A1);
+figure
+plot(om,abs(H1))
+xlim([0 pi])
+xlabel('Frequency (rads)')
+ylabel('Gain')
+title('System 1 Magnitude Response')
+
+figure
+plot(om,phase(H1))
+xlim([0 pi])
+xlabel('Frequency (rads)')
+ylabel('Phase (rads)')
+title('System 1 Phase Response')
+
+
+[H2,om] = freqz(??);
+figure
+plot(om,abs(H2))
+xlim([0 pi])
+xlabel('Frequency (rads)')
+ylabel('Gain')
+title('System 2 Magnitude Response')
+
+figure
+plot(om,phase(H2))
+xlim([0 pi])
+xlabel('Frequency (rads)')
+ylabel('Phase (rads)')
+title('System 2 Phase Response')
+
+
+%% Part 3
+%
+% 
+
+
+% First part
+
+cosLF = cos([0:249]*pi/50);
+cosHF = cos([0:249]*pi/3);
+
+ydiff1LF = filter(B1,A1,cosLF);
+ydiff1HF = filter(B1,A1,cosHF);
+
+figure(7)
+subplot(211)
+stem([0:249],ydiff1LF)
+ylabel('Amplitude')
+xlabel('n')
+title('Low Freq Cos: System 1')
+
+subplot(212)
+stem([0:249],ydiff1HF)
+ylabel('Amplitude')
+xlabel('n')
+title('High Freq Cos: System 1')
+
+ydiff2LF = filter(??);
+ydiff2HF = filter(??);
+
+figure(8)
+subplot(211)
+stem([0:249],ydiff2LF)
+ylabel('Amplitude')
+xlabel('n')
+title('Low Freq Cos: System 2')
+
+subplot(212)
+stem([0:249],ydiff2HF)
+ylabel('Amplitude')
+xlabel('n')
+title('High Freq Cos: System 2')
+
+% Second part
+
+yh1LF = conv(h1,cosLF);
+yh1HF = conv(h1,cosHF);
+
+figure(9)
+subplot(211)
+stem([0:249],ydiff1LF)
+ylabel('Amplitude')
+xlabel('n')
+title('Low Freq Cos: Syst 1 Diff Eqn')
+
+subplot(212)
+stem([0:249],yh1LF(1:250))
+ylabel('Amplitude')
+xlabel('n')
+title('Low Freq Cos: Syst 1 Imp Resp')
+
+figure(10)
+subplot(211)
+stem([0:249],ydiff1HF)
+ylabel('Amplitude')
+xlabel('n')
+title('High Freq Cos: Syst 1 Diff Eqn')
+
+subplot(212)
+stem([0:249],yh1HF(1:250))
+ylabel('Amplitude')
+xlabel('n')
+title('High Freq Cos: Syst 1 Imp Resp')

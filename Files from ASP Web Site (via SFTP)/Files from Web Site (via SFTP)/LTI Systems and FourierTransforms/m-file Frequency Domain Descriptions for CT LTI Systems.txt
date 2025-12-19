@@ -1,0 +1,52 @@
+%% Frequency-Domain Descriptions for Continuous-Time Linear Time-Invariant Systems
+%
+% Barry Van Veen  Copyright 2015
+%
+%% Set up workspace
+
+close all
+clear
+
+set(0,'defaultaxesfontsize',22);
+set(0,'defaulttextfontsize',22);
+linwidth = 2;
+
+%% First-Order System
+%
+
+b = 2;
+a = [ 1 2];
+
+[H,W] = freqs(b,a,1000);
+
+figure
+g = plot(W,abs(H));
+set(g,'LineWidth',linwidth);
+xlabel('Frequency rads/sec  ')
+ylabel('|H(\Omega)|')
+
+figure
+g = plot(W,phase(H));
+set(g,'LineWidth',linwidth);
+xlabel('Frequency rads/sec  ')
+ylabel('arg\{H(\Omega)\} rads')
+
+%% Second-Order System
+%
+
+b = [5 12];
+a = [ 1 5  6];
+
+[H,W] = freqs(b,a,1000);
+
+figure
+g = plot(W,abs(H));
+set(g,'LineWidth',linwidth);
+xlabel('Frequency rads/sec  ')
+ylabel('|H(\Omega)|')
+
+figure
+g = plot(W,phase(H));
+set(g,'LineWidth',linwidth);
+xlabel('Frequency rads/sec  ')
+ylabel('arg\{H(\Omega)\} rads')
