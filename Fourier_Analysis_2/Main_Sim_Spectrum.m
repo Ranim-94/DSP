@@ -7,7 +7,7 @@
 
 clc, clear all, close all;
 
-% rng('default');
+
 
 
 %================ Selection list: what demo I want to run
