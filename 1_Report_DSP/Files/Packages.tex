@@ -8,7 +8,8 @@
 
 \parindent=0cm % to prevent the spacing in new paragraph or new line
 
-\usepackage{fancyhdr} % needded for header and footer 
+\usepackage{fancyhdr}
+\setlength{\headheight}{14.5pt} % needded for header and footer 
 
 %-----------------------------------------------------------------%
 
@@ -16,6 +17,7 @@
 \usepackage{amsfonts} % for maths symbols
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
+\usepackage{nomencl} % must be loaded before caption (KOMA tocbasic conflict)
 \usepackage{caption}
 \usepackage{refstyle} % to reference a captioned figure
 
@@ -70,4 +72,8 @@ title = \lstname
 \usepackage{todonotes} 
 
 
-\usepackage{nomencl}
+
+% %---------- needed for long tables over pages-------
+\usepackage{longtable} 
+
+\usepackage[acronym]{glossaries}

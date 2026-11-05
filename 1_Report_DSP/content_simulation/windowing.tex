@@ -26,7 +26,7 @@ has the biggest impact on the accuracy of the estimated spectrum.\\
 \underline{Assumption to be done during the analysis:}  the signal is sampled correctly in the time domain $\leftrightarrow$ effects of aliasing are negligible.
 
 
-\subsection{Modeling the problem of truncation}
+\section{Modeling the problem of truncation}
 
 \begin{itemize}
 
@@ -55,7 +55,7 @@ x_w(t) \, = \, x(t) \, \times \, w(t) \leftrightarrow \, X_w(F) \, = \, X(F) \, 
 	\end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.6]{Figures/DFT/amp_spec_rect_window}
 \caption{Amplitude Spectrum for Rectangular Window \cite{signal_processing_Lathi}}
@@ -103,7 +103,7 @@ x_w(t) \, = \, x(t) \, \times \, w(t) \leftrightarrow \, X_w(F) \, = \, X(F) \, 
 \newpage
 \item Visualisation of the computation steps are shown in \autoref{fig:DFT:windowing_modeling_2}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.80\textwidth]{Figures/DFT/windowing_modeling_2}
 \caption{Windowing Effect on CTFT Amplitude Spectrum}
@@ -155,11 +155,11 @@ x_w(t) \, = \, x(t) \, \times \, w(t) \leftrightarrow \, X_w(F) \, = \, X(F) \, 
 \end{itemize}
 
 \newpage
-\subsection{Simulation Rectangular Window}
+\section{Simulation Rectangular Window}
 
 First we simulate a DTFT of a rectangular window for different length.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/Simulation_Sampling_Frequency_Analysis/rect_window_nb_samples}
 \caption{DTFT Amplitude Spectrum for the Rectangular Window in Linear and dB Scale}
@@ -176,7 +176,7 @@ if we choose \tbi{higher number of samples}
 \end{enumerate}
 
 
-\subsection{Simulation 2 Cos Signals}
+\section{Simulation 2 Cos Signals}
 
 If the \tbi{cosine signals are too close together}, then doing convolution with our window will add up the 2 cos, and hence we can't distinguish the frequency content of the signals
 	
@@ -184,7 +184,7 @@ If the \tbi{cosine signals are too close together}, then doing convolution with 
 		\item This is known of \textcolor{red}{peak merging} (loss of spectral resolution) when the 2 spectral line are closer then the width of the main lobe \cite{DSP_DimitrisManolakis}
 		\end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 1\textwidth]{Figures/DFT/spaced_cos}
 \caption{Spaced Cos signal}
@@ -230,14 +230,14 @@ Trickiest part: don't forget \tbi{the side lobes}
 \end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 1\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/spaced_weak_cos}
 \caption{Well separated signals but with weak components}
 \label{fig:Simulation_Sampling_Frequency_Analysis:closed_cos}
 \end{figure}
 
-\subsection{Window Choice}
+\section{Window Choice}
 
 \begin{itemize}
 
@@ -265,7 +265,7 @@ Trickiest part: don't forget \tbi{the side lobes}
 
 \item Different Window Types
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/DFT/other_windows}
 \caption{Time-domain and frequency-domain characteristics of continuous-time rectangular, Bartlett (triangular), Hann, and Hamming windows \cite{DSP_DimitrisManolakis}}
@@ -273,11 +273,11 @@ Trickiest part: don't forget \tbi{the side lobes}
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.6]{Figures/DFT/other_windows_2}
 \caption{Some continuous-time windows and their characteristics \cite{DSP_DimitrisManolakis}}
-\label{fig:DFT:other_windows}
+\label{fig:DFT:other_windows_2}
 \end{figure}
 
 \item Rectangular window has the narrower main lobe $\leftrightarrow$ highest resolution
@@ -309,7 +309,7 @@ Trickiest part: don't forget \tbi{the side lobes}
 
 \end{itemize}
 
-\subsection{DTFT Spectrum Using Different Window Type}
+\section{DTFT Spectrum Using Different Window Type}
 
 \begin{itemize}
 
@@ -331,7 +331,7 @@ Trickiest part: don't forget \tbi{the side lobes}
  \end{itemize}
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{Figures/DFT/sum_of_cos_rect_and_hamm.eps}
 \caption{Rectangular and Hamming Window}
@@ -364,7 +364,7 @@ Trickiest part: don't forget \tbi{the side lobes}
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{Figures/DFT/sum_of_cos_chebyshev.eps}
 \caption{Chebychves Window with -30 dB and -70 dB side lobes attenuation}
@@ -390,7 +390,7 @@ Trickiest part: don't forget \tbi{the side lobes}
 \end{itemize}
 
 
-\subsection{CTFT Analysis Using Different Window}
+\section{CTFT Analysis Using Different Window}
 
 \begin{itemize}
 
@@ -404,7 +404,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 \end{equation*}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.30]{Figures/DFT/damped_cosines_and_spectrum.eps}
 \caption{$x(t)$ along with its Amplitude Spectrum}
@@ -440,7 +440,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 
 	\end{enumerate}
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.30]{Figures/DFT/spectrum_rect_window_length_1000.eps}
 \label{fig:DFT:spectrum_rect_window_length_1000}
@@ -463,10 +463,10 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 	\end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.26]{Figures/DFT/spectrum_rect_window_length_5000.eps}
-\label{fig:DFT:spectrum_rect_window_length_1000}
+\label{fig:DFT:spectrum_rect_window_length_5000}
 \end{figure}
 
 \item Trying Different type of Windows: Hamming window for example, with the best observed resolution which is $  \displaystyle\frac{2 \pi}{25}$
@@ -482,7 +482,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 	\end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.26]{Figures/DFT/spectrum_hamming_window_length_10_pow_4.eps}
 \label{fig:DFT:spectrum_hamming_window_length_10_pow_4}
@@ -492,7 +492,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 
 \item Hamming is attenuating signal energy when we are windowing 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.30]{Figures/DFT/hamm_signal_plot_time_domain_2.eps}
 \label{fig:DFT:hamm_signal_plot_time_domain_2}

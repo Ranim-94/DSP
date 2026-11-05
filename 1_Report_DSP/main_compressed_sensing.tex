@@ -39,7 +39,7 @@
 
 \item Usually when we store information (images captured by camera, some audio files, $\cdots$), we store them in a compressed way, as shown in \autoref{fig:Compressed_Sensing:MRI}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/MRI.pdf}
 \caption{Compressing MRI: first we collect, then we compress}
@@ -57,7 +57,7 @@
 \newpage
 \item But what if \tbi{we can sense directly} the information, as shown in \autoref{fig:Compressed_Sensing:MRI}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/MRI_Sensing}
 \caption{Sensing Concept}
@@ -75,7 +75,7 @@ The approach shown in \autoref{fig:Compressed_Sensing:MRI} is very helpful becau
 
 \item First let's see some audio signal in \autoref{fig:Compressed_Sensing:Audio}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/Audio}
 \caption{Audio Compression}
@@ -96,7 +96,7 @@ Images are generally more complex type of signals, because they are higher in di
 An example is shown in \autoref{fig:Compressed_Sensing:Image}.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/Image}
 \caption{Image Compression}
@@ -116,7 +116,7 @@ An example is shown in \autoref{fig:Compressed_Sensing:Image}.
 \newpage
 \item Same concept applied to video signals, shown in \autoref{fig:Compressed_Sensing:Video}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/Video}
 \caption{Video Compression}
@@ -131,7 +131,7 @@ An example is shown in \autoref{fig:Compressed_Sensing:Image}.
 
 General steps of compression are shown in \autoref{fig:Compressed_Sensing:Compression_steps}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/Compression_steps}
 \caption{Compression Steps}
@@ -157,7 +157,7 @@ General steps of compression are shown in \autoref{fig:Compressed_Sensing:Compre
 Usually, when we have a sparse signal with noise, we can identify the signal directly by simple threshold operation. So in other words, sparse signals (or sparse representation in some other domains) have the ability to separate between the useful components of the signals (non zero component with large values usually) and with noisy components which tends to have small values. This is actually known as denoising by using sparsity. These concepts are illustrated in \autoref{fig:Compressed_Sensing:Sparsity_Noise}.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/Sparsity_Noise}
 \caption{Noise Reduction taking advantage from sparse nature of signal}
@@ -168,7 +168,7 @@ Usually, when we have a sparse signal with noise, we can identify the signal dir
 \newpage
 Some example of brain image using wavelet decomposition shown in \autoref{fig:Compressed_Sensing:brain_wavelet}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/brain_wavelet}
 \caption{Noise Reduction using wavelet transform}
@@ -191,7 +191,7 @@ We have seen in sections before that sparsity help us with noise reduction and c
 
 Let's see the concepts of compressive sampling shown in \autoref{fig:Compressed_Sensing:compressive_sampling_concept} 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/compressive_sampling_concept}
 \caption{Compressive Sampling Concept}
@@ -209,7 +209,7 @@ Let's see the concepts of compressive sampling shown in \autoref{fig:Compressed_
 \newpage
 Let's begin first by the \tbi{classical sensing} case, shown in \autoref{fig:Compressed_Sensing:classical_sensing}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/classical_sensing}
 \caption{Classical Sensing Concept}
@@ -234,7 +234,7 @@ Let's begin first by the \tbi{classical sensing} case, shown in \autoref{fig:Com
 	\item Any orthogonal matrix can be used as a sensing matrix. Another example of sensing matrix $\Phi$ is shown in \autoref{fig:Compressed_Sensing:classical_sensing_FFT}, where it is the FFT matrix used in MRI
 	
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/classical_sensing_FFT}
 \caption{Classical Sensing: FFT matrix in MRI}
@@ -252,7 +252,7 @@ So the classical case for estimating some unknown vector $x \,\in \mathbb{R}^N$,
 
 Now let's shift the gears to the sparse case shown in \autoref{fig:Compressed_Sensing:sparse_sensing}.
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/sparse_sensing}
 \caption{Sparse Sensing}
@@ -274,7 +274,7 @@ Now let's shift the gears to the sparse case shown in \autoref{fig:Compressed_Se
 	
 	\item And also the product $\Phi \, \times \, \Phi^T$ will give an approximate identity matrix, where the elements off the diagonal tends to 0, but not exactly 0
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/sparse_sensing_matrix}
 \caption{Sparse Sensing matrix $\Phi$}
@@ -335,7 +335,7 @@ x \text{ is the natural signal in the intial domain (time or spatial)}
 
 \item Even if we compress and we are able to return $x$ from $x$, the compresses sensing framework let us choose only few measurements and restore $s$.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/Compression_Fourier}
 \caption{Compression using Fourier Basis}
@@ -387,7 +387,7 @@ x \text{ is the natural signal in the intial domain (time or spatial)}
 	\item It minimize the radius of the circle (the energy) but all the component of the signal (vector) are still active
 	\end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/l1_l2_norms_differences}
 \caption{$\ell_1 ~$ and $\ell_2 ~$ norms effects}

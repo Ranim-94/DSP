@@ -43,7 +43,7 @@ If we begin with a signal with a sampling rate $F_s$, where the CTFT spectrum co
 Let's take an example of a sin wave, where its CTFT spectrum is shown in \autoref{fig:Multirate:sin_wave_CTFT}.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/Multirate/sin_wave_CTFT}
 \caption{Sine Wave CTFT Spectrum}
@@ -69,18 +69,18 @@ If we downsample and let the new $F_s$ 3 Hz, that is $F_s^D \, = \, 3$ Hz, we wi
     
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/Multirate/sin_wave_CTFT_downsample}
 \caption{Sine Wave CTFT Spectrum}
-\label{fig:Multirate:sin_wave_CTFT}
+\label{fig:Multirate:sin_wave_CTFT_downsample}
 \end{figure}
 
 Important note: if we do dowsanmpling, it is not necessarily that aliaising get occurred.\\
 
 A more general example for a bandlimited signal is shown in \autoref{fig:Multirate:CTFT_bandlimited_downsample} 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.8]{Figures/Multirate/CTFT_bandlimited_downsample}
 \caption{Sine Wave CTFT Spectrum}
@@ -156,7 +156,7 @@ The alias frequency will be smaller then the new sampling rate $F_{sD} \, = \, 4
 \end{equation}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/Multirate/a_Aliasing_Changing_Fs}
 \caption{Sine Wave CTFT Spectrum}
@@ -213,7 +213,7 @@ So as example, we take the sinc signal.\\
 
 \item \underline{Result of Input Analog Signal:}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/Sim_dowsampling_upsampling/Sinc_Input_Analog_B_10_Hz}
 \caption{Input Analog Sinc signal}
@@ -245,7 +245,7 @@ So as example, we take the sinc signal.\\
 
 \underline{Results:} CTFT Amplitude Spectrum
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/Sim_dowsampling_upsampling/downsample_sinc_Fs_30_and_60_Hz}
 \caption{Ideal Reconstruction}
@@ -254,7 +254,7 @@ So as example, we take the sinc signal.\\
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/Sim_dowsampling_upsampling/CTFT_Amp_Sinc_B_10_Fs_30_60}
 \caption{CTFT Amplitude Spectrum}
@@ -262,7 +262,7 @@ So as example, we take the sinc signal.\\
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/Sim_dowsampling_upsampling/Interpolation_Sinc_Fs_30_60_Hz_B_10_Hz}
 \caption{Ideal Reconstruction}
@@ -278,7 +278,7 @@ So as example, we take the sinc signal.\\
     \item From theory, when we drop $F_s$ below $F_{\text{Nyquist}} \,  \equiv \, \Omega_s \, < \, 2\, \Omega_H$, \textit{aliasing} should occur
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.9]{Figures/Sim_dowsampling_upsampling/aliasing_illustration}
 \caption{Aliasing when $\Omega_s \, < \, 2\, \Omega_H$ \cite{DSP_DimitrisManolakis}}
@@ -301,7 +301,7 @@ So as example, we take the sinc signal.\\
     
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.45]{Figures/Sim_dowsampling_upsampling/CTFT_Amp_Sinc_B_10_Fs_60_15.eps}
 \caption{Aliasing using $F_{s_{\text{ch}}} \, = \, 15$ Hz}
@@ -350,7 +350,7 @@ So as example, we take the sinc signal.\\
     
 \item The example use discrete time approach, which is shown in \autoref{fig:Sim_dowsampling_upsampling:aliasing_demo_matlab_doc}
   
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.45]{Figures/Sim_dowsampling_upsampling/aliasing_demo_matlab_doc}
 \caption{Aliasing Example in discrete approach}

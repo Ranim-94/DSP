@@ -4,13 +4,13 @@
 
 \section{Introduction}
 
-This chapter include simulation about spectral analysis using tools such as DFT and FFT.
+This chapter include simulation about spectral analysis using tools such as Discrete Fourier Transfrom (DFT) \nomenclature{DFT}{Discrete Fourier Transfrom} and Fast Fourier Transform (FFT) \nomenclature{FFT}{Fast Fourier Transform}.
 
 \section{Reminder}
 
 \subsection{Fourier Transform Relation}
 
-\underline{Notation:} chapter 4 in \cite{DSP_DimitrisManolakis}
+\underline{Notation:} taken from chapter 4 in \cite{DSP_DimitrisManolakis}
 
 \begin{table}[!h]
 	\centering
@@ -32,10 +32,17 @@ DTFT    & $X(\omega) \, = \, \displaystyle\frac{1}{N} \displaystyle\sum_{n \, = 
 
 \begin{itemize}
 
+\item Relation between \textit{continous frequency} $F$ [Hz] and \textit{continous angluar frequency} $\Omega$ [rad/s]:
+
+\begin{equation}
+\Omega \, = \, 2 \pi \, F
+\label{eq:Omega_Fs}
+\end{equation}
+
 \item Relation between \textit{normalized angular frequency} $\omega$ [rad/cycle] and \textit{continuous angular frequency} $\Omega$ [rad/s] \cite{DSP_DimitrisManolakis}
     
 \begin{equation}
-    \omega  = \displaystyle\frac{\Omega}{F_s} 
+    \omega  = \displaystyle\frac{\Omega}{F} 
 \end{equation}
 
 \item Moving between Hz $\leftrightarrow$ [rad/cycle]
@@ -50,7 +57,7 @@ radian/cycle $\rightarrow$  Hz & Hz $\rightarrow$ radian/cycle \\ \hline
 \label{Tb:Fourier_Processing:frequency_variables}
 \end{table} 
 
-\item Diagram illustration of \autoref{Tb:Fourier_Processing:frequency_variables}
+\item Diagram illustration of \autoref{Tb:Fourier_Processing:frequency_variables}\cite{DSP_DimitrisManolakis}
 
 
 
@@ -58,7 +65,7 @@ radian/cycle $\rightarrow$  Hz & Hz $\rightarrow$ radian/cycle \\ \hline
 \centering
 \includegraphics[scale = 1.2]{Figures/Fourier_Summary/frequency_variables}
 \label{fig:Fourier_Summary:frequency_variables}
-\caption{Frequency Variables illustration of \autoref{Tb:Fourier_Processing:frequency_variables}}
+\caption{Frequency Variables illustration of \autoref{Tb:Fourier_Processing:frequency_variables}\cite{DSP_DimitrisManolakis}}
 \end{figure}
 
 \end{itemize}
@@ -111,38 +118,84 @@ $ B \, \text{sinc}(\pi \, B \, t)$ & $\Delta\displaystyle \left( \, \frac{F}{2 \
 \newpage
 \section{Analog Signal}
 
+\underline{Source:} see example 5.8 in \cite{signal_processing_Lathi},\\
+
 The continuous time domain signal to be taken is a decaying exponential:
 
 \begin{equation}
-x(t) \, = \, \text{exp}(-0.5 \, t) \, u(t) \leftrightarrow \, X(\omega_c) \, = \, \displaystyle\frac{1}{j \, \omega_c\, + \, 0.5}
-\label{fig:Simulation_Sampling_Frequency_Analysis:infinite_cont_time}
+x(t) \, = \, \text{exp}(-0.5 \, t) \, u(t) \leftrightarrow \, X(\Omega) \, = \, \displaystyle\frac{1}{j \, \Omega \, + \, 0.5}
+\label{eq:inf_time_freq}
 \end{equation}
 
-Signal of \autoref{fig:Simulation_Sampling_Frequency_Analysis:infinite_cont_time} is infinite both in time and frequency domain.
+Signal of \autoref{eq:inf_time_freq} is infinite both in time and frequency domain.
+
+$\mathrm{1}^\mathrm{st}$ step is to do an approximation in frequency domain, that is choosing the maximum frequency $B$. Once we have $B$, we can apply Nyquiste theorem to have an appropriate $F_s$ and hence a $T_s$, so we can truncate in time and obtain suitable number of samples.
+
+
+\subsection{Truncation in frequency domain}
 
 \begin{itemize}
     
 \item Spectrum is infinite in frequency domain:    
     
-Infinite in frequency domain means no maximum frequency to be taken to apply Nyquist sampling theorem $\rightarrow$ need to \tbi{truncate in frequency so we can choose a sampling frequency}.\\
+Infinite in frequency domain means no maximum frequency to be taken to apply Nyquist sampling theorem $\rightarrow$ need to \tbi{truncate in frequency so we can choose a sampling frequency} $F_s$.\\
 
-As a criteria to truncation: what is the value of $\omega$ at which the frequency content is bellow 2 \% ? $\leftrightarrow$ capture 98 \% of the frequency content of the signal.
+\item As a criteria to truncation: what is the value of $\Omega$ at which the frequency content is bellow 2 \% ? 
 
-\underline{Computations:} $ \displaystyle\left\lvert X(\omega_c) \displaystyle\right\rvert \, = \, \displaystyle\frac{1}{\sqrt{ \omega^2_c\, + \, 0.5^2} } \, = \, 2 \, \times \, 0.01  \rightarrow \omega_c \, = \, 50 \text{ rad/s} \leftrightarrow \, B \, = \,  \displaystyle\frac{25}{\pi} \, \approx \, 8$ Hz so we get $T_s \, = \, \displaystyle\frac{\pi}{50}$ seconds\\  
+In other words, this $\Omega$ captures 98 \% of the frequency content of the signal.
+
+\item \underline{Computations:} 
+
+\begin{itemize}
+
+\item $ \displaystyle\left\lvert X(\Omega) \displaystyle\right\rvert \, = \, \displaystyle\frac{1}{\sqrt{ \Omega^2\, + \, 0.5^2} } \, = \, 2 \, \times \, 0.01 \, = \, 0.02 $ 
+
+\item Solving for $\Omega$ we get: $\Omega \, = \, 50 \text{ rad/s}$
+
+\item Using \autoref{eq:Omega_Fs}: $B \, = \, \displaystyle\frac{\Omega}{2 \, \pi} \, = \, \displaystyle\frac{50}{2 \, \pi} \, = \displaystyle\frac{25}{\pi}$ Hz
+
+\end{itemize}
+
+\item The maximum frequency is $\displaystyle\frac{25}{\pi}$ Hz.
+
+Applying Nyquiste states that $F_{s_{\text{min}}} \, = \, 2 \, B \, = \, 2 \, \times \, \displaystyle\frac{25}{\pi} \, = \, \displaystyle\frac{50}{\pi}$ Hz
+
+\item Having $F_{s_{\text{min}}} \, = \, \displaystyle\frac{50}{\pi}$ gives a minimum sampling period $T_{s_{\text{min}}} \, = \, \displaystyle\frac{\pi}{50} $ s
+
+\end{itemize}
+
+So as summary, from frequncy truncation we get:
+
+\begin{itemize}
+
+\item $B \, = \, \displaystyle\frac{25}{\pi} \, \approx \, 8$ Hz
+
+	\begin{itemize}
+	\item This $B$ captures 98 \% of the frequency content of the signal
+	\end{itemize}
+
+\item $F_{s_{\text{min}}} \, = \, \displaystyle\frac{50}{\pi}$ Hz
+
+\end{itemize}
+  
+
+\subsection{Truncation in time domain}
+
+\begin{itemize}
     
 \item Waveform in infinite in time domain:
 
 After we solve for $T_s \, = \, \displaystyle\frac{\pi}{50}$ s, there is another question to be asked: for \tbi{how long do we need to sample} ? $\leftrightarrow$ This signal is going forever, we can't just keep sampling forever\\
 
-\newpage
+
 So we need to solve for \tbi{sampling duration} $T_0 \, \leftrightarrow$  signal duration
 
-\underline{Criteria to solve the problem:} We know that the signal is a decaying exponential, we can see for some value of $T_0$ where the  \tbi{amplitude value of the signal} $x(t)$  \tbi{are very low}, and by this we are \tbi{not throwing some high value amplitude (information)}.\\
+\item \underline{Criteria to solve the problem:} We know that the signal is a decaying exponential, we can see for some value of $T_0$ where the  \tbi{amplitude value of the signal} $x(t)$  \tbi{is very low}, and by this we are \tbi{not throwing some high value amplitude (information)}.\\
 
-Computing: 
+\item Computing: 
 	
 	\begin{itemize}
-	\item We try for example for $T_0 \, = \, 16$s, we get $x(16) \, = \, e^{-0.5 \, (16)} = \, e^{-8} \, = \, 3.3 \, e^{-4}$, very small number
+	\item We try for example for $T_0 \, = \, 16$ s, we get $x(16) \, = \, e^{-0.5 \, (16)} = \, e^{-8} \, = \, 3.3 \, e^{-4}$, very small number
 	
 	\item If we choose $T_0 \, = \, 16$, the number of sample we get in this period using a sampling rate $T_s \, = \, \displaystyle\frac{\pi}{50}$ is: $N_0 \, = \, \displaystyle\frac{T_0}{T_s} \, = \, 254.65$
 	
@@ -156,32 +209,6 @@ Computing:
 
 The rest is done via programming part.\\
 
-As a \tbi{summary} we have:
-
-\begin{itemize}
-
-\item $\mathrm{1}^\mathrm{st}$ question we ask since the signal $x(t)$ isn't band limited in the frequency domain: \tbi{how do we choose the sampling period (sampling rate)} $T_s \, (F_s)$
-
-	\begin{itemize}
-	\item $T_s \, = \, \displaystyle\frac{1}{16}$ seconds
-	\end{itemize}
-	
-\item $\mathrm{2}^\mathrm{nd}$ question: for \tbi{how long we keep sampling $\leftrightarrow$ (signal truncation)} ?
-
-	\begin{itemize}
-	\item $T_0 \, = \, 16$ s, which give $N_0 \, = \, 256$ samples in the signal duration,
-	such that $T_s \, = \, \displaystyle\frac{1}{16}$ s
-	
-	
-	\item Always recall that $\overbrace{N_0}^{\text{nb of samples}} \, = \, \displaystyle\frac{\overbrace{T_0}^{\text{Signal duration in s}}}{\underbrace{T_s}_{\text{Sampling Period}}} \, \in \,\mathbb{N}$
-	
-	\end{itemize}
-
-\end{itemize}
-
-
-\newpage
-
 \subsection{Results}
 
 \begin{figure}[h]
@@ -190,6 +217,39 @@ As a \tbi{summary} we have:
 \label{fig:Sim_Fourier_Transform:CTFT_DTFT_using_fft_fs_16}
 \caption{Base line: Signal Duration is 16 s and $F_s \, = \,$ 16 Hz}
 \end{figure}
+
+
+
+\newpage
+\subsection{Summary}
+
+As a \tbi{summary} we have:
+
+\begin{itemize}
+
+\item $\mathrm{1}^\mathrm{st}$ question we ask since the signal $x(t)$ isn't band limited $\leftrightarrow$ keep going forever in frequency domain: \tbi{how do we choose the sampling rate (sampling period)} $F_s \, (T_s)$
+
+	\begin{itemize}
+	\item what is a suitable criteria to choose some maximum frequency to represent the bandwidth $B$ of the signal ?
+	
+	\item Once we choose $B$, we apply Nyquiste to have a minimum sampling frequency $F_{s_{\text{min}}}$
+	\end{itemize}
+	
+\item $\mathrm{2}^\mathrm{nd}$ question: for \tbi{how long we keep sampling $\leftrightarrow$ (signal truncation)} ?
+
+	\begin{itemize}
+	\item choose some value of $T_0$ in which values (content) of the signal is preseverd
+	
+	\end{itemize}
+
+\item Always recall that:
+	
+\begin{equation}
+\overbrace{N}^{\text{nb of samples}} \, = \, \displaystyle\frac{\overbrace{T_0}^{\text{Signal duration}}}{\underbrace{T_s}_{\text{Sampling Period}}} \, \in \,\mathbb{N}
+\end{equation}
+	
+
+\end{itemize}
 
 
 \newpage

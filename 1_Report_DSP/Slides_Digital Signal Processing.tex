@@ -209,7 +209,7 @@ X_{\delta}(\omega) \, = \, \displaystyle\frac{1}{T_s} \displaystyle\sum\limits_{
 
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/Sampling/Impulse_Sampling_Effect}
 \caption{Impulse Sampling Effect in the frequency spectrum \cite{DSP_DimitrisManolakis}}
@@ -224,7 +224,7 @@ X_{\delta}(\omega) \, = \, \displaystyle\frac{1}{T_s} \displaystyle\sum\limits_{
 
 \begin{frame}[t,allowframebreaks]{Terminology in Sampling Operation \cite{DSP_DimitrisManolakis}}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.9]{Figures/Sampling/Impulse_Sampling_Terminology}
 \caption{Replicated Amplitude Spectrum: Frequency axis in $F$[Hz] and $\omega_c$[rad/s] \cite{DSP_DimitrisManolakis}}
@@ -256,7 +256,7 @@ To regenerate the pictures later.
 
 \begin{frame}[t,allowframebreaks]{Aliasing of Cos Signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.6]{Figures/Sampling/cos_signal_aliasing}
 \label{fig:Sampling:cos_aliasing}
@@ -284,7 +284,7 @@ To regenerate the pictures later.
 	\item In other words, undo the effect of sampling
 	\end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.550]{Figures/Sampling/reconstruction_problem}
 \caption{Reconstruction from samples: which version to choose \cite{DSP_DimitrisManolakis}}
@@ -326,7 +326,7 @@ To regenerate the pictures later.
 
 \begin{frame}[t]{Visual Interpretation of Ideal Reconstruction 1}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/Sampling/ideal_bandlimited_interpolation_1}
 \caption{Reconstruction of band-limited signal from its samples \cite{DSP_Matlab_Proakis}}
@@ -336,7 +336,7 @@ To regenerate the pictures later.
 
 \begin{frame}[t]{Visual Interpretation of Ideal Reconstruction 2}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.550]{Figures/Sampling/ideal_bandlimited_interpolation}
 \caption{Ideal bandlimited interpolation in the time domain \cite{DSP_DimitrisManolakis}}
@@ -379,7 +379,7 @@ To regenerate the pictures later.
 	
 \item A more practical approach is based on ZOH \cite{signal_processing_Lathi}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.450]{Figures/Sampling/sampling_zoh}
 \caption{Sampling using ZOH}
@@ -429,7 +429,7 @@ x_{\text{zoh}} \, &=& \, \displaystyle\sum\limits_{n \, = \, -\infty}^{\infty} x
 \label{Eq:Sampling:Zoh_eq_3}
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.450]{Figures/Sampling/zoh_math}
 \caption{Mathematical modeling of the ZOH}
@@ -438,7 +438,7 @@ x_{\text{zoh}} \, &=& \, \displaystyle\sum\limits_{n \, = \, -\infty}^{\infty} x
 
 \item Implication on Spectrum:
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Sampling/zoh_output_spectrum}
 \caption{Output of ZOH in the frequency domain}
@@ -461,7 +461,7 @@ x_{\text{zoh}} \, &=& \, \displaystyle\sum\limits_{n \, = \, -\infty}^{\infty} x
 
 \item Antimaging-filter: to smooth the effect of the ZOH
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Sampling/oversampling_benefits}
 \caption{Over sampling Benefits}
@@ -518,7 +518,7 @@ x_{\text{zoh}} \, &=& \, \displaystyle\sum\limits_{n \, = \, -\infty}^{\infty} x
 \item An example of such signals is shown in figure \autoref{fig:Bandpass_Sampling:multiband_signals}
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/Bandpass_Sampling/multiband_signals}
 \caption{Parts (a)–(c) show three RF transmissions with different carriers $f_i$. In (c), the receiver sees a multiband signal \cite{Sub_Nyquist_sampling}}
@@ -536,7 +536,7 @@ x_{\text{zoh}} \, &=& \, \displaystyle\sum\limits_{n \, = \, -\infty}^{\infty} x
 
 \begin{frame}[t]{Parameters of a Bandpass Signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/Bandpass_Sampling/bandpass_signal_example_2}
 \caption{Amplitude Spectrum of a Bandpass Signal \cite{DSP_DimitrisManolakis}}
@@ -674,7 +674,7 @@ such that $f_{\text{center}} \, = \, \displaystyle\frac{f_{\text{lower}} \, + \,
 
 \item Graphical Interpretation:
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/Sampling/bandpass_sampling_general_case_plots}
 \caption{Bandpass sampling plot: $F_s$ function of $f_{\text{high}}$}
@@ -691,7 +691,7 @@ such that $f_{\text{center}} \, = \, \displaystyle\frac{f_{\text{lower}} \, + \,
 	\newpage
 	\item However, we have to pay attention at $k \, = \, 5$
 	
-	\begin{figure}[h]
+	\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/Sampling/bandpass_sampling_general_case_plots_2}
 \caption{Bandpass sampling plot: dangerous area we need to pay attention from}
@@ -701,7 +701,7 @@ such that $f_{\text{center}} \, = \, \displaystyle\frac{f_{\text{lower}} \, + \,
 	\item From this dangerous place, comes the idea of guard band shown in \autoref{fig:Sampling:bandpass_sampling_guard_bands}
 	
 	
-	\begin{figure}[h]
+	\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/Sampling/bandpass_sampling_guard_bands}
 \caption{Bandpass sampling plot:putting some guard bands}
@@ -777,7 +777,7 @@ such that $f_{\text{center}} \, = \, \displaystyle\frac{f_{\text{lower}} \, + \,
 \begin{frame}[t]{Steps to derive Equivalent Lowpass Signal for a Bandpass Signal}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.35]{Figures/Bandpass_Sampling/equivalent_lowpass_signal_steps}
 \label{fig:Bandpass_Sampling:equivalent_lowpass_signal_steps}
@@ -828,7 +828,7 @@ x_{\text{quadrature}}(t) \, &=& \, \text{Amp}(t) \, \times \, \text{sin}\left[\,
 \begin{frame}[t,allowframebreaks]{Implementation}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Sampling/I_Q_system}
 \caption{A block diagram of a typical I-Q demodulator \cite{Sub_Nyquist_sampling}}
@@ -904,7 +904,7 @@ Note: to be put in a form of a table later
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Sampling/bandpass_sampling_general_case_non_integer}
 \caption{Bandpass sampling non integer case}
@@ -927,7 +927,7 @@ k \, &\leq& \, \displaystyle\frac{2 \, f_{\text{high}}}{\text{Bandwidth}}
 Plotting equations (\ref{Eq:Sampling:bandpass_sampling_bounds}) give us plot shown in \autoref{fig:Sampling:bandpass_sampling_general_case_plots}.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Sampling/bandpass_sampling_general_case_plots}
 \caption{Bandpass sampling plot: $F_s$ function of $f_{\text{high}}$}
@@ -945,7 +945,7 @@ Plotting equations (\ref{Eq:Sampling:bandpass_sampling_bounds}) give us plot sho
 	\newpage
 	\item However, we have to pay attention at $k \, = \, 5$
 	
-	\begin{figure}[h]
+	\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Sampling/bandpass_sampling_general_case_plots_2}
 \caption{Bandpass sampling plot: dangerous area we need to pay attention from}
@@ -955,7 +955,7 @@ Plotting equations (\ref{Eq:Sampling:bandpass_sampling_bounds}) give us plot sho
 	\item From this dangerous place, comes the idea of guard band shown in \autoref{fig:Sampling:bandpass_sampling_guard_bands}
 	
 	
-	\begin{figure}[h]
+	\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Sampling/bandpass_sampling_guard_bands}
 \caption{Bandpass sampling plot:putting some guard bands}
@@ -1061,7 +1061,7 @@ To be done later.
 \subsection{Summary of DFT for CTFT and DTFT}
 \begin{frame}[t]{DFT Different study cases and parameters}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.8\textwidth]{Figures/DFT/DFT_Idea}
 \label{fig:DFT:DFT_Idea}
@@ -1289,7 +1289,7 @@ https://www.overleaf.com/project/61346dff13f6cea26f81d723
 \subsubsection{Results and Analysis}
 \begin{frame}[t,allowframebreaks]{Results and Analysis}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.30]{Figures/DFT/DFT_CTFT_duration_16}
 \label{fig:Simulation_Sampling_Frequency_Analysis:DFT_CTFT_16}
@@ -1298,7 +1298,7 @@ https://www.overleaf.com/project/61346dff13f6cea26f81d723
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.30]{Figures/DFT/DFT_CTFT_duration_2}
 \label{fig:Simulation_Sampling_Frequency_Analysis:DFT_CTFT_2}
@@ -1322,7 +1322,7 @@ https://www.overleaf.com/project/61346dff13f6cea26f81d723
 
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/DFT/DFT_CTFT_duration_4}
 \label{fig:Simulation_Sampling_Frequency_Analysis:DFT_CTFT_4}
@@ -1392,7 +1392,7 @@ https://www.overleaf.com/project/61346dff13f6cea26f81d723
 
 \begin{frame}[t,allowframebreaks]{Scaling from DFT bins}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/DFT/scaling_freq_bins}
 \label{fig:DFT:scaling_freq_bins}
@@ -1448,7 +1448,7 @@ X(\omega_d) \, &=& \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, 
 \subsubsection{Results}
 \begin{frame}[t,allowframebreaks]{Results}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.25]{Figures/DFT/DFT_DTFT_zero_padd_0}
 \label{fig:DFT:DTFT_zero_padd_0}
@@ -1460,7 +1460,7 @@ X(\omega_d) \, &=& \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, 
 \item However the plot doesn't look the same yet as the closed form
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/DFT/DFT_DTFT_zero_padd_4}
 \caption{Padd more zeros make the spectrum more dense}
@@ -1547,7 +1547,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/DFT/amp_spec_rect_window}
 \caption{Amplitude Spectrum for Rectangular Window \cite{signal_processing_Lathi}}
@@ -1604,7 +1604,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 
 \begin{frame}[t,allowframebreaks]{Recap of Windowing Effect Process \cite{DSP_DimitrisManolakis}}
  
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.80\textwidth]{Figures/DFT/windowing_modeling_2}
 \caption{Windowing Effect on CTFT Amplitude Spectrum}
@@ -1659,7 +1659,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 
 \begin{frame}[t,allowframebreaks]{Truncation Effect for a Rectangular Window}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/Simulation_Sampling_Frequency_Analysis/rect_window_nb_samples}
 \caption{DTFT Amplitude Spectrum for the Rectangular Window in Linear and dB Scale}
@@ -1694,7 +1694,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 \subsubsection{Examples on Cos Signals}
 \begin{frame}[t,allowframebreaks]{Examples of 2 Separated Cos signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 1\textwidth]{Figures/DFT/spaced_cos}
 \caption{Spaced Cos signal}
@@ -1734,7 +1734,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 \begin{frame}[t,allowframebreaks]{Examples of 2 Close Cos signal}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 1\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/closed_cos}
 \caption{Closed Cos signal: the components are added up $\leftrightarrow$ \textcolor{red}{peak merging}}
@@ -1756,7 +1756,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 	\end{itemize}
 	
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 1\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/spaced_weak_cos}
 \caption{Well separated signals but with weak components}
@@ -1806,7 +1806,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/DFT/other_windows}
 \caption{Time-domain and frequency-domain characteristics of continuous-time rectangular, Bartlett (triangular), Hann, and Hamming windows \cite{DSP_DimitrisManolakis}}
@@ -1814,7 +1814,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.6]{Figures/DFT/other_windows_2}
 \caption{Some continuous-time windows and their characteristics \cite{DSP_DimitrisManolakis}}
@@ -1895,7 +1895,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/DFT/sum_of_cos_rect_and_hamm.eps}
 \caption{Rectangular and Hamming Window}
@@ -1932,7 +1932,7 @@ f_w(t) \, = \, f(t) \, \times \, w(t) \leftrightarrow \, F_w(\omega_c) \, = \, F
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/DFT/sum_of_cos_chebyshev.eps}
 \caption{Chebychves Window with -30 dB and -70 dB side lobes attenuation}
@@ -1981,7 +1981,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 \end{equation*}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.30]{Figures/DFT/damped_cosines_and_spectrum.eps}
 \caption{$x(t)$ along with its Amplitude Spectrum}
@@ -2029,7 +2029,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 \begin{frame}[t,allowframebreaks]{Result and Discussions}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.30]{Figures/DFT/spectrum_rect_window_length_1000.eps}
 \label{fig:DFT:spectrum_rect_window_length_1000}
@@ -2051,7 +2051,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 	\end{itemize}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.26]{Figures/DFT/spectrum_rect_window_length_5000.eps}
 \label{fig:DFT:spectrum_rect_window_length_1000}
@@ -2075,7 +2075,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.26]{Figures/DFT/spectrum_hamming_window_length_10_pow_4.eps}
 \label{fig:DFT:spectrum_hamming_window_length_10_pow_4}
@@ -2089,7 +2089,7 @@ X(\omega_c) \, &=& \, \displaystyle\frac{\, 0.1 \, + \, j \, \omega_c}{ \left( \
 
 \item Hamming is attenuating signal energy when we are windowing 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.30]{Figures/DFT/hamm_signal_plot_time_domain_2.eps}
 \label{fig:DFT:hamm_signal_plot_time_domain_2}
@@ -2219,7 +2219,7 @@ x[k] \, = \, z^{k} \, = \, r^k \, \left[\, \text{cos}(\Omega \, k) \, + \, \text
 \newpage
 \item An example is shown in figure \autoref{fig:z_transform:exp_signal} for $r \, < \, 1$
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/exp_signal}
 \caption{Complex Exponential Discrete Signal}
@@ -2400,7 +2400,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \item We take the following discrete time signal
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/convergence_example}
 \caption{DTFT of $x[k]$ doesn't exist, but z-transform exist}
@@ -2439,7 +2439,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \item A plot is shown in figure \autoref{fig:z_transform:z_plane}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/z_plane}
 \caption{Z-plane Plot}
@@ -2481,7 +2481,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \item Given and Solution
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/example_finite_duration}
 \label{fig:z_transform:example_finite_duration}
@@ -2505,13 +2505,13 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 \subsubsection{Finite Duration Causal Discrete Time Signal with multiples poles and zeros}
 \begin{frame}[t,allowframebreaks]{Example 2: Infinite Duration Causal Discrete Time Signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/example_finite_duration_causal_many_poles_1}
 \end{figure}
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/example_finite_duration_causal_many_poles_2}
 \end{figure}
@@ -2528,7 +2528,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \item Given and Solution
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/example_infinite_duration_causal_signal}
 \label{fig:z_transform:example_infinite_duration_causal_signal}
@@ -2557,7 +2557,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \item Given and Solution
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/example_infinite_duration_anticausal_signal}
 \label{fig:z_transform:example_infinite_duration_anticausal_signal}
@@ -2571,7 +2571,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.6]{Figures/z_transform/example_infinite_duration_anticausal_signal_roc}
 \label{fig:z_transform:example_infinite_duration_anticausal_signal_roc}
@@ -2588,7 +2588,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 \begin{itemize}
     \item If we have 2 signals which adds up, then the resulting ROC is the intersection of the individual ROC of each signal
     
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/2_signals}
 \label{fig:z_transform:summary_examples}
@@ -2607,7 +2607,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 \begin{itemize}
     \item Now we take \textcolor{red}{causal and anticausal signals} $\leftrightarrow$ this give rise to a \textcolor{red}{double-sided signal} 
     
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/2_signals_b}
 \label{fig:z_transform:summary_examples}
@@ -2633,7 +2633,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \item Summary of Examples and their different region of convergence
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/summary_examples}
 \label{fig:z_transform:summary_examples}
@@ -2666,7 +2666,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \begin{frame}[t,allowframebreaks]{Double Sided Signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/Double_Sided_negative}
 \label{fig:z_transform:Double_Sided_negative}
@@ -2682,7 +2682,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/Double_Sided_positive}
 \label{fig:z_transform:Double_Sided_positive}
@@ -2728,14 +2728,14 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 \subsection{$Z$ Transform Properties}
 \begin{frame}[t,allowframebreaks]{Example 1}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Properties_Example_1}
 \label{fig:z_transform:Properties_Example_1}
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Properties_Example_1_2}
 \label{fig:z_transform:Properties_Example_1_2}
@@ -2750,13 +2750,13 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 \item Don't forget when using $z-$transform properties, keep track at what happen to the ROC for the final expression
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Properties_Example_2}
 \label{fig:z_transform:Properties_Example_2}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Properties_Example_2_2}
 \label{fig:z_transform:Properties_Example_2_2}
@@ -2774,7 +2774,7 @@ X(z) \, = \, \displaystyle\sum_{k \, = \, - \infty}^{+ \infty} x[k] \, \times \,
 \item Given shown below
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Pole_Zero_Cancellation}
 \label{fig:z_transform:Pole_Zero_Cancellation}
@@ -2905,7 +2905,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \begin{frame}[t,allowframebreaks]{Examples}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/PFE_Examples_1}
 \label{fig:z_transform:PFE_Examples_1}
@@ -2919,7 +2919,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \newpage
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/PFE_Examples_1_2}
 \label{fig:z_transform:PFE_Examples_1_2}
@@ -2984,7 +2984,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \begin{frame}[t]{Long Division Example 1: Right Sided Signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/long_division_Examples_1}
 \label{fig:z_transform:long_division_Examples_1}
@@ -3004,7 +3004,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \begin{frame}[t]{Long Division Example 2: Left Sided Signal}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/long_division_Examples_2}
 \label{fig:z_transform:long_division_Examples_2}
@@ -3036,14 +3036,14 @@ H(z) \, = \, \displaystyle\frac{Y(z)}{X(z)}
 
 \begin{frame}[t,allowframebreaks]{Example of Finding $H(z)$ and $h(n)$}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Example_transfer_function_1_1}
 \label{fig:z_transform:Example_transfer_function_1_1}
 \end{figure}
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Example_transfer_function_1_2}
 \label{fig:z_transform:Example_transfer_function_1_2}
@@ -3054,7 +3054,7 @@ H(z) \, = \, \displaystyle\frac{Y(z)}{X(z)}
 
 \begin{frame}[t]{Example of Finding Difference Equation}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/Example_Difference_Equation}
 \label{fig:z_transform:Example_Difference_Equation}
@@ -3065,7 +3065,7 @@ H(z) \, = \, \displaystyle\frac{Y(z)}{X(z)}
 
 \begin{frame}[t,allowframebreaks]{System Identification}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/system_identification}
 \label{fig:z_transform:system_identification}
@@ -3123,7 +3123,7 @@ H(z) \, = \, \displaystyle\frac{Y(z)}{X(z)}
 
 \begin{frame}[t]{Example: Find $h[k]$ for a Stable System}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/impulse_response_stable_system_example}
 \label{fig:z_transform:impulse_response_stable_system_example}
@@ -3154,7 +3154,7 @@ H(z) \, = \, \displaystyle\frac{Y(z)}{X(z)}
 
 \begin{frame}[t]{Example: Find $h[k]$ for a Causal System}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/impulse_response_causal_system_example}
 \label{fig:z_transform:impulse_response_causal_system_example}
@@ -3236,7 +3236,7 @@ A system $H(z)$ having \textcolor{red}{all its poles and zeros inside the unit c
 
 \begin{frame}[t]{Example}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/inverse_linear_sytem_example}
 \label{fig:z_transform:inverse_linear_sytem_example}
@@ -3334,7 +3334,7 @@ H(\omega_d) \, &=& \, \displaystyle\frac{( \, r_i \, e^{j \, \phi_1} \,) \, \tim
 
 \begin{frame}[t]{Example}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{Figures/z_transform/frequency_response_approximate_sketch_example}
 \label{fig:z_transform:frequency_response_approximate_sketch_example}
@@ -3575,7 +3575,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 \subsection{Aliasing}
 \begin{frame}[t,allowframebreaks]{Sampling a Cos wave and Aliasing Frequency}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/Signal_No_Alias_0}
 \caption{Sampling at Nyquist Rate: No Aliasing occur}
@@ -3589,7 +3589,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 \end{itemize}
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/Signal_Alias_0_70}
 \caption{Increasing Signal Frequency}
@@ -3610,7 +3610,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/Signal_Alias_0_30}
 \caption{Sampling at Nyquist Rate: No Aliasing occur}
@@ -3638,7 +3638,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 \subsection{Zero Padding on FFT for CTFT}
 \begin{frame}[t,allowframebreaks]{Zero Padding for the CTFT}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.8\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/Spectral_Analysis_1_Sin_time_domain}
 \caption{Time Domain Signal to be worked on}
@@ -3646,7 +3646,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 \end{figure}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 1\textwidth]{Figures/Simulation_Sampling_Frequency_Analysis/Spectral_Analysis_1_Sin}
 \caption{Theoritical and Computed Spectrum using FFT}
@@ -3713,7 +3713,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 \begin{frame}[t,allowframebreaks]{Reminder about Original Sampling and Notation}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.9]{Figures/Sampling/Impulse_Sampling_Terminology}
 \caption{Replicated Amplitude Spectrum: Frequency axis in $F$[Hz] and $\omega_c$[rad/s] \cite{DSP_DimitrisManolakis}}
@@ -3749,7 +3749,7 @@ x[k \, + \, 3] \, u[k] \,\leftrightarrow \,  z^{3} \, X(z)\, - \, z^{3} \, x[0] 
 \subsection{Downsampling}
 \begin{frame}[t,allowframebreaks]{Downsampling Operation}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Multirate/dowsampling_block_diagram}
 \caption{Block diagram representation of sampling rate compressor system \cite{DSP_DimitrisManolakis}}
@@ -3800,7 +3800,7 @@ T_{\text{downsample}} \, = \, D \, \times \, T_{s_{\text{original}}}\\
 D \, \in \mathbb{N}
 \end{cases}$
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Multirate/dowsampling_ctft_summary}
 \caption{Graphical Illustration for equation (\autoref{Eq:Multirate:Decimation_spectrum_ctft}) for CTFT spectrum \cite{DSP_DimitrisManolakis}}
@@ -3844,7 +3844,7 @@ D \, \in \mathbb{N}
 \item Some graphical illustrations:
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Multirate/dowsampling_example_m_2}
 \caption{Downsampling by a factor $D \, = \, 2$}
@@ -3872,7 +3872,7 @@ D \, \in \mathbb{N}
 
 \item Let's downsample more: \textcolor{red}{aliasing occurs !}
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth]{Figures/Multirate/dowsampling_example_m_3}
 \caption{Downsampling by a factor $M \, = \, 3$ Aliasing occur}
@@ -3882,7 +3882,7 @@ D \, \in \mathbb{N}
 \newpage
 	\item Solution: put an anti-alias filter but in the discrete domain
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Multirate/dowsampling_antialias_filter}
 \caption{Antialias filter then dowsample because downsample can't afford to represent high frequency components}
@@ -3944,7 +3944,7 @@ D \, \in \mathbb{N}
 	\label{Eq:Multirate:Exapanding}
 \end{equation}		
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Multirate/upsampling_expansion}
 \caption{Expansion in the discrete time domain}
@@ -3966,7 +3966,7 @@ D \, \in \mathbb{N}
 		\item Be aware that this is a \textcolor{red}{bandlimited interpolation}
 		\end{itemize}
 	
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Multirate/upsampling_convolution}
 \caption{Convolving the expanded signal with discrete time sinc (bandlimited interpolation)}
@@ -4030,7 +4030,7 @@ X_{\text{expanded}}(\omega_d) \, &=& \, X_{\text{original}}(\omega_d \, L)
 \item We need to low pass filtering to obtain the desired spectrum
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Multirate/interpolation_process}
 \caption{Interpolation process: upsampling then low pass filtering \cite{DSP_DimitrisManolakis}}
@@ -4045,7 +4045,7 @@ X_{\text{expanded}}(\omega_d) \, &=& \, X_{\text{original}}(\omega_d \, L)
 \begin{frame}[t]{Interpolation and Upsampling Recap}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.95\textwidth]{Figures/Multirate/upsampling_process}
 \caption{Upsampling with a factor $I \, = \, 3$ \cite{DSP_DimitrisManolakis}}
@@ -4073,7 +4073,7 @@ X_{\text{expanded}}(\omega_d) \, &=& \, X_{\text{original}}(\omega_d \, L)
 
 \item Idea: use upsampling and dowsampling together
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.6\textwidth]{Figures/Multirate/non_integer_factor_up_and_down_sample}
 \caption{Upsample and dowsample: order of operation is important}
@@ -4105,7 +4105,7 @@ X_{\text{expanded}}(\omega_d) \, &=& \, X_{\text{original}}(\omega_d \, L)
 \item In other words, we can decompose our signals into a sum of delayed version, multiply each sample by a scalar $E_i(z)$, then add the result
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/Multirate/polyphase_dowsampling}
 \caption{Polyphase Structure}

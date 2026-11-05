@@ -105,7 +105,7 @@ The matrix $\Theta$ is a random matrix implemented using the command \verb|Theta
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/l1_l2_comparison}
 \caption{$\ell_1 ~$ and $\ell_2 ~$ Comparison}
@@ -163,7 +163,7 @@ $J(x)$ is the regularization term , and in our case, the lower it is the better.
 In geometric sense, we are searching over all the possible solution which minimize the levels of $J(x)$.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/regularization}
 \caption{regularization to narrow down infinite solution to $A \, x \, = \, b$}
@@ -188,7 +188,7 @@ The closed form solution of $x$ is shown in \autoref{fig:Compressed_Sensing:clos
 Then using $A \,x \, = \, b$, we solve for $\lambda$, and hence obtain a final result of $x$ as a function of the regularizer $B$, the measurements $b$ and $A$.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/closed_form_l2_norm}
 \caption{Closed form solution of $x$ using $\ell_2 ~$ norm}
@@ -240,7 +240,7 @@ But now we are interested in:
 
 In \autoref{fig:Compressed_Sensing:l1_norm_sparse_solution}, we have an example of a linear system of 2 unknowns.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Compressed_Sensing/l1_norm_sparse_solution}
 \caption{$\ell_1 ~$ promotes Sparse Solution}
@@ -282,7 +282,7 @@ The goal of studying the $P_0$ problem is due to historical reasons: this is how
 
 A special case of the $P_0$ problem is the orthogonal case where $A \, = \, [\Psi \, , \, \Phi]$
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Two_Ortho_Case/Two_Ortho_Definition}
 \caption{2 Ortho case Definitions}
@@ -307,7 +307,7 @@ A special case of the $P_0$ problem is the orthogonal case where $A \, = \, [\Ps
 
 As for the part for the 2 ortho case, it tends to make the solution sparse as shown in the example of \autoref{fig:Two_Ortho_Case:Example_Two_Ortho}. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Two_Ortho_Case/Example_Two_Ortho}
 \caption{2 Ortho case with $I$ and Fourier Matrix}
@@ -326,7 +326,7 @@ If $\Psi$ and $\Phi$ have same column, then $\mu(\Psi \, , \,\Phi ) \, = \, 1$, 
 \newpage
 In \autoref{fig:Two_Ortho_Case:All_inner_products}, we have all the possible value for the inner product between $\Psi$ and $\Phi$, which is encapsulated in $\Psi^T \, \Phi$.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Two_Ortho_Case/All_inner_products}
 \caption{All combination of inner product between $\Psi$ and $\Phi$}
@@ -745,7 +745,7 @@ In sections before, we seen greedy algorithm which tends to approximate the solu
 
 The $\ell_0 ~$ norm tends to count the number of non-zero element in some vector $\vec{x}$. This can be done using some indicator function $\rho$ as shown in \autoref{fig:Greedy_Methods:Indicator_Function}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Greedy_Methods/Indicator_Function}
 \caption{Indicator function $\rho$ implementing $\ell_0 ~$ norm}
@@ -757,7 +757,7 @@ So how can we relax the $\ell_0 ~$ norm?
 
 Some examples of smoother function are shown in \autoref{fig:Greedy_Methods:smoother_function}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Greedy_Methods/smoother_function}
 \caption{Example of some smoother function}
@@ -768,7 +768,7 @@ The common things about all these function, is that as $\alpha \rightarrow \, 0$
 
 Another tool used combined with smoother function is what we called graduate optimization, shown in \autoref{fig:Greedy_Methods:graduate_optimization}:
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Greedy_Methods/graduate_optimization}
 \caption{Graduate Optimization}
@@ -881,7 +881,7 @@ Plugin in the result of \autoref{Eq:Exact_to_approx:IRLS_l1} in \autoref{Eq:Exac
 \newpage
 Steps of the algorithm is shown in \autoref{fig:Exatct_Approx:irls_l1_noisy}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Exatct_Approx/irls_l1_noisy}
 \caption{Example of some smoother function}

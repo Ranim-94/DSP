@@ -21,7 +21,7 @@ The design specifications are:
 \newpage
 Results are in \autoref{fig:FIR_Sim:FIR_lowpass_rect_Hamm_window}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/FIR_Sim/lowpass_window_method.eps}
 \caption{FIR Low pass example using Rectangular and Hamming window}
@@ -44,7 +44,7 @@ Results are in \autoref{fig:FIR_Sim:FIR_lowpass_rect_Hamm_window}.
 
 Now we will do a banpass design using the following specs shown in \autoref{fig:FIR_Sim:bandpass_example_given}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.7]{Figures/FIR_Sim/bandpass_example_given}
 \caption{Bandpass Design Example}
@@ -74,16 +74,16 @@ The window to be chosen for the specification is the Kaiser window, which depend
 \end{enumerate}
 
 \newpage
-Results are shown in \autoref{fig:FIR_Sim:bandpass_example_given} and \autoref{fig:FIR_Sim:bandpass_example_error_plot}.
+Results are shown in \autoref{fig:FIR_Sim:bandpass_Kaiser_results} and \autoref{fig:FIR_Sim:bandpass_example_error_plot}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/FIR_Sim/Bandpass_window_Kaiser.eps}
 \caption{Bandpass Design Results for Kaiser Window}
-\label{fig:FIR_Sim:bandpass_example_given}
+\label{fig:FIR_Sim:bandpass_Kaiser_results}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.3]{Figures/FIR_Sim/Bandpass_window_Kaiser_error_deviation.eps}
 \caption{Bandpass Design Results for Kaiser Window: Error is less then 0.01}
@@ -116,7 +116,7 @@ For a rectangular window as interpolating function, we have $\Delta \omega \, = 
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.4]{Figures/FIR_Sim/lowpass_freqsampling_method.eps}
 \caption{FIR Low Pass with an order of $M\, = \, 62$}

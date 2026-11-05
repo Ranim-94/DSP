@@ -63,7 +63,7 @@ $p(t)$ is \tbi{train of pulses} located at multiple of $T_s$.\\
 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/impulse_sampling}
 \caption{Impulse Sampling of a continuous time signal}
@@ -75,7 +75,7 @@ $p(t)$ is \tbi{train of pulses} located at multiple of $T_s$.\\
 In the frequency domain, this will change $X(\omega)$ to be $X_{\delta}(\omega)$ as shown in \autoref{fig:Sampling:impulse_sampling_spectrum_1}.
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/impulse_sampling_spectrum_1}
 \caption{Sampling Higher then the Nyquite Rate}
@@ -113,7 +113,7 @@ X_{\delta}(\omega_c) \, &=& \, \displaystyle\frac{1}{2 \, \pi} X(\omega_c) \, * 
 
 \underline{Definition:} The replications (at multiple of $\omega_s$) of the spectrum overlap with the original spectrum,as shown in \autoref{fig:Sampling:impulse_sampling_spectrum_2}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/impulse_sampling_spectrum_2}
 \caption{Decreasing the Nyquist Rate: Aliasing Result}
@@ -169,7 +169,7 @@ f_{\text{alias}} \, &=& \, \lvert f_{\text{original}} \, - \, m \, f_s  \rvert \
 
 \item Another method to get samples from a continuous signal, shown in \autoref{fig:Sampling:sampling_zoh}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/sampling_zoh}
 \caption{Sampling using ZOH}
@@ -196,7 +196,7 @@ f_{\text{alias}} \, &=& \, \lvert f_{\text{original}} \, - \, m \, f_s  \rvert \
 \item Mathematical modeling of the ZOH is shown in \autoref{fig:Sampling:zoh_math}. 
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/zoh_math}
 \caption{Mathematical modeling of the ZOH}
@@ -210,7 +210,7 @@ See the book for the detailed description.
 
 Spectrum of the signal $x(t)$ using ZOH is shown in \autoref{fig:Sampling:zoh_output_spectrum}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/zoh_output_spectrum}
 \caption{Output of ZOH in the frequency domain}
@@ -233,7 +233,7 @@ Spectrum of the signal $x(t)$ using ZOH is shown in \autoref{fig:Sampling:zoh_ou
 
 \underline{Sampling Cos Signal Demo:}\\
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Signal_Cont_and_sampled}
 \caption{Demonstration of aliasing effect}
@@ -261,7 +261,7 @@ Spectrum of the signal $x(t)$ using ZOH is shown in \autoref{fig:Sampling:zoh_ou
 
 \item The steps is shown in \autoref{fig:Sampling:discrete_time_processing_for_continious_time}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/discrete_time_processing_for_continious_time}
 \caption{Demonstration of aliasing effect}
@@ -441,7 +441,7 @@ X_{\delta}(F) \, &=& \, \displaystyle\frac{1}{T_s} \displaystyle\sum\limits_{k \
 \end{itemize}
 
 \newpage
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale = 0.5]{Figures/Sim_Fourier_Transform/sinc_rect_Fourier}
 \caption{CTFT of $\text{sinc}\left(\,  \displaystyle\frac{t}{T}  \, \right)$ \cite{sampling_beyond_band_limited_systems}}
@@ -621,7 +621,7 @@ x[k] \, = \, \displaystyle\frac{1}{2 \, \pi \, j} \displaystyle\oint X(z) \, z^{
 
 \item Summary of Examples and their different region of convergence
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.3]{Figures/z_transform/summary_examples}
 \label{fig:z_transform:summary_examples}
@@ -850,7 +850,7 @@ Video: 33:32.
 \section{Specification}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.95]{Figures/FIR/spec_filter}
 \label{fig:FIR:spec_filter}

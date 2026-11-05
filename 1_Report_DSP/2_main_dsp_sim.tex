@@ -18,6 +18,23 @@
 \author{Ranim Tom}
 
 
+%******** Abbreviations **********
+
+% to change the name of Nomenclature to list of abbreviation
+\renewcommand{\nomname}{List of Abbreviations}
+
+% for list of abbreviations and acronyms
+\makenomenclature
+
+%******** End Abbreviations **********
+
+% to make the list of abbreviations and acronyms appear 
+% in first pages of the report
+\printnomenclature
+
+
+\makeglossaries
+\newacronym{dft}{DFT}{Discrete Fourier Transform}
 
 \begin{document}
 
@@ -25,11 +42,20 @@
 %\input{content/title_page_1} 
 
 \maketitle
+
 \tableofcontents
+
+
+
+
+
+
 
 % to make the todo list appear as a table of content
 \listoftodos
 
+% list of notation I use in DSP
+\input{Files/notation}
 
 \pagestyle{fancy}
 \fancyhf{} % Clear header and footer
@@ -52,6 +78,8 @@
 
 
 
+
+\printglossary[type=\acronymtype]
 
 
 %******************** References *********************
