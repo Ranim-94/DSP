@@ -9,6 +9,10 @@ function plot_time_signal(param)
 over_sampling = 4;
 
 % Generating a continuous time signal axis
+% to mimic this effect and also to have the same time axis (start and end)
+% between continous and sampled signal, I multiply Fs and N by the same
+% factor
+% this way time_sampled and time_continous have same start and end 
 [time_cont,sig_analog] = gen_sig(over_sampling*param.fs, ...
                             over_sampling*param.nb_samples, ...
                             param);

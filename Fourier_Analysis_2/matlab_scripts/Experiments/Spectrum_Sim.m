@@ -85,35 +85,56 @@ classdef Spectrum_Sim < handle
         end
 
         function run(obj)
+            
             obj.generateSignal();
+
             obj.computeSpectrum();
+
             obj.plot_time_Signal();
+
             obj.plot_spectrum();
+
         end % end run()
 
         function [time_axis,sig] = generateSignal(obj,factor)
             % Uniform sampling of the test signal; with factor > 1 it
             % returns a denser version (used to mimic continuous time).
-            if nargin < 2, factor = 1; 
-            
+            if nargin < 2
+                
+                % example: 
+                % obj.generateSignal();
+                %    nargin = 1; since 'obj' is counter as a parameter
+                %    this mean we generate the actual sampled signal
+                    
+                factor = 1; % no oversampling, generate a pure
+                % sampled signal from Fs and N (nb_samples)
             end
+
             
             fs_loc = factor*obj.fs;
             N = factor*obj.nb_samples;
 
-            % generate time axis from N samples
+            % generate time axis from N samples and Fs
             time_axis = ((-N/2):(N/2 - 1))./fs_loc;
+            
             
             sig = obj.evalSignal(time_axis);
 
-            if nargout == 0 || factor == 1
+            if  factor == 1
+                
+                % factor = 1 means the signal is the sampled one
+                % we store it in obj so we can compute the FFT on it (the sampled version)
+
                 obj.time_axis = time_axis;
                 obj.sig_sampled = sig;
+                
                 if obj.show_debug
                     fprintf('1) Start generating time signal: %s \n',obj.choice_signal)
                     fprintf('\t - Fs = %d Hz \n',obj.fs)
                     fprintf('\t - Nb of samples = %d \n',obj.nb_samples)
                     fprintf('\t - Time window = %.2f s \n',time_axis(end)-time_axis(1))
+                    fprintf('\t\t -> start = %.2f s \n',time_axis(1))
+                    fprintf('\t\t -> end = %.2f s \n',time_axis(end))
                     fprintf('=============================================== \n')
                 end
             
@@ -122,6 +143,8 @@ classdef Spectrum_Sim < handle
         end % end generatSignal()
 
         function computeSpectrum(obj)
+            
+            % specify if we have zero padd option or not
             if obj.zero_padd
                 obj.length_fft = 2^nextpow2(obj.nb_samples);
             else
@@ -130,6 +153,7 @@ classdef Spectrum_Sim < handle
 
             obj.spectr = fftshift(fft(obj.sig_sampled,obj.length_fft));
 
+            % generating freq axis
             freq_step = obj.fs/obj.length_fft;
             obj.freq_bins = -obj.fs/2:freq_step:obj.fs/2 - freq_step;
 
@@ -144,8 +168,12 @@ classdef Spectrum_Sim < handle
         end % end comput_spectrum()
 
         function plot_time_Signal(obj)
+            
             over_sampling = 4;
+            
+            % generate a continous version by 
             [time_cont,sig_analog] = obj.generateSignal(over_sampling);
+            
             ts = obj.time_scale;
 
             figure()
