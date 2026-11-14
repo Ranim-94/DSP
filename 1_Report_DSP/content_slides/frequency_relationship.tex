@@ -1,0 +1,70 @@
+\section{Frequency Relationship}
+\label{Chap:Frequency Relationship}
+\begin{frame}[t]{Chapter \autoref{Chap:Frequency Relationship}}
+\tableofcontents[sections = \value{section}]
+\end{frame}
+
+\begin{frame}[c]
+% c for center
+
+\begin{center}
+\Huge \textcolor{green}{Frequency Relationship}
+\end{center}
+
+\end{frame}
+
+\subsection{Analog and Discrete Frequencies}
+\begin{frame}[t,allowframebreaks]{Analog and Discrete Frequency Relationship}
+
+\begin{itemize}
+
+\item $ -\infty < \, \omega_c \left(\text{rad/sec}\right) \, < \, + \infty \, \leftrightarrow$ analog frequency
+
+\item $ - \pi < \, \omega_d \left(\text{rad}\right) \, < \, + \pi \, \leftrightarrow$ discrete frequency
+
+\end{itemize}
+
+\begin{equation}
+\begin{array}{rcl}
+\omega_c \left(\text{rad/sec}\right) \, &=& \, \omega_d \, \times \, F_s \\ \\
+&=& \, \displaystyle\frac{\omega_d}{T_s}  \\ \\
+
+\omega_d \, &=& \, \omega_c \left(\text{rad/sec}\right) \, \times \, T_s \\ \\
+&=& \, \displaystyle\frac{\omega_c}{F_s}
+\end{array}
+\label{Eq:Freq_relation:analog_discrete_freq}
+\end{equation}
+
+
+
+\end{frame}
+
+
+\subsection{DTFT and Ideal Impulse CTFT Relation}
+\begin{frame}[t]{DTFT and Ideal Impulse CTFT Relation}
+
+\begin{itemize}
+
+\item Small Recall:
+
+	\begin{itemize}
+	\item When we sample a signal in time domain, the original spectrum will get replicated: $X(f_c) \, \rightarrow \, \text{time domain sampling} \rightarrow X_{\delta}(f_c)$
+	
+		\begin{itemize}
+		\item $X_{\delta}(f_c)$ is replicated at multiple of $F_s$ 
+		\item Don't forget that we have a scaling amplitude factor $= \, \displaystyle\frac{\text{Amp}}{T_s}$
+		\end{itemize}
+	
+	\item Now if we have a discrete signal $x[n]$, its DTFT $X(f_d)$ is replicated at multiple of $2 \pi$
+	
+		\begin{itemize}
+		\item However, don't forget we have a relation between Sampled CTFT $X_{\delta}(f_c)$ and the DTFT $X(f_d)$ using equation (\autoref{Eq:Freq_relation:analog_discrete_freq})
+			
+	
+	\end{itemize}
+
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}

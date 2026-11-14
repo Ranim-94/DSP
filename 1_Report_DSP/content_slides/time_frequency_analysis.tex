@@ -1,0 +1,73 @@
+\section{Time-Frequency Analysis}
+\label{Chap:Time-Frequency Analysis}
+\begin{frame}[t]{Chapter \autoref{Chap:Time-Frequency Analysis}}
+\tableofcontents[sections= \value{section}]
+\end{frame}
+
+
+\subsection{Introduction}
+\begin{frame}[t]{Introduction}
+
+\begin{itemize}
+
+\item Time-Frequency analysis is used to analyse non-stationary signals: signals which varies in time
+
+\item Common Tool to this used is called Short-time-Fourier-Transform (STFT)
+
+\end{itemize}
+
+\end{frame}
+
+
+\subsection{Short Time Fourier Transform}
+\begin{frame}[t]{STFT Concepts}
+
+\begin{itemize}
+
+\item Instead of sliding the window on the data, we will do the opposite:
+
+	\begin{itemize}
+	\item We fix the window of size $L$
+	
+	\item We choose an index $n$ which represent the shift in the data $x[m]$: so $n$ represents the start of the segment we are looking on 
+	
+	\item We make the product between the window and the data
+	
+	\item Then take the DTFT of this product
+	
+	
+	\item Then we repeat this process for every value of $n \, \rightarrow x[n] \, , \, x[n \, + \, 1] \, , \, \cdots \, x[n \, + \, L - \, 1]$
+	\end{itemize}
+
+\item Common Tool to this used is called Short-time-Fourier-Transform (STFT)
+
+\end{itemize}
+
+
+\end{frame}
+
+
+\subsection{Temporal and Frequency Resolution Trade-off}
+\begin{frame}[t,allowframebreaks]{Temporal and Frequency Resolution Trade-off}
+
+\begin{itemize}
+
+\item From window analysis, we can recall that the higher the window length $\rightarrow$ more frequency details we can capture $\rightarrow$ higher frequency resolution
+
+	\begin{itemize}
+	\item However when we do this in STFT, we loose temporal resolution $\leftrightarrow$ we can't observe details in time domain in the time-frequency plane
+	\end{itemize}
+
+\item If we decrease the window size, the resolution in frequency content decrease
+
+	\begin{itemize}
+	\item For a window size $L \, = \, 128$ Along the vertical axis (frequency axis), we can't capture that we have 2 frequencies at 250 Hz and 300 Hz
+	
+	\item However for this same window size, we get a better temporal resolution $\leftrightarrow$ we can indentify the moment of transition from 300 Hz $\rightarrow$ 250 Hz
+	\end{itemize}
+
+
+\end{itemize}
+
+
+\end{frame}

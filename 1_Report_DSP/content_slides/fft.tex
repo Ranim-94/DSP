@@ -1,0 +1,39 @@
+\section{Fast Fourier Transform}
+\label{Chap:FFT}
+\begin{frame}[t]{Chapter \autoref{Chap:FFT}}
+\tableofcontents[sections= \value{section}]
+\end{frame}
+
+\begin{frame}[t,allowframebreaks]{Introduction to FFT}
+
+\begin{itemize}
+
+\item The FFT is an \textcolor{red}{algorithm} which implements the DFT in an efficient manner
+
+
+\item Put figure of comparison
+
+	\begin{itemize}
+	\item When $\text{log}_{10}(N) \, = \, 2$ which means that $N \, = \, 100$ samples, there is no a big difference between the DFT and the FFT
+	
+	\item As $\text{log}_{10}(N)$ increase, like at 6 (so $N$ is 1 million sample), the gap in the number of operation increase allot 
+	\end{itemize}
+
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}[t,allowframebreaks]{FFT Algorithm details}
+
+\begin{itemize}
+
+\item We can compute 2 points of the DFT using only 1 multiplication
+
+\item Many algorithms used in FFT, we look at the one so called \textcolor{red}{decimation in time}
+
+
+\end{itemize}
+
+
+\end{frame}

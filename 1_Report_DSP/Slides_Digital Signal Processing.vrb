@@ -1,0 +1,47 @@
+\frametitle{Practical Notes and Mistakes}
+
+\begin{enumerate}
+
+\item Frequency Variables $\omega_c$ in rad and $f_c$ in Hz:
+
+	\begin{itemize}
+	\item The Fourier transform of the signal $x(t) \, = \, \text{exp}(-0.5 \, t) \, u(t)$ can be written in function of $\omega_c$ or $f_c$: $  X(\omega_c) \, = \, \displaystyle\frac{1}{j \, \omega_c\, + \, 0.5} \, = \, \displaystyle\frac{1}{j \, 2 \,\pi \,f_c\, + \, 0.5}$
+	
+	\item However, whether we choose the variables  $\omega_c$ or $f_c$, the \textcolor{red}{values of the amplitude spectrum remain the same}
+	
+		\begin{itemize}
+		\item $\displaystyle\left\lvert X(\omega_c) \displaystyle\right\rvert \, = \, \displaystyle\left\lvert X(f_c) \displaystyle\right\rvert$
+		\end{itemize}
+	\end{itemize}
+
+\newpage
+\item Frequency vector (bins)
+
+	\begin{itemize}
+	\item Analyticaly continuous frequency vector: from $0 \, \rightarrow \, \displaystyle\frac{F_s}{2} \, \leftrightarrow \,$ \verb|linespace(0,fs/2, nb_point)| where \verb|nb_point = | $\displaystyle\frac{\text{Signal Duration}}{\text{Sampling Period}}$
+	
+	\item Transform from $\omega_c \rightarrow \, f_c$:
+	
+	\begin{itemize}
+	\item $\omega_c \, = \, $ \verb|linespace(0,2 * pi* fs/2, nb_point)|
+	
+	\item In math, $f_c \, = \, \displaystyle\frac{\omega_c}{2 \pi}$ \textcolor{red}{but in programming}: \verb|fc = wc/(2*pi)| $\leftrightarrow$ \textcolor{red}{don't forget the ()}
+	
+	\end{itemize}		
+	
+\item Numerical Frequency Bins in Hz: \verb|freq_vector_fft =|
+\verb|linspace(-fs/2,fs/2 - freq_step,length_fft)| where
+\verb|freq_step = fs/length_fft| and \verb|length_fft = 2^nextpow2(nb_of_point)|
+
+    \begin{itemize}
+        \item Discrete Frequency in rad:
+        \verb|discrete_freq_vector_fft =  (freq_vector_fft).*(2*pi)./fs| used in \verb|DTFT_FFT|
+    \end{itemize}
+
+	
+	\end{itemize}
+
+
+
+\end{enumerate}
+
