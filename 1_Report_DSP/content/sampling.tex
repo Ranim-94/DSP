@@ -4,13 +4,92 @@
 \chapter{Introduction to Sampling and DFT}
 \label{chap:intro_sampling_dft}
 
-\section{References}
+\section{Motivation and References}
 
-This chapter is mainly taken from chapter 5 in \cite{signal_processing_Lathi}.
+\underline{Reference:} This chapter is mainly taken from chapter 5 in \cite{signal_processing_Lathi}.\\
+
+Among all the references of DSP I have, I did choose this chpater as \tbi{starting point} due to several reasons. Thesese reasons can be classified into 2 categories:
+
+\begin{enumerate}
+
+\item The chapter itself (Sampling)
+
+\item The textbook: chapter 5 in \cite{signal_processing_Lathi}
+
+\end{enumerate}
+
+\subsection{Motivation of Sampling}
+
+We start by the topic of Sampling.
+
+\begin{itemize}
+
+\item Sampling is the bridge between continous time and discrete time signal processing
+
+\item We need to understand when we sample, what happen to our information we have in the continous domain
+
+	\begin{itemize}
+
+	\item $x(t)$ will be a set of discrete samples $x[n]$
+	
+
+	\item But the most important one, what happen to our spectrum $X(F)$: does sampling in time affect the frequency domain, or it will still intact ?
+	
+	\item If we have some set of discrete samples, of length $N$, $\left\lbrace x[n] \right\rbrace_{1}^{N}$ are we able to retrieve back our original signal $x(t)$
+
+	\end{itemize}
+	
+\item Sampling not only happen in time domain, but we can also sample the spectrum (dual form of sampling in time domain)
+
+	\begin{itemize}
+	\item what happen in time domain if we sample in the frequency doamin ?
+	\end{itemize}
+	
+\end{itemize}
 
 
 \newpage
-\section{Introduction to Sampling and Reconstruction}
+
+\subsection{Motivation for chapter 5 from \cite{signal_processing_Lathi}}
+
+That is for the sampling part, now for the reference part (chapter 5 in \cite{signal_processing_Lathi}), there is also several advantges:
+
+\begin{itemize}
+
+\item It treats the derivation of DFT in the most comprehensive way, and step by step
+
+	\begin{itemize}
+	\item that is assume we start from contious time signal, sample them and see what happen to the sepctrum $\leftrightarrow$ \tbi{Nyquist theorem}
+	
+	\item then move back to the dual form: what happen if we sample in frequecy domain $\leftrightarrow$ \tbi{spectral sampling}
+	
+	\item Use the 2 result above to derive the DFT equation to approximate the CTFT
+	\end{itemize}
+
+
+\item It has nice and structured worked examples to start working in spectral analysis
+
+	\begin{itemize}
+	\item Their examples constitue the foundation of my work
+	
+	\item That is formula like $N \, = \, T \, \times \, F_s$,....
+	
+	\item The way it treats source of errors (aliasing, smearing,...)
+	\end{itemize}
+
+\end{itemize}
+
+
+\newpage
+\subsection{Introduction to Sampling and Reconstruction}
+
+\uti{intro sampling and reconstruc v2:} \todo{intro sampling and reconstruc v2}
+
+\begin{itemize}
+
+\item \textit{To review and merge this intro in the subsections before}
+
+\end{itemize}
 
 Sampling is a common operation in signal processing, since our computers and hardware we use process \tbi{discrete sample}. An example is shown in \autoref{fig:Sampling:Sampling_Example}.
 
@@ -48,10 +127,43 @@ We will use the Fourier transform to analyze the effect of sampling and tackle t
 
 
 \newpage
-\section{Sampling Continuous Time Signals}
+\section{Ideal Sampling in Time}
 \label{Sec:Sampling:Sampling_Continuous_Time_Signals}
 
+Now we start by the topic of sampling in its known form, that is sampling in time domain.
 
+In next sections, we start by modeling mathematically the topic of sampling, and use the help of Fourier analysis tools to see what happen in the frenquency domain when we sample in time.\\
+
+Later on (\ref{Sec:Sampling:Sepctral_Sampling}), we treat the dual part: sampling in frequency domain.
+
+
+\subsection{Working Conditions}
+
+\begin{itemize}
+
+\item The sampling is referred to ideal, or also known as \tbi{impulse sampling}
+
+	\begin{itemize}
+	\item That is the pulse width is strictly 0
+	
+	\item No clock drifting or some hardware imperfections
+	\end{itemize}
+	
+This makes the mathematical analysis easier to follow as 1st part
+
+\item The signal $x(t)$
+
+	\begin{itemize}
+	\item It is bandlimited $\leftrightarrow$ it has a finit bandwidth $B$
+	
+	\item It is a lowpass signal $\leftrightarrow$ the spectrum is centered at 0
+	\end{itemize}
+
+More advanced sampling technique for spectrum not centered at 0 (that is have a centere frequency $f_{\text{cen}} \, \neq \, 0$) will be treated in \autoref{part:adv_topics}
+
+\end{itemize}
+
+\newpage
 \subsection{Impulse Sampling Analysis using Fourier Transform}
 
 \underline{Source:} section 5.1 in \cite{signal_processing_Lathi}. The notation is adapted to the one used in this report: frequencies are expressed in Hz, with $F_s \, = \, \displaystyle\frac{1}{T_s}$ the sampling rate and $\Omega_s \, = \, 2 \pi \, F_s$ the corresponding angular sampling frequency in rad/s (in \cite{signal_processing_Lathi} it is denoted $\omega_s \, = \, \displaystyle\frac{2\pi}{T}$).\\
@@ -113,15 +225,15 @@ $\delta_{T_s}(t)$ is periodic with period $T_s$ (fundamental frequency $F_s$), s
 
 \begin{enumerate}
 
-\item Recall that $c_k \, = \, \displaystyle\frac{1}{T_o} \int_{-T_o/2}^{T_o/2} x(t) \, e^{-j \, k \, 2 \pi F_o \, t} \, dt $
+\item Recall that $c_k \, = \, \displaystyle\frac{1}{T_0} \int_{-T_0/2}^{T_0/2} x(t) \, e^{-j \, k \, 2 \pi F_o \, t} \, dt $
 
-\item $x(t)$ is $\delta_{T_s}(t)$, and $\delta_{T_s}(t) =  \displaystyle\sum_{n \, = \, -\infty}^{\infty} \delta(t \, - \, n \, T_s)$
+\item $x(t)$ is $\delta_{T_s}(t)$, where $\delta_{T_s}(t) =  \displaystyle\sum_{n \, = \, -\infty}^{\infty} \delta(t \, - \, n \, T_s)$
 
-\item replacing $x(t)$ by $\delta_{T_s}(t)$ in $c_k$ we get:
+\item Replacing $x(t)$ by $\delta_{T_s}(t)$, and $T_0$ by $T_s$ in $c_k$ we get:
 
 \begin{align}
 c_k \, &= \, \frac{1}{T_s} \int_{-T_s/2}^{T_s/2} \delta_{T_s}(t) \, \times \, e^{-j \, k \, 2 \pi F_s \, t} \, dt \label{eq:sampling:ck_imp_train_2} \\
-&= \, \frac{1}{T_s} \, \times \, \left(\,  \int_{-T_s/2}^{T_s/2} \sum_{n \, = \, -\infty}^{\infty} \delta(t \, - \, n \, T_s) \, \times \, e^{-j \, k \, 2 \pi F_s \, t} \, dt \, \right) \label{eq:sampling:ck_imp_train_2}
+&= \, \frac{1}{T_s} \, \times \, \int_{-T_s/2}^{T_s/2} \left[ \sum_{n \, = \, -\infty}^{\infty} \delta(t \, - \, n \, T_s) \, \right] \times \, e^{-j \, k \, 2 \pi F_s \, t} \, dt  \label{eq:sampling:ck_imp_train_2}
 \end{align}
 
 \item Interchanging the sum and the integral (linearity) in \autoref{eq:sampling:ck_imp_train_2}:
@@ -274,181 +386,288 @@ Let's try now to decrease the sampling rate ($\omega_s$ decrease) as shown in \a
 \end{itemize}
 
 \newpage
-\subsection{Condition for reconstruction: the Nyquist rate}
+\section{Spectral Sampling}
+\label{Sec:Sampling:Sepctral_Sampling}
 
-To reconstruct $x(t)$ from $x_s(t)$, we must be able to recover $X(F)$ from $X_s(F)$. This is possible only if successive copies of $X(F)$ in \autoref{Eq:Sampling:sampled_spectrum} do not overlap:
+After we have been dealing with the sampling theorem, which tells what are the minimum number of samples we need from the time domain to construct a correct waveform, we move now to the dual form, which is \tbi{sampling in the frequency domain} and derive the number of samples in the spectrum required to construct the time domain signal. We are expecting similar results due to the time-frequency duality we now from Fourier transform lessons.
+
+\subsection{Working Conditions}
+
+$\mathrm{1}^\mathrm{st}$ we start by the assumptions we work under before diving in math.
 
 \begin{itemize}
 
-\item The copy centered at $0$ occupies $[-B \, , \, B]$
+\item The signal $x(t)$, shown in \autoref{fig:Sampling:time_limited_sig}, is assumed to be \tbi{time limited} with a  duration $\tau$.
 
-\item The copy centered at $F_s$ occupies $[F_s \, - \, B \, , \, F_s \, + \, B]$
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.8\textwidth, frame]{Figures/Sampling/time_limited_sig}
+\caption{Working conditions for specral sampling}
+\label{fig:Sampling:time_limited_sig}
+\end{figure}
 
-\item No overlap requires $F_s \, - \, B \, \geq \, B$, so:
+
+	\begin{itemize}
+	\item $\tau = \, T_2 \, - \, T_1$, where $T_2 \, > \, T_1$
+	
+	\item $x(t) \, = \, 0$ outisde the interval $[T_1 \, , \, T_2]$
+	\end{itemize}
+
+\item We know from \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals} that sampling in time give us replication of the spectrum in the frequency domain
+
+	\begin{itemize}
+	\item The dual form now is that replicating in time give us samples in the frequency domain
+	
+	\item More generally, sampling in one domain give us replication in the $\mathrm{2}^{nd}$ domain
+	\end{itemize}
 
 \end{itemize}
 
+\newpage
+
+\subsection{Mathematical Modeling}
+Now moving to deal with the mathematical development which relates the samples of $X(F)$ with $X(F)$ itself.\\ 
+
+We start by constructing a periodic signal $x_{T_0}(t)$ from the original time limted signal $x(t)$, as shown in \autoref{fig:Sampling:replication_xt}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.8\textwidth, frame]{Figures/Sampling/replication_xt}
+\caption{Constructing a periodic signal from $x(t)$}
+\label{fig:Sampling:replication_xt}
+\end{figure}
+
+\underline{Source:} section 5.1-4 in \cite{signal_processing_Lathi}. As in \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals}, the notation is adapted to this report: frequencies in Hz, $T_0$ the repetition period, $F_0 \, = \, \displaystyle\frac{1}{T_0}$ the fundamental frequency and $\Omega_0 \, = \, 2 \pi F_0$ (in \cite{signal_processing_Lathi}: $\omega_0 \, = \, \displaystyle\frac{2 \pi}{T_0}$, $D_n$ for the Fourier series coefficients, and the signal is taken on $[0 \, , \, \tau]$).
+
+\subsubsection*{Step 1: Fourier transform of the time limited}
+
+Since $x(t) \, = \, 0$ outside $[T_1 \, , \, T_2]$, the integral of the Fourier transform reduces to this interval:
+
+\begin{align}
+X(F) \, &= \, \int_{-\infty}^{\infty} x(t) \, e^{-j 2 \pi F t} \, dt \nonumber \\
+&= \, \int_{T_1}^{T_2} x(t) \, e^{-j 2 \pi F t} \, dt
+\label{Eq:Sampling:spectral_X_timelimited}
+\end{align}
+
+\subsubsection*{Step 2: The periodic signal $x_{T_0}(t)$}
+
+We construct a periodic signal $x_{T_0}(t)$ by repeating $x(t)$ every $T_0$ seconds, with $T_0 \, \geq \, \tau$ (\autoref{fig:Sampling:replication_xt}):
+
+\begin{equation}
+x_{T_0}(t) \, = \, \sum_{m \, = \, -\infty}^{\infty} x(t \, - \, m \, T_0)
+\label{Eq:Sampling:spectral_periodic_signal}
+\end{equation}
+
+The $m^{th}$ copy $x(t \, - \, m T_0)$ occupies the interval $[T_1 \, + \, m T_0 \, , \, T_2 \, + \, m T_0]$.\\
+
+$x_{T_0}(t)$ is periodic with period $T_0$, so it can be expanded in an exponential Fourier series:
+
+\begin{align}
+x_{T_0}(t) \, &= \, \sum_{k \, = \, -\infty}^{\infty} c_k \, e^{j \, k \, 2 \pi F_0 \, t}
+\label{Eq:Sampling:spectral_periodic_FS} \\
+c_k \, &= \, \frac{1}{T_0} \int_{T_1}^{T_1 \, + \, T_0} x_{T_0}(t) \, e^{-j \, k \, 2 \pi F_0 \, t} \, dt
+\label{Eq:Sampling:spectral_ck_def}
+\end{align}
+
+where the integral is taken over one period, chosen here as $[T_1 \, , \, T_1 \, + \, T_0]$.
+
+\subsubsection*{Step 3: Computing the coefficients $c_k$}
+
+\begin{enumerate}
+
+\item Replacing $x_{T_0}(t)$ by \autoref{Eq:Sampling:spectral_periodic_signal} in \autoref{Eq:Sampling:spectral_ck_def}, and interchanging the sum and the integral:
+
+\begin{equation}
+c_k \, = \, \frac{1}{T_0} \sum_{m \, = \, -\infty}^{\infty} \int_{T_1}^{T_1 \, + \, T_0} x(t \, - \, m \, T_0) \, e^{-j \, k \, 2 \pi F_0 \, t} \, dt
+\label{Eq:Sampling:spectral_ck_sum}
+\end{equation}
+
+\item Which copies fall inside the integration window $[T_1 \, , \, T_1 \, + \, T_0]$?
+
+	\begin{itemize}
+	\item $m \, = \, 0$: the copy occupies $[T_1 \, , \, T_2]$, and $T_2 \, = \, T_1 \, + \, \tau \, \leq \, T_1 \, + \, T_0$ since $T_0 \, \geq \, \tau$ $\rightarrow$ \tbi{entirely inside} the window
+
+	\item $m \, = \, -1$: the copy ends at $T_2 \, - \, T_0 \, \leq \, T_1$ $\rightarrow$ outside (it touches $T_1$ only when $T_0 \, = \, \tau$)
+
+	\item $m \, = \, 1$: the copy starts at $T_1 \, + \, T_0$ $\rightarrow$ outside (it touches the end of the window only)
+
+	\item $|m| \, \geq \, 2$: even further away $\rightarrow$ outside
+	\end{itemize}
+
+So, as long as $T_0 \, \geq \, \tau$, the copies \tbi{do not overlap}, and inside one period $x_{T_0}(t) \, = \, x(t)$. Only the term $m \, = \, 0$ survives in \autoref{Eq:Sampling:spectral_ck_sum}. This is the same reasoning used for the impulse train in \autoref{Eq:Sampling:impulse_train_exp_FS}, where only the impulse at $t \, = \, 0$ falls in one period.
+
+\item Keeping only $m \, = \, 0$, and since $x(t) \, = \, 0$ outside $[T_1 \, , \, T_2]$:
+
+\begin{align}
+c_k \, &= \, \frac{1}{T_0} \int_{T_1}^{T_1 \, + \, T_0} x(t) \, e^{-j \, k \, 2 \pi F_0 \, t} \, dt \nonumber \\
+&= \, \frac{1}{T_0} \int_{T_1}^{T_2} x(t) \, e^{-j \, k \, 2 \pi F_0 \, t} \, dt
+\label{Eq:Sampling:spectral_ck_integral}
+\end{align}
+
+\item Comparing \autoref{Eq:Sampling:spectral_ck_integral} with \autoref{Eq:Sampling:spectral_X_timelimited}: the two integrals are \tbi{identical} except for the frequency in the exponential, $F$ in $X(F)$ and $k F_0$ in $c_k$. Hence the integral in $c_k$ is $X(F)$ evaluated at $F \, = \, k F_0$:
+
 \begin{equation}
 \boxed{
-F_s \, \geq \, 2 B \qquad \Longleftrightarrow \qquad T_s \, \leq \, \frac{1}{2 B}
+c_k \, = \, \frac{1}{T_0} \, X(k \, F_0) \, = \, F_0 \, X(k \, F_0)
 }
-\label{Eq:Sampling:nyquist_condition}
+\label{Eq:Sampling:spectral_ck_samples}
+\end{equation}
+
+\end{enumerate}
+
+\underline{Interpretation:} the Fourier series coefficients of the periodic signal $x_{T_0}(t)$ are, up to the factor $\frac{1}{T_0}$, the \tbi{samples of the spectrum} $X(F)$ taken every $F_0 \, = \, \frac{1}{T_0}$ Hz. Substituting in \autoref{Eq:Sampling:spectral_periodic_FS}:
+
+\begin{equation}
+x_{T_0}(t) \, = \, F_0 \sum_{k \, = \, -\infty}^{\infty} X(k \, F_0) \, e^{j \, k \, 2 \pi F_0 \, t}
+\label{Eq:Sampling:spectral_periodic_from_samples}
+\end{equation}
+
+So the samples $X(k F_0)$ fully describe $x_{T_0}(t)$, and since one period of $x_{T_0}(t)$ is exactly $x(t)$, they \tbi{fully describe} $x(t)$, and therefore $X(F)$ too.
+
+\subsubsection*{Alternative derivation: the dual of time sampling}
+
+The periodic signal is a convolution of $x(t)$ with an impulse train of period $T_0$, since convolving with $\delta(t \, - \, m T_0)$ shifts $x(t)$ by $m T_0$:
+
+\begin{equation}
+x_{T_0}(t) \, = \, x(t) \star \delta_{T_0}(t) \, = \, x(t) \star \sum_{m \, = \, -\infty}^{\infty} \delta(t \, - \, m \, T_0)
+\end{equation}
+
+Using the transform of the impulse train derived in \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals} (with $T_s \, \rightarrow \, T_0$), and convolution in time $\leftrightarrow$ multiplication in frequency:
+
+\begin{align}
+X_{T_0}(F) \, &= \, X(F) \, \times \, \frac{1}{T_0} \sum_{k \, = \, -\infty}^{\infty} \delta(F \, - \, k \, F_0) \nonumber \\
+&= \, F_0 \sum_{k \, = \, -\infty}^{\infty} X(k \, F_0) \, \delta(F \, - \, k \, F_0)
+\label{Eq:Sampling:spectral_line_spectrum}
+\end{align}
+
+where we used $X(F) \, \delta(F \, - \, k F_0) \, = \, X(k F_0) \, \delta(F \, - \, k F_0)$ (sifting property). The spectrum of $x_{T_0}(t)$ is a line spectrum whose weights are the samples $F_0 \, X(k F_0)$, which is again \autoref{Eq:Sampling:spectral_ck_samples}. This shows the \tbi{duality}:
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|c|c|} \hline
+Time domain & Frequency domain \\ \hline
+Sampling every $T_s$: $x(t) \, \delta_{T_s}(t)$ & Replication every $F_s$: $F_s \displaystyle\sum_k X(F \, - \, k F_s)$ \\ \hline
+Replication every $T_0$: $x(t) \star \delta_{T_0}(t)$ & Sampling every $F_0$: $F_0 \displaystyle\sum_k X(k F_0) \, \delta(F \, - \, k F_0)$ \\ \hline
+Condition: $x(t)$ bandlimited to $B$ & Condition: $x(t)$ time limited to $\tau$ \\
+Recovery if $F_s \, \geq \, 2 B$ & Recovery if $T_0 \, \geq \, \tau$ \\ \hline
+\end{tabular}
+\caption{Duality between time sampling and spectral sampling}
+\label{Tb:Sampling:duality_time_spectral_sampling}
+\end{table}
+
+\subsubsection*{Step 4: Condition for reconstruction: the spectral sampling theorem (Eq. (5.13) in \cite{signal_processing_Lathi})}
+
+The whole derivation relied on the copies of $x(t)$ in $x_{T_0}(t)$ \tbi{not overlapping}, which required $T_0 \, \geq \, \tau$. If $T_0 \, < \, \tau$, the copies overlap (\tbi{time aliasing}, the dual of spectral aliasing), one period of $x_{T_0}(t)$ is no longer $x(t)$, and $x(t)$ cannot be recovered. Since $F_0 \, = \, \frac{1}{T_0}$:
+
+\begin{equation}
+\boxed{
+F_0 \, \leq \, \frac{1}{\tau} \text{ Hz} \qquad \Longleftrightarrow \qquad R \, = \, \frac{1}{F_0} \, \geq \, \tau \text{ samples/Hz}
+}
+\label{Eq:Sampling:spectral_sampling_condition}
 \end{equation}
 
 \begin{itemize}
 
-\item $F_s \, = \, 2B$ is the \tbi{Nyquist rate} and $T_s \, = \, \displaystyle\frac{1}{2B}$ is the \tbi{Nyquist interval}
+\item To reconstruct $X(F)$ from its samples, the samples must be taken at frequency intervals not greater than $\frac{1}{\tau}$ Hz
 
-\item When \autoref{Eq:Sampling:nyquist_condition} holds, $x(t)$ is recovered by passing $x_s(t)$ through an ideal lowpass filter of bandwidth $B$ Hz and gain $T_s$ (to cancel the factor $\frac{1}{T_s}$)
+\item $R$ is the spectral sampling rate (samples per Hz): it must be at least the signal duration $\tau$, the dual of $F_s \, \geq \, 2B$
 
-\item When $F_s \, < \, 2B$, the copies overlap and $X(F)$ cannot be recovered: this is \tbi{aliasing}, illustrated in the next subsection
-
-\item Strictly, $F_s \, > \, 2B$ is needed when $X(F)$ contains an impulse at $F \, = \, B$: for example $x(t) \, = \, \sin(2 \pi B t)$ sampled at $F_s \, = \, 2B$ starting at $t \, = \, 0$ gives only zero samples
+\item At $T_0 \, = \, \tau$ the copies touch at their end points, so the result assumes that $x(t)$ has no impulses at $t \, = \, T_1$ or $t \, = \, T_2$ (footnote in \cite{signal_processing_Lathi}), the dual of the $\sin(2 \pi B t)$ case in time sampling
 
 \end{itemize}
 
-\autoref{Eq:Sampling:sampled_spectrum} is also the link between the CTFT and the DTFT used in the simulation report: the spectrum of the sampled signal is periodic with period $F_s$, which corresponds to the $2\pi$ periodicity of the DTFT in normalized frequency $\omega \, = \, 2 \pi \displaystyle\frac{F}{F_s}$.
+\subsubsection*{Step 5: Spectral interpolation (Eq. (5.14) in \cite{signal_processing_Lathi})}
 
-\newpage
-\subsection{Example: Sampling a Cosine}
+\cite{signal_processing_Lathi} states the interpolation formula by duality with the time interpolation formula. Here we derive it directly. On one period $[T_1 \, , \, T_1 \, + \, T_0]$, $x(t) \, = \, x_{T_0}(t)$, and $x(t) \, = \, 0$ elsewhere, so using \autoref{Eq:Sampling:spectral_periodic_from_samples}:
 
-Let's take the signal $x(t) \, = \, \text{cos}\left( \pi t \right)$, and sample this signal at different sampling rate $\omega_s$ and study the effect for different values of $\omega_s$.
+\begin{align}
+X(F) \, &= \, \int_{T_1}^{T_1 \, + \, T_0} x_{T_0}(t) \, e^{-j 2 \pi F t} \, dt \nonumber \\
+&= \, F_0 \sum_{k \, = \, -\infty}^{\infty} X(k \, F_0) \int_{T_1}^{T_1 \, + \, T_0} e^{-j 2 \pi (F \, - \, k F_0) t} \, dt
+\label{Eq:Sampling:spectral_interp_step1}
+\end{align}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine}
-\caption{Example of Sampling a cos: period $\, = \, 2$ s}
-\label{fig:Sampling:Sampling_cosine}
-\end{figure}
+Calling $u \, = \, F \, - \, k F_0$, and $t_c \, = \, T_1 \, + \, \frac{T_0}{2}$ the center of the window, the integral is the transform of a rectangular window of width $T_0$ centered at $t_c$:
 
-First case we take $\omega_s \, = \, 8 \pi \rightarrow \, T_s \, = \, \displaystyle\frac{1}{4}$s. Case is shown in \autoref{fig:Sampling:Sampling_cosine_2}.
+\begin{align}
+\int_{T_1}^{T_1 \, + \, T_0} e^{-j 2 \pi u t} \, dt \, &= \, e^{-j 2 \pi u t_c} \int_{-T_0/2}^{T_0/2} e^{-j 2 \pi u t'} \, dt' \qquad (t' \, = \, t \, - \, t_c) \nonumber \\
+&= \, e^{-j 2 \pi u t_c} \, \frac{e^{-j \pi u T_0} \, - \, e^{j \pi u T_0}}{-j 2 \pi u} \nonumber \\
+&= \, e^{-j 2 \pi u t_c} \, \frac{\sin(\pi u T_0)}{\pi u} \nonumber \\
+&= \, T_0 \, \text{sinc}(\pi u T_0) \, e^{-j 2 \pi u t_c}
+\label{Eq:Sampling:spectral_interp_window}
+\end{align}
 
- 
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine_2}
-\caption{$\omega_s \, = \, 8 \pi \, ; \, T_s \, = \, \displaystyle\frac{1}{4}$ s}
-\label{fig:Sampling:Sampling_cosine_2}
-\end{figure}
-
-	\begin{itemize}
-	\item The shifted spectrum are repeated at multiple of $\omega_s$
-	
-	\item Don't forget that we have the scale factor $\displaystyle\frac{1}{T_s} \, = \, 4$
-	\end{itemize}
-	
-Case 2 shown in \autoref{fig:Sampling:Sampling_cosine_3}: we decrease $\omega_s$ to become $2\pi \rightarrow \, T_s \, = \, 1$s. So we take less samples per second.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine_3}
-\caption{Exactly Sampling at Nyquist rate ; $\omega_s \, = \, 2 \pi \, ; \, T_s \, = \, 1$ s}
-\label{fig:Sampling:Sampling_cosine_3}
-\end{figure}
-
-\begin{itemize}
-\item The case shown in \autoref{fig:Sampling:Sampling_cosine_3}: we are sampling \tbi{exactly at the Nyquist rate} where $\omega_s \, = \, 2 W$ and $W \, = \, \pi$.
-
-\item We are still able to see the original spectrum located at $\pi$ and $-\pi$
-
-\item However notice that at the scaling factor: it is true that $\displaystyle\frac{1}{T_s} \, = \, 1$, but we have $2 \pi$
-
-	\begin{itemize}
-	
-	\item This is because when we shift the original spectrum at multiple of $\omega_s$, the dirac shifted land on top of the original dirac , and added together	
-	
-	\end{itemize}
-
-\end{itemize}
-
-Last case shown in \autoref{fig:Sampling:Sampling_cosine_4} is we sample below Nyquist rate and aliasing effect occur also.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine_4}
-\caption{Sampling below Nyquist rate ; $\omega_s \, = \displaystyle\frac{2 \pi}{3} \, ; \, T_s \, = \, 3$ s}
-\label{fig:Sampling:Sampling_cosine_4}
-\end{figure}
-
-
-\begin{itemize}
-
-\item Because we are sampling below the Nyquist rate, the reconstructed cosine appear to be a low frequency one
-
-\item This is can be deduced from the frequency spectrum: notice that when the spectrum is shifted at multiple of $\omega_s \, = \, \displaystyle\frac{2 \pi}{3}$, 
-
-	\begin{itemize}
-	
-	\item the dirac component located at $-\pi$ (this is the original one) is shifted to $\displaystyle\frac{-\pi}{3}$	
-	
-		\item Same for the dirac component located at $+\pi$ (this is also the original one) is shifted to $\displaystyle\frac{+\pi}{3}$
-		
-		\item So it seems that the original spectrum is located at $\left[\, \displaystyle\frac{-\pi}{3} \, ; \, \displaystyle\frac{+\pi}{3} \, \right]$
-	
-	\end{itemize}
-
-\end{itemize}
-
-
-\newpage
-\subsection{Predicting Aliasing frequency}
-
-We have seen in \autoref{fig:Sampling:Sampling_cosine_4} that when we sample below the Nyquist rate, aliasing occurred and the cos signal has transformed from high frequency $f \, = \, \displaystyle\frac{1}{2}$ Hz to $f_{\text{alias}} \, = \, \displaystyle\frac{1}{3}$ Hz. In this section we try to use some equations in order to predict in advance the aliasing frequency $f_{\text{alias}}$.\\
-
-The equation are:
+with $\text{sinc}(x) \, = \, \frac{\sin x}{x}$, as in \cite{signal_processing_Lathi}. Substituting in \autoref{Eq:Sampling:spectral_interp_step1}, and since $F_0 \, T_0 \, = \, 1$:
 
 \begin{equation}
-\begin{array}{rcl}
-f_{\text{alias}} \, &\leq& \, \displaystyle\frac{Fs}{2} \\
-f_{\text{alias}} \, &=& \, \lvert f_{\text{original}} \, - \, m \, f_s  \rvert \quad \text{where } m \, = \, 0 \, ; \, 1 \, ; \, 2 ;\, \cdots
-\end{array}
-\label{Eq:Sampling:alias_frequency}
-\end{equation} 
-
-
-An example is shown in \autoref{fig:Sampling:alias_frequency}.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.5\textwidth, frame]{Figures/Sampling/alias_frequency}
-\caption{Predicting alias frequency}
-\label{fig:Sampling:alias_frequency}
-\end{figure}
+\boxed{
+X(F) \, = \, \sum_{k \, = \, -\infty}^{\infty} X(k \, F_0) \, \text{sinc}\big(\pi (F \, - \, k F_0) T_0\big) \, e^{-j 2 \pi (F \, - \, k F_0) \left( T_1 \, + \, \frac{T_0}{2} \right)}
+}
+\label{Eq:Sampling:spectral_interpolation}
+\end{equation}
 
 \begin{itemize}
 
-\item We have some signal where $f_{\text{original}} \, = \, 10^4$ Hz
+\item \underline{Check:} at $F \, = \, m F_0$, $\text{sinc}(\pi (m \, - \, k)) \, = \, 1$ if $k \, = \, m$ and $0$ otherwise, and the exponential is $1$ for $k \, = \, m$, so $X(m F_0)$ is reproduced exactly: the formula interpolates between the samples
 
-\item We sample the signal with $f_s \, = \, 3000$ Hz
+\item The phase term $e^{-j 2 \pi (F \, - \, k F_0) t_c}$ comes from the position $t_c$ of the window in time (time shift $\leftrightarrow$ linear phase). It vanishes when the window is centered at the origin, $T_1 \, = \, -\frac{T_0}{2}$
+
+\item \underline{Link with \cite{signal_processing_Lathi}:} for $T_0 \, = \, \tau$ and a signal centered at the origin ($t_c \, = \, 0$), using $\pi F \tau \, = \, \frac{\Omega \tau}{2}$ (Lathi's $\frac{\omega \tau}{2}$) and $\pi k F_0 \tau \, = \, k \pi$:
+
+\begin{equation}
+X(F) \, = \, \sum_{k \, = \, -\infty}^{\infty} X(k \, F_0) \, \text{sinc}\left( \pi F \tau \, - \, k \pi \right) \qquad F_0 \, = \, \frac{1}{\tau}
+\end{equation}
+
+which is Eq. (5.14) in \cite{signal_processing_Lathi}. For a signal on $[0 \, , \, \tau]$, as drawn in \cite{signal_processing_Lathi}, the phase term $e^{-j 2 \pi (F \, - \, k F_0) \frac{\tau}{2}}$ must be kept (verified numerically: without it the interpolation does not reproduce $X(F)$ between the samples)
+
+\end{itemize}
+
+\subsubsection*{Example (Example 5.4 in \cite{signal_processing_Lathi})}
+
+The spectrum $X(F)$ of a signal of unit duration ($\tau \, = \, 1$ s, centered at the origin) is sampled every $F_0 \, = \, \frac{1}{\tau} \, = \, 1$ Hz (the minimum rate). The samples are:
+
+\begin{equation}
+X(0) \, = \, 1 \quad \text{and} \quad X(k) \, = \, 0 \quad (k \, = \, \pm 1, \, \pm 2, \, \cdots)
+\end{equation}
+
+In \autoref{Eq:Sampling:spectral_interpolation} only the term $k \, = \, 0$ survives, with $T_0 \, = \, \tau \, = \, 1$ and $t_c \, = \, 0$:
+
+\begin{equation}
+X(F) \, = \, \text{sinc}(\pi F)
+\end{equation}
+
+which is the spectrum of $x(t) \, = \, \Pi(t)$, the unit rectangular pulse (see the CTFT table in the simulation report). For a signal of unit duration, this is the only spectrum with these sample values.
+
+
+
+
+\newpage
+\subsection{Proof v2}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/sepctral_sampling_math_formulation}
+\caption{Mathematical formulation between samples of $X(\omega)$ and $X(\omega)$ itself}
+\label{fig:Sampling:sepctral_sampling_math_formulation}
+\end{figure}
+
+
+\begin{itemize}
+
+\item We start by Fourier transform definition
+
+\item Since we are replicating in the time domain now, we can use Fourier series on $x_T(t)$
+
+\item Notice the relation between $D_n$ and $X(\omega)$: they are the same except for the argument of the exponential:
 
 	\begin{itemize}
-	\item Clearly, aliasing will occur since we dind't respect the Nyquist condition
-	\end{itemize}
-
-
-\item We keep using \ref{Eq:Sampling:alias_frequency}:
-
-	\begin{itemize}
+	\item In $X(\omega)$, we have $\omega$
 	
-	\item We solve for $m \, = \,0$, we obtain $f_{\text{alias}} \, = \, 10^4$. This $f_{\text{alias}}$ doesn't satisfy the condition $f_{\text{alias}} \, \leq \, \displaystyle\frac{Fs}{2} $, so we keep solving for other value of $m$.
-	
-	
-	\item For $m \, = \, 3$, we get $f_{\text{alias}} \, = \, 10000$ Hz, and this frequency satisfy the condition $f_{\text{alias}} \, = \, 1000 \, \text{Hz} \, \leq \, \displaystyle\frac{Fs}{2} $ 
-	
+	\item In $D_n$, we have $n \, \omega_0$
 	\end{itemize}
 
 \end{itemize}
 
-So when we sample a signal of $f_{\text{original}} \, = \, 10^4$ Hz with $f_s \, = \, 3000$ Hz, we get an alias frequency of 1000 Hz.
-
-
-\newpage
-\section{Examples}
-
-Consider the analog signal: $x(t) \, = \, 4 \, + \, 2\, \text{cos}\left(\, 150 \pi t \, + \, \displaystyle\frac{\pi}{3} \,\right) \, + \, 4 \, \text{sin}\left(\, 350 \pi t \,\right)$.\\
-
-To be done later.
-
+The \tbi{spectral sampling theorem} tells us: if we want to \tbi{describe a continuous time-limited signal} from its \tbi{spectrum samples}, we need to make sure that the \tbi{frequency spacing} $ \left(\, f_0 \, = \, \displaystyle\frac{1}{T} \, \right)$ is less than the inverse of the signal duration $\displaystyle\frac{1}{\tau}$
 
 \newpage
 \section{Other Practical Considerations}
@@ -667,8 +886,6 @@ Given are shown in \autoref{fig:Sampling:practical_sampling_example}.
 \end{itemize}
 
 
-
-
 \newpage
 \section{Ideal Reconstruction}
 
@@ -717,6 +934,122 @@ We can do this using the frequency representation of the sampling studied in the
 \item Notice that sampling theorem is for \tbi{band limited signal}
 
 \item The sampling theorem give us an \tbi{upper bound} that we should sample at least from $2 \, \omega_m$ to avoid aliasing and reconstruct the signal back
+
+\end{itemize}
+
+\newpage
+\subsection{Condition for reconstruction: the Nyquist rate}
+
+To reconstruct $x(t)$ from $x_s(t)$, we must be able to recover $X(F)$ from $X_s(F)$. This is possible only if successive copies of $X(F)$ in \autoref{Eq:Sampling:sampled_spectrum} do not overlap:
+
+\begin{itemize}
+
+\item The copy centered at $0$ occupies $[-B \, , \, B]$
+
+\item The copy centered at $F_s$ occupies $[F_s \, - \, B \, , \, F_s \, + \, B]$
+
+\item No overlap requires $F_s \, - \, B \, \geq \, B$, so:
+
+\end{itemize}
+
+\begin{equation}
+\boxed{
+F_s \, \geq \, 2 B \qquad \Longleftrightarrow \qquad T_s \, \leq \, \frac{1}{2 B}
+}
+\label{Eq:Sampling:nyquist_condition}
+\end{equation}
+
+\begin{itemize}
+
+\item $F_s \, = \, 2B$ is the \tbi{Nyquist rate} and $T_s \, = \, \displaystyle\frac{1}{2B}$ is the \tbi{Nyquist interval}
+
+\item When \autoref{Eq:Sampling:nyquist_condition} holds, $x(t)$ is recovered by passing $x_s(t)$ through an ideal lowpass filter of bandwidth $B$ Hz and gain $T_s$ (to cancel the factor $\frac{1}{T_s}$)
+
+\item When $F_s \, < \, 2B$, the copies overlap and $X(F)$ cannot be recovered: this is \tbi{aliasing}, illustrated in the next subsection
+
+\item Strictly, $F_s \, > \, 2B$ is needed when $X(F)$ contains an impulse at $F \, = \, B$: for example $x(t) \, = \, \sin(2 \pi B t)$ sampled at $F_s \, = \, 2B$ starting at $t \, = \, 0$ gives only zero samples
+
+\end{itemize}
+
+\autoref{Eq:Sampling:sampled_spectrum} is also the link between the CTFT and the DTFT used in the simulation report: the spectrum of the sampled signal is periodic with period $F_s$, which corresponds to the $2\pi$ periodicity of the DTFT in normalized frequency $\omega \, = \, 2 \pi \displaystyle\frac{F}{F_s}$.
+
+\newpage
+\subsection{Example: Sampling a Cosine}
+
+Let's take the signal $x(t) \, = \, \text{cos}\left( \pi t \right)$, and sample this signal at different sampling rate $\omega_s$ and study the effect for different values of $\omega_s$.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine}
+\caption{Example of Sampling a cos: period $\, = \, 2$ s}
+\label{fig:Sampling:Sampling_cosine}
+\end{figure}
+
+First case we take $\omega_s \, = \, 8 \pi \rightarrow \, T_s \, = \, \displaystyle\frac{1}{4}$s. Case is shown in \autoref{fig:Sampling:Sampling_cosine_2}.
+
+ 
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine_2}
+\caption{$\omega_s \, = \, 8 \pi \, ; \, T_s \, = \, \displaystyle\frac{1}{4}$ s}
+\label{fig:Sampling:Sampling_cosine_2}
+\end{figure}
+
+	\begin{itemize}
+	\item The shifted spectrum are repeated at multiple of $\omega_s$
+	
+	\item Don't forget that we have the scale factor $\displaystyle\frac{1}{T_s} \, = \, 4$
+	\end{itemize}
+	
+Case 2 shown in \autoref{fig:Sampling:Sampling_cosine_3}: we decrease $\omega_s$ to become $2\pi \rightarrow \, T_s \, = \, 1$s. So we take less samples per second.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine_3}
+\caption{Exactly Sampling at Nyquist rate ; $\omega_s \, = \, 2 \pi \, ; \, T_s \, = \, 1$ s}
+\label{fig:Sampling:Sampling_cosine_3}
+\end{figure}
+
+\begin{itemize}
+\item The case shown in \autoref{fig:Sampling:Sampling_cosine_3}: we are sampling \tbi{exactly at the Nyquist rate} where $\omega_s \, = \, 2 W$ and $W \, = \, \pi$.
+
+\item We are still able to see the original spectrum located at $\pi$ and $-\pi$
+
+\item However notice that at the scaling factor: it is true that $\displaystyle\frac{1}{T_s} \, = \, 1$, but we have $2 \pi$
+
+	\begin{itemize}
+	
+	\item This is because when we shift the original spectrum at multiple of $\omega_s$, the dirac shifted land on top of the original dirac , and added together	
+	
+	\end{itemize}
+
+\end{itemize}
+
+Last case shown in \autoref{fig:Sampling:Sampling_cosine_4} is we sample below Nyquist rate and aliasing effect occur also.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/Sampling_cosine_4}
+\caption{Sampling below Nyquist rate ; $\omega_s \, = \displaystyle\frac{2 \pi}{3} \, ; \, T_s \, = \, 3$ s}
+\label{fig:Sampling:Sampling_cosine_4}
+\end{figure}
+
+
+\begin{itemize}
+
+\item Because we are sampling below the Nyquist rate, the reconstructed cosine appear to be a low frequency one
+
+\item This is can be deduced from the frequency spectrum: notice that when the spectrum is shifted at multiple of $\omega_s \, = \, \displaystyle\frac{2 \pi}{3}$, 
+
+	\begin{itemize}
+	
+	\item the dirac component located at $-\pi$ (this is the original one) is shifted to $\displaystyle\frac{-\pi}{3}$	
+	
+		\item Same for the dirac component located at $+\pi$ (this is also the original one) is shifted to $\displaystyle\frac{+\pi}{3}$
+		
+		\item So it seems that the original spectrum is located at $\left[\, \displaystyle\frac{-\pi}{3} \, ; \, \displaystyle\frac{+\pi}{3} \, \right]$
+	
+	\end{itemize}
 
 \end{itemize}
 
@@ -808,70 +1141,72 @@ The term ideal is because the impulse response $h_r(t)$ is non causal (start bef
 
 \end{itemize}
 
+
 \newpage
+\section{Examples}
 
-\section{Spectral Sampling}
-\label{Sec:Sampling:Sepctral_Sampling}
-
-After we have been dealing with the sampling theorem, which tells what are the minimum number of samples we need from the time domain to construct a correct waveform, we move now to the dual form, which is \tbi{sampling in the frequency domain} and derive the number of samples in the spectrum required to construct the time domain signal. We are expecting similar results due to the time-frequency duality we now from Fourier transform lessons.
-
-Explanation shown in \autoref{fig:Sampling:sepctral_sampling_replication_time_signal}.
+Consider the analog signal: $x(t) \, = \, 4 \, + \, 2\, \text{cos}\left(\, 150 \pi t \, + \, \displaystyle\frac{\pi}{3} \,\right) \, + \, 4 \, \text{sin}\left(\, 350 \pi t \,\right)$.\\
 
 
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/sepctral_sampling_replication_time_signal}
-\caption{Replicating the time signal give us samples in the frequency domain}
-\label{fig:Sampling:sepctral_sampling_replication_time_signal}
-\end{figure}
+\uti{Sampling Examples:} \todo{Sampling Examples}
 
 \begin{itemize}
 
-\item We are assuming we have a time limited domain signal $x(t)$ of duration $\tau$.
+\item \textit{To be done later}
 
-\item We know from \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals} that sampling in time give us replication of the spectrum in the frequency domain
-
-	\begin{itemize}
-	\item The dual form now is that replicating in time give us samples in the frequency domain
-	
-	\item More generally, sampling in one domain give us replication in the $\mathrm{2}^{nd}$ domain
-	\end{itemize}
+\item \textit{To be recall later what I meant by this example, and from waht book I took it}
 
 \end{itemize}
 
 \newpage
-Now moving to deal with the mathematical development which relates the samples of $X(\omega)$ with $X(\omega)$ itself, shown in \autoref{fig:Sampling:sepctral_sampling_math_formulation}.
+\section{Predicting Aliasing frequency}
 
+We have seen in \autoref{fig:Sampling:Sampling_cosine_4} that when we sample below the Nyquist rate, aliasing occurred and the cos signal has transformed from high frequency $f \, = \, \displaystyle\frac{1}{2}$ Hz to $f_{\text{alias}} \, = \, \displaystyle\frac{1}{3}$ Hz. In this section we try to use some equations in order to predict in advance the aliasing frequency $f_{\text{alias}}$.\\
+
+The equation are:
+
+\begin{equation}
+\begin{array}{rcl}
+f_{\text{alias}} \, &\leq& \, \displaystyle\frac{Fs}{2} \\
+f_{\text{alias}} \, &=& \, \lvert f_{\text{original}} \, - \, m \, f_s  \rvert \quad \text{where } m \, = \, 0 \, ; \, 1 \, ; \, 2 ;\, \cdots
+\end{array}
+\label{Eq:Sampling:alias_frequency}
+\end{equation} 
+
+
+An example is shown in \autoref{fig:Sampling:alias_frequency}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/sepctral_sampling_math_formulation}
-\caption{Mathematical formulation between samples of $X(\omega)$ and $X(\omega)$ itself}
-\label{fig:Sampling:sepctral_sampling_math_formulation}
+\includegraphics[width = 0.5\textwidth, frame]{Figures/Sampling/alias_frequency}
+\caption{Predicting alias frequency}
+\label{fig:Sampling:alias_frequency}
 \end{figure}
-
 
 \begin{itemize}
 
-\item We start by Fourier transform definition
+\item We have some signal where $f_{\text{original}} \, = \, 10^4$ Hz
 
-\item Since we are replicating in the time domain now, we can use Fourier series on $x_T(t)$
-
-\item Notice the relation between $D_n$ and $X(\omega)$: they are the same except for the argument of the exponential:
+\item We sample the signal with $f_s \, = \, 3000$ Hz
 
 	\begin{itemize}
-	\item In $X(\omega)$, we have $\omega$
+	\item Clearly, aliasing will occur since we dind't respect the Nyquist condition
+	\end{itemize}
+
+
+\item We keep using \ref{Eq:Sampling:alias_frequency}:
+
+	\begin{itemize}
 	
-	\item In $D_n$, we have $n \, \omega_0$
+	\item We solve for $m \, = \,0$, we obtain $f_{\text{alias}} \, = \, 10^4$. This $f_{\text{alias}}$ doesn't satisfy the condition $f_{\text{alias}} \, \leq \, \displaystyle\frac{Fs}{2} $, so we keep solving for other value of $m$.
+	
+	
+	\item For $m \, = \, 3$, we get $f_{\text{alias}} \, = \, 10000$ Hz, and this frequency satisfy the condition $f_{\text{alias}} \, = \, 1000 \, \text{Hz} \, \leq \, \displaystyle\frac{Fs}{2} $ 
+	
 	\end{itemize}
 
 \end{itemize}
 
-The \tbi{spectral sampling theorem} tells us: if we want to \tbi{describe a continuous time-limited signal} from its \tbi{spectrum samples}, we need to make sure that the \tbi{frequency spacing} $ \left(\, f_0 \, = \, \displaystyle\frac{1}{T} \, \right)$ is less than the inverse of the signal duration $\displaystyle\frac{1}{\tau}$
-
-
-
-
-
+So when we sample a signal of $f_{\text{original}} \, = \, 10^4$ Hz with $f_s \, = \, 3000$ Hz, we get an alias frequency of 1000 Hz.
 
 
