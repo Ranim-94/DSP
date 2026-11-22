@@ -393,7 +393,7 @@ After we have been dealing with the sampling theorem, which tells what are the m
 
 \subsection{Working Conditions}
 
-$\mathrm{1}^\mathrm{st}$ we start by the assumptions we work under before diving in math.
+$\mathrm{1}^\mathrm{st}$ we start by the \tbi{assumptions} we work under before diving in math.
 
 \begin{itemize}
 
@@ -418,6 +418,10 @@ $\mathrm{1}^\mathrm{st}$ we start by the assumptions we work under before diving
 	\begin{itemize}
 	\item The dual form now is that replicating in time give us samples in the frequency domain
 	
+	\begin{itemize}
+	\item In other words, sampling in frequency replicate the time domain signal 
+	\end{itemize}
+	
 	\item More generally, sampling in one domain give us replication in the $\mathrm{2}^{nd}$ domain
 	\end{itemize}
 
@@ -428,16 +432,23 @@ $\mathrm{1}^\mathrm{st}$ we start by the assumptions we work under before diving
 \subsection{Mathematical Modeling}
 Now moving to deal with the mathematical development which relates the samples of $X(F)$ with $X(F)$ itself.\\ 
 
-We start by constructing a periodic signal $x_{T_0}(t)$ from the original time limted signal $x(t)$, as shown in \autoref{fig:Sampling:replication_xt}.
 
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.8\textwidth, frame]{Figures/Sampling/replication_xt}
-\caption{Constructing a periodic signal from $x(t)$}
-\label{fig:Sampling:replication_xt}
-\end{figure}
+\underline{Source:} section 5.4 in \cite{signal_processing_Lathi}.
 
-\underline{Source:} section 5.1-4 in \cite{signal_processing_Lathi}. As in \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals}, the notation is adapted to this report: frequencies in Hz, $T_0$ the repetition period, $F_0 \, = \, \displaystyle\frac{1}{T_0}$ the fundamental frequency and $\Omega_0 \, = \, 2 \pi F_0$ (in \cite{signal_processing_Lathi}: $\omega_0 \, = \, \displaystyle\frac{2 \pi}{T_0}$, $D_n$ for the Fourier series coefficients, and the signal is taken on $[0 \, , \, \tau]$).
+As in \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals}, the notation is adapted to this report: 
+
+
+\[
+\begin{cases}
+\text{frequencies in Hz} \\
+ T_0: \text{ the repetition period}\\
+ F_0 \, = \, \displaystyle\frac{1}{T_0} \text{ the fundamental frequency} \\
+\Omega_0 \, = \, 2 \pi F_0 \\
+c_k: \text{ Fourier series coefficients}
+\end{cases} 
+\]
+
+In \cite{signal_processing_Lathi}: $\omega_0 \, = \, \displaystyle\frac{2 \pi}{T_0}$, $D_n$ for the Fourier series coefficients, and the signal is taken on $[0 \, , \, \tau]$.
 
 \subsubsection*{Step 1: Fourier transform of the time limited}
 
@@ -452,6 +463,15 @@ X(F) \, &= \, \int_{-\infty}^{\infty} x(t) \, e^{-j 2 \pi F t} \, dt \nonumber \
 \subsubsection*{Step 2: The periodic signal $x_{T_0}(t)$}
 
 We construct a periodic signal $x_{T_0}(t)$ by repeating $x(t)$ every $T_0$ seconds, with $T_0 \, \geq \, \tau$ (\autoref{fig:Sampling:replication_xt}):
+
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.8\textwidth, frame]{Figures/Sampling/replication_xt}
+\caption{Constructing a periodic signal from $x(t)$}
+\label{fig:Sampling:replication_xt}
+\end{figure}
+
+$x_{T_0}(t)$ can be modeled as the following:
 
 \begin{equation}
 x_{T_0}(t) \, = \, \sum_{m \, = \, -\infty}^{\infty} x(t \, - \, m \, T_0)
@@ -482,7 +502,9 @@ c_k \, = \, \frac{1}{T_0} \sum_{m \, = \, -\infty}^{\infty} \int_{T_1}^{T_1 \, +
 \label{Eq:Sampling:spectral_ck_sum}
 \end{equation}
 
-\item Which copies fall inside the integration window $[T_1 \, , \, T_1 \, + \, T_0]$?
+\item Working out the integral: which copies fall inside the integration window 
+
+$[T_1 \, , \, T_1 \, + \, T_0]$?
 
 	\begin{itemize}
 	\item $m \, = \, 0$: the copy occupies $[T_1 \, , \, T_2]$, and $T_2 \, = \, T_1 \, + \, \tau \, \leq \, T_1 \, + \, T_0$ since $T_0 \, \geq \, \tau$ $\rightarrow$ \tbi{entirely inside} the window
@@ -524,13 +546,96 @@ x_{T_0}(t) \, = \, F_0 \sum_{k \, = \, -\infty}^{\infty} X(k \, F_0) \, e^{j \, 
 
 So the samples $X(k F_0)$ fully describe $x_{T_0}(t)$, and since one period of $x_{T_0}(t)$ is exactly $x(t)$, they \tbi{fully describe} $x(t)$, and therefore $X(F)$ too.
 
-\subsubsection*{Alternative derivation: the dual of time sampling}
+\subsection{Alternative derivation: the dual of time sampling}
 
 The periodic signal is a convolution of $x(t)$ with an impulse train of period $T_0$, since convolving with $\delta(t \, - \, m T_0)$ shifts $x(t)$ by $m T_0$:
 
 \begin{equation}
 x_{T_0}(t) \, = \, x(t) \star \delta_{T_0}(t) \, = \, x(t) \star \sum_{m \, = \, -\infty}^{\infty} \delta(t \, - \, m \, T_0)
 \end{equation}
+
+\underline{Proof of the equivalence with \autoref{Eq:Sampling:spectral_periodic_signal}:}\\
+
+The key tool is the \tbi{shifting property of the convolution with a Dirac}. We start from the convolution and show that it gives back the classical definition of the periodic signal.
+
+\begin{enumerate}
+
+\item \tbi{Definition of the convolution:}
+
+\begin{equation}
+x(t) \star \delta_{T_0}(t) \, = \, \int_{-\infty}^{\infty} x(\lambda) \, \delta_{T_0}(t \, - \, \lambda) \, d\lambda
+\label{Eq:Sampling:conv_def}
+\end{equation}
+
+\item \tbi{Replacing the impulse train by its definition}, evaluated at $t \, - \, \lambda$:
+
+\begin{equation}
+\delta_{T_0}(t \, - \, \lambda) \, = \, \sum_{m \, = \, -\infty}^{\infty} \delta(t \, - \, \lambda \, - \, m \, T_0)
+\label{Eq:Sampling:conv_train_shifted}
+\end{equation}
+
+so \autoref{Eq:Sampling:conv_def} becomes:
+
+\begin{equation}
+x(t) \star \delta_{T_0}(t) \, = \, \int_{-\infty}^{\infty} x(\lambda) \sum_{m \, = \, -\infty}^{\infty} \delta(t \, - \, \lambda \, - \, m \, T_0) \, d\lambda
+\label{Eq:Sampling:conv_substituted}
+\end{equation}
+
+\item \tbi{Interchanging the sum and the integral} (linearity):
+
+\begin{equation}
+x(t) \star \delta_{T_0}(t) \, = \, \sum_{m \, = \, -\infty}^{\infty} \int_{-\infty}^{\infty} x(\lambda) \, \delta(t \, - \, \lambda \, - \, m \, T_0) \, d\lambda
+\label{Eq:Sampling:conv_swapped}
+\end{equation}
+
+\item \tbi{Sifting property:} the Dirac is even, $\delta(-u) \, = \, \delta(u)$, hence:
+
+\begin{equation}
+\delta(t \, - \, \lambda \, - \, m \, T_0) \, = \, \delta\big(\lambda \, - \, (t \, - \, m \, T_0)\big)
+\end{equation}
+
+This is an impulse in the integration variable $\lambda$, located at $\lambda \, = \, t \, - \, m \, T_0$. Using the sifting property $\displaystyle\int_{-\infty}^{\infty} x(\lambda) \, \delta(\lambda \, - \, \lambda_0) \, d\lambda \, = \, x(\lambda_0)$:
+
+\begin{equation}
+\int_{-\infty}^{\infty} x(\lambda) \, \delta\big(\lambda \, - \, (t \, - \, m \, T_0)\big) \, d\lambda \, = \, x(t \, - \, m \, T_0)
+\label{Eq:Sampling:conv_sifting}
+\end{equation}
+
+\item \tbi{Result:} substituting \autoref{Eq:Sampling:conv_sifting} in \autoref{Eq:Sampling:conv_swapped}:
+
+\begin{equation}
+\boxed{
+x(t) \star \delta_{T_0}(t) \, = \, \sum_{m \, = \, -\infty}^{\infty} x(t \, - \, m \, T_0) \, = \, x_{T_0}(t)
+}
+\label{Eq:Sampling:conv_result}
+\end{equation}
+
+which is the classical definition of the periodic signal in \autoref{Eq:Sampling:spectral_periodic_signal}.
+
+\end{enumerate}
+
+\underline{Intuition:}
+
+\begin{itemize}
+
+\item Convolving with a single impulse $\delta(t \, - \, m \, T_0)$ \tbi{moves} the signal to where the impulse sits:
+
+\begin{equation}
+x(t) \star \delta(t \, - \, m \, T_0) \, = \, x(t \, - \, m \, T_0)
+\end{equation}
+
+\item The impulse train has one impulse every $T_0$ seconds, so the convolution places one copy of $x(t)$ at each impulse: this is exactly the \tbi{periodic repetition}
+
+\item It is the dual of time sampling:
+
+	\begin{itemize}
+	\item \tbi{Multiplying} by $\delta(t \, - \, n \, T_s)$ \tbi{picks} one value: $x(t) \, \delta(t \, - \, n \, T_s) \, = \, x(n \, T_s) \, \delta(t \, - \, n \, T_s)$
+
+	\item \tbi{Convolving} with $\delta(t \, - \, m \, T_0)$ \tbi{copies} the whole signal to that position: $x(t) \star \delta(t \, - \, m \, T_0) \, = \, x(t \, - \, m \, T_0)$
+	\end{itemize}
+
+\end{itemize}
+
 
 Using the transform of the impulse train derived in \autoref{Sec:Sampling:Sampling_Continuous_Time_Signals} (with $T_s \, \rightarrow \, T_0$), and convolution in time $\leftrightarrow$ multiplication in frequency:
 
@@ -576,7 +681,8 @@ F_0 \, \leq \, \frac{1}{\tau} \text{ Hz} \qquad \Longleftrightarrow \qquad R \, 
 
 \end{itemize}
 
-\subsubsection*{Step 5: Spectral interpolation (Eq. (5.14) in \cite{signal_processing_Lathi})}
+\newpage
+\subsection{Spectral interpolation (Eq. (5.9) in \cite{signal_processing_Lathi})}
 
 \cite{signal_processing_Lathi} states the interpolation formula by duality with the time interpolation formula. Here we derive it directly. On one period $[T_1 \, , \, T_1 \, + \, T_0]$, $x(t) \, = \, x_{T_0}(t)$, and $x(t) \, = \, 0$ elsewhere, so using \autoref{Eq:Sampling:spectral_periodic_from_samples}:
 
