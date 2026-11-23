@@ -552,9 +552,10 @@ The periodic signal is a convolution of $x(t)$ with an impulse train of period $
 
 \begin{equation}
 x_{T_0}(t) \, = \, x(t) \star \delta_{T_0}(t) \, = \, x(t) \star \sum_{m \, = \, -\infty}^{\infty} \delta(t \, - \, m \, T_0)
+\label{Eq:sampling:periodic_sig_conv}
 \end{equation}
 
-\underline{Proof of the equivalence with \autoref{Eq:Sampling:spectral_periodic_signal}:}\\
+\underline{Proof that \autoref{Eq:sampling:periodic_sig_conv} is equivalent to \autoref{Eq:Sampling:spectral_periodic_signal}:}\\
 
 The key tool is the \tbi{shifting property of the convolution with a Dirac}. We start from the convolution and show that it gives back the classical definition of the periodic signal.
 
@@ -618,7 +619,7 @@ which is the classical definition of the periodic signal in \autoref{Eq:Sampling
 
 \begin{itemize}
 
-\item Convolving with a single impulse $\delta(t \, - \, m \, T_0)$ \tbi{moves} the signal to where the impulse sits:
+\item Convolving a signal $x(t)$ with a single impulse $\delta(t \, - \, m \, T_0)$ \tbi{moves} the signal to where the impulse sits:
 
 \begin{equation}
 x(t) \star \delta(t \, - \, m \, T_0) \, = \, x(t \, - \, m \, T_0)
@@ -645,7 +646,10 @@ X_{T_0}(F) \, &= \, X(F) \, \times \, \frac{1}{T_0} \sum_{k \, = \, -\infty}^{\i
 \label{Eq:Sampling:spectral_line_spectrum}
 \end{align}
 
-where we used $X(F) \, \delta(F \, - \, k F_0) \, = \, X(k F_0) \, \delta(F \, - \, k F_0)$ (sifting property). The spectrum of $x_{T_0}(t)$ is a line spectrum whose weights are the samples $F_0 \, X(k F_0)$, which is again \autoref{Eq:Sampling:spectral_ck_samples}. This shows the \tbi{duality}:
+where we used $X(F) \, \delta(F \, - \, k F_0) \, = \, X(k F_0) \, \delta(F \, - \, k F_0)$ (sifting property). 
+
+\newpage
+The spectrum of $x_{T_0}(t)$ is a line spectrum whose weights are the samples $F_0 \, X(k F_0)$, which is again \autoref{Eq:Sampling:spectral_ck_samples}. This shows the \tbi{duality}:
 
 \begin{table}[!h]
 \centering
@@ -660,7 +664,7 @@ Recovery if $F_s \, \geq \, 2 B$ & Recovery if $T_0 \, \geq \, \tau$ \\ \hline
 \label{Tb:Sampling:duality_time_spectral_sampling}
 \end{table}
 
-\subsubsection*{Step 4: Condition for reconstruction: the spectral sampling theorem (Eq. (5.13) in \cite{signal_processing_Lathi})}
+\subsection{Spectral Reconstruction: the spectral sampling theorem}
 
 The whole derivation relied on the copies of $x(t)$ in $x_{T_0}(t)$ \tbi{not overlapping}, which required $T_0 \, \geq \, \tau$. If $T_0 \, < \, \tau$, the copies overlap (\tbi{time aliasing}, the dual of spectral aliasing), one period of $x_{T_0}(t)$ is no longer $x(t)$, and $x(t)$ cannot be recovered. Since $F_0 \, = \, \frac{1}{T_0}$:
 
@@ -681,8 +685,35 @@ F_0 \, \leq \, \frac{1}{\tau} \text{ Hz} \qquad \Longleftrightarrow \qquad R \, 
 
 \end{itemize}
 
+In other words, \tbi{spectral sampling theorem} tells us: if we want to \tbi{describe a continuous time-limited signal} from its \tbi{spectrum samples}, we need to make sure that the \tbi{frequency spacing} $ \left(\, F_0 \, = \, \displaystyle\frac{1}{T_0} \, \right)$ is less than the inverse of the signal duration $\displaystyle\frac{1}{\tau}$.\\
+
+\begin{itemize}
+
+\item \textit{The other words reformulation above is from Dr Adam course}
+
+\item \textit{To re-listen again when I review the report about his interpretation, to make it more aling in my reader report}
+
+\end{itemize}
+
+
+
+
+
 \newpage
-\subsection{Spectral interpolation (Eq. (5.9) in \cite{signal_processing_Lathi})}
+\subsection{Spectral interpolation}
+
+\uti{Spectral Interpolation:} \todo{Spectral Interpolation}
+
+\begin{itemize}
+
+\item \textit{To revisit this section later, when I work in signal reconstruction in general}
+
+\item \textit{For now, I only list the proof here so it can be written in the report}
+
+\item \textit{I don't need it for for the DFT derivation or for the spectral analysis part}
+
+\end{itemize}
+
 
 \cite{signal_processing_Lathi} states the interpolation formula by duality with the time interpolation formula. Here we derive it directly. On one period $[T_1 \, , \, T_1 \, + \, T_0]$, $x(t) \, = \, x_{T_0}(t)$, and $x(t) \, = \, 0$ elsewhere, so using \autoref{Eq:Sampling:spectral_periodic_from_samples}:
 
@@ -743,37 +774,6 @@ X(F) \, = \, \text{sinc}(\pi F)
 
 which is the spectrum of $x(t) \, = \, \Pi(t)$, the unit rectangular pulse (see the CTFT table in the simulation report). For a signal of unit duration, this is the only spectrum with these sample values.
 
-
-
-
-\newpage
-\subsection{Proof v2}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.7\textwidth, frame]{Figures/Sampling/sepctral_sampling_math_formulation}
-\caption{Mathematical formulation between samples of $X(\omega)$ and $X(\omega)$ itself}
-\label{fig:Sampling:sepctral_sampling_math_formulation}
-\end{figure}
-
-
-\begin{itemize}
-
-\item We start by Fourier transform definition
-
-\item Since we are replicating in the time domain now, we can use Fourier series on $x_T(t)$
-
-\item Notice the relation between $D_n$ and $X(\omega)$: they are the same except for the argument of the exponential:
-
-	\begin{itemize}
-	\item In $X(\omega)$, we have $\omega$
-	
-	\item In $D_n$, we have $n \, \omega_0$
-	\end{itemize}
-
-\end{itemize}
-
-The \tbi{spectral sampling theorem} tells us: if we want to \tbi{describe a continuous time-limited signal} from its \tbi{spectrum samples}, we need to make sure that the \tbi{frequency spacing} $ \left(\, f_0 \, = \, \displaystyle\frac{1}{T} \, \right)$ is less than the inverse of the signal duration $\displaystyle\frac{1}{\tau}$
 
 \newpage
 \section{Other Practical Considerations}
